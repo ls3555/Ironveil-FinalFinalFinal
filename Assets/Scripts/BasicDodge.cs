@@ -5,14 +5,9 @@ public class BasicDodge : PlayerMove
 {
     [SerializeField] float dashSpeed = 10f;
     [SerializeField] float dashTime = 0.15f;
-
-    private PlayerMovement player;
     bool canDash = true;
 
-    private void Start()
-    {
-        player = PlayerMovement.Instance;
-    }
+
 
     public override IEnumerator Execute()
     {
@@ -20,17 +15,30 @@ public class BasicDodge : PlayerMove
             yield break;
 
         canDash = false;
-        player.isDashing = true;
+        player.stateDashing();
 
         Vector2 dir = player.getMoveDirection().normalized;
+
         if (dir == Vector2.zero)
             dir = Vector2.right;
 
-        player.SetVelocity(dir * dashSpeed);
+        float timer = 0f;
 
-        yield return new WaitForSeconds(dashTime);
+        while (timer < dashTime)
+        {
+            float t = timer / dashTime;
 
-        player.isDashing = false;
+            // Ease out
+            float currentSpeed = Mathf.Lerp(dashSpeed, 0f, t);
+
+            player.SetVelocity(dir * currentSpeed);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        player.SetVelocity(Vector2.zero);
+        player.stateIdle();
 
         yield return new WaitForSeconds(cooldown);
         canDash = true;

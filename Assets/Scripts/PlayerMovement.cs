@@ -19,7 +19,11 @@ public class PlayerMovement : Entity
     [SerializeField] private PlayerMove moveUtil;
 
     private Vector2 lastMoveDir = Vector2.right;
-    public bool isDashing;
+    public bool isMoving;
+    public bool canMove = true;
+
+    private enum state{idle,attacking,dashing,stun};
+    state currentState;
 
     protected override void Awake()
     {
@@ -31,6 +35,7 @@ public class PlayerMovement : Entity
         dodgeAction = input.Player.Dodge;
         utilAction = input.Player.Utility;
         Instance = this;
+        currentState = state.idle;
     }
 
     void OnEnable()
@@ -46,16 +51,31 @@ public class PlayerMovement : Entity
     // Update is called once per frame
     void Update()
     {
-        moveDirection = moveAction.ReadValue<Vector2>().normalized;
-        if(attackAction.WasPressedThisFrame() && moveAttack != null){StartCoroutine(moveAttack.Execute());}
-        if(specialAction.WasPressedThisFrame()&& moveSpecial != null){StartCoroutine(moveSpecial.Execute());}
-        if(dodgeAction.WasPressedThisFrame() && moveDash != null){StartCoroutine(moveDash.Execute());}
-        if(utilAction.WasPressedThisFrame() && moveUtil != null){StartCoroutine(moveUtil.Execute());}
+        switch(currentState){
+            case state.idle:
+                if(attackAction.WasPressedThisFrame() && moveAttack != null){StartCoroutine(moveAttack.Execute());}
+                if(specialAction.WasPressedThisFrame()&& moveSpecial != null){StartCoroutine(moveSpecial.Execute());}
+                if(dodgeAction.WasPressedThisFrame() && moveDash != null){StartCoroutine(moveDash.Execute());}
+                if(utilAction.WasPressedThisFrame() && moveUtil != null){StartCoroutine(moveUtil.Execute());}
+            break;
+            case state.attacking:
+                if(utilAction.WasPressedThisFrame() && moveUtil != null){StartCoroutine(moveUtil.Execute());}
+            break;
+            case state.dashing:
+                if(attackAction.WasPressedThisFrame() && moveAttack != null){StartCoroutine(moveAttack.Execute());}
+                if(specialAction.WasPressedThisFrame()&& moveSpecial != null){StartCoroutine(moveSpecial.Execute());}
+                if(utilAction.WasPressedThisFrame() && moveUtil != null){StartCoroutine(moveUtil.Execute());}
+            break;
+            case state.stun:
+            break;
+        }
+        if(canMove){moveDirection = moveAction.ReadValue<Vector2>().normalized;}
     }
 
+    //fixed update friction
     protected override void Move()
     {
-        if (isDashing)
+        if (currentState == state.dashing)
         {
             rigidBody.linearVelocity -= rigidBody.linearVelocity * friction;
             return;
@@ -109,5 +129,22 @@ public class PlayerMovement : Entity
             lastMoveDir = input.normalized;
 
         return lastMoveDir;
+    }
+
+    public void stateDashing()
+    {
+        currentState = state.dashing;
+    }
+    public void stateStun()
+    {
+        currentState = state.stun;
+    }
+    public void stateAttack()
+    {
+        currentState = state.attacking;
+    }
+    public void stateIdle()
+    {
+        currentState = state.idle;
     }
 }
