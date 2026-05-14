@@ -24,6 +24,7 @@ public class PlayerMovement : Entity
 
     private enum state{idle,attacking,dashing,stun};
     state currentState;
+    private Animator animator;
 
     protected override void Awake()
     {
@@ -36,6 +37,11 @@ public class PlayerMovement : Entity
         utilAction = input.Player.Utility;
         Instance = this;
         currentState = state.idle;
+    }
+
+    void Start ()
+    {
+        animator = GetComponent<Animator>();
     }
 
     void OnEnable()
@@ -69,7 +75,24 @@ public class PlayerMovement : Entity
             case state.stun:
             break;
         }
-        if(canMove){moveDirection = moveAction.ReadValue<Vector2>().normalized;}
+
+        if (canMove) {
+            moveDirection = moveAction.ReadValue<Vector2>().normalized;
+        } else{
+            moveDirection = Vector2.zero;
+        }
+
+        animator.SetBool("IsMoving", moveDirection.magnitude > 0);
+
+        if (moveDirection.y > 0) {
+            animator.SetInteger("Direction", 1);
+        } else if (moveDirection.y < 0) {
+            animator.SetInteger("Direction", 0);
+        } else if (moveDirection.x > 0) {
+            animator.SetInteger("Direction", 2);
+        } else if (moveDirection.x < 0) {
+            animator.SetInteger("Direction", 3);
+        }
     }
 
     //fixed update friction
