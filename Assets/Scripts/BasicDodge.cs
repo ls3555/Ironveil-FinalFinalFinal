@@ -27,8 +27,6 @@ public class BasicDodge : PlayerMove
         while (timer < dashTime)
         {
             float t = timer / dashTime;
-
-            // Ease out
             float currentSpeed = Mathf.Lerp(dashSpeed, 0f, t);
 
             player.SetVelocity(dir * currentSpeed);
