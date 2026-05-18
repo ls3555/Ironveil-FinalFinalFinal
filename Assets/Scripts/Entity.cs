@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public abstract class Entity : MonoBehaviour, IDamagable
 {
@@ -21,7 +22,7 @@ public abstract class Entity : MonoBehaviour, IDamagable
         rigidBody.gravityScale = 0;
 
         maxHealth = health;
-    }
+    }    
 
     abstract public void TakeDamage(int damage);
     abstract protected void Move();

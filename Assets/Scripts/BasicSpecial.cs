@@ -5,10 +5,10 @@ public class BasicSpecial : PlayerMove
 {
     public float damage;
     bool canSpecial = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Awake()
     {
-        cooldown = 1f;
+        
     }
 
     // Update is called once per frame
@@ -17,8 +17,13 @@ public class BasicSpecial : PlayerMove
         
     }
 
+
+
     public override IEnumerator Execute()
     {
+        Vector2 shootDirection = CalcShootDir();
+        
+
         Debug.Log("Zip");
         //Bullet newBullet = Instantiate(bullet,transform.position,Quaternion.identity);
         //newBullet.setTarget(opponentTag,shootDirection,shootForce);

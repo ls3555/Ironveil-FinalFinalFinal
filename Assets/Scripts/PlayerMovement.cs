@@ -8,6 +8,7 @@ public class PlayerMovement : Entity
 
     private PlayerInput input;
     private InputAction moveAction; 
+    private InputAction lookAction; 
     private InputAction attackAction; 
     private InputAction specialAction; 
     private InputAction dodgeAction; 
@@ -31,6 +32,7 @@ public class PlayerMovement : Entity
         base.Awake();
         input = new PlayerInput();
         moveAction = input.Player.Move;
+        lookAction = input.Player.Look;
         attackAction = input.Player.Attack;
         specialAction = input.Player.Special;
         dodgeAction = input.Player.Dodge;
@@ -169,5 +171,13 @@ public class PlayerMovement : Entity
     public void stateIdle()
     {
         currentState = state.idle;
+    }
+
+    public Vector2 GetMousePos()
+    {
+        Vector2 screenPos = lookAction.ReadValue<Vector2>();
+        Vector3 mousePos = new Vector3(screenPos.x, screenPos.y, Camera.main.nearClipPlane);
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        return new Vector2(worldPos.x, worldPos.y);
     }
 }
