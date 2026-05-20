@@ -6,8 +6,8 @@ public abstract class Entity : MonoBehaviour, IDamagable
 {
     protected Rigidbody2D rigidBody;
     protected SpriteRenderer spriteRenderer;
-    public int health;
-    protected int maxHealth;
+    public float health;
+    protected float maxHealth;
     [SerializeField]protected float moveSpeed;
     [SerializeField]protected float friction;
     protected Vector2 moveDirection;
@@ -24,7 +24,7 @@ public abstract class Entity : MonoBehaviour, IDamagable
         maxHealth = health;
     }    
 
-    abstract public void TakeDamage(int damage);
+    abstract public void TakeDamage(float damage);
     abstract protected void Move();
     void FixedUpdate() {Move();}
 }

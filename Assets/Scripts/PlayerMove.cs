@@ -3,6 +3,7 @@ using System.Collections;
 
 public abstract class PlayerMove : MonoBehaviour
 {
+    public MoveSlotType slotType;
     public float cooldown;
     public float manaCost;
     protected PlayerMovement player;

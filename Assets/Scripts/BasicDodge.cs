@@ -3,8 +3,8 @@ using System.Collections;
 
 public class BasicDodge : PlayerMove
 {
-    [SerializeField] float dashSpeed = 10f;
-    [SerializeField] float dashTime = 0.15f;
+    [SerializeField] float dashSpeed;
+    [SerializeField] float dashTime;
     bool canDash = true;
 
 
@@ -15,7 +15,7 @@ public class BasicDodge : PlayerMove
             yield break;
 
         canDash = false;
-        player.stateDashing();
+        player.setState(state.dashing);
 
         Vector2 dir = player.getMoveDirection().normalized;
 
@@ -36,7 +36,7 @@ public class BasicDodge : PlayerMove
         }
 
         player.SetVelocity(Vector2.zero);
-        player.stateIdle();
+        player.setState(state.idle);
 
         yield return new WaitForSeconds(cooldown);
         canDash = true;

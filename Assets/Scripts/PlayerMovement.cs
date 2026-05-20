@@ -14,16 +14,17 @@ public class PlayerMovement : Entity
     private InputAction dodgeAction; 
     private InputAction utilAction; 
 
-    [SerializeField] private PlayerMove moveAttack;
-    [SerializeField] private PlayerMove moveSpecial;
-    [SerializeField] private PlayerMove moveDash;
-    [SerializeField] private PlayerMove moveUtil;
+    private InputAction interactAction;
+    [SerializeField] private float interactRange = 3f;
 
-    private Vector2 lastMoveDir = Vector2.right;
+    public PlayerMove moveAttack;
+    public PlayerMove moveSpecial;
+    public PlayerMove moveDash;
+    public PlayerMove moveUtil;
+
+    private Vector2 lastMoveDir = Vector2.right; 
     public bool isMoving;
     public bool canMove = true;
-
-    private enum state{idle,attacking,dashing,stun};
     state currentState;
     private Animator animator;
 
@@ -37,6 +38,7 @@ public class PlayerMovement : Entity
         specialAction = input.Player.Special;
         dodgeAction = input.Player.Dodge;
         utilAction = input.Player.Utility;
+        interactAction = input.Player.Interact;
         Instance = this;
         currentState = state.idle;
     }
@@ -61,6 +63,7 @@ public class PlayerMovement : Entity
     {
         switch(currentState){
             case state.idle:
+                if(interactAction.WasPressedThisFrame()){TryInteract();}
                 if(attackAction.WasPressedThisFrame() && moveAttack != null){StartCoroutine(moveAttack.Execute());}
                 if(specialAction.WasPressedThisFrame()&& moveSpecial != null){StartCoroutine(moveSpecial.Execute());}
                 if(dodgeAction.WasPressedThisFrame() && moveDash != null){StartCoroutine(moveDash.Execute());}
@@ -76,6 +79,7 @@ public class PlayerMovement : Entity
             break;
             case state.stun:
             break;
+
         }
 
         if (canMove) {
@@ -115,8 +119,24 @@ public class PlayerMovement : Entity
             rigidBody.linearVelocity -= rigidBody.linearVelocity * friction;
         }
     }
+
+    private void TryInteract()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position,interactRange);
+
+        foreach (Collider2D hit in hits)
+        {
+            IInteractable interactable = hit.transform.GetComponent<IInteractable>();
+
+            if (interactable != null)
+            {
+                interactable.Interact(this);
+                return;
+            }
+        }
+    }
     
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         health-=damage;
     }
@@ -156,21 +176,9 @@ public class PlayerMovement : Entity
         return lastMoveDir;
     }
 
-    public void stateDashing()
+    public void setState(state newState)
     {
-        currentState = state.dashing;
-    }
-    public void stateStun()
-    {
-        currentState = state.stun;
-    }
-    public void stateAttack()
-    {
-        currentState = state.attacking;
-    }
-    public void stateIdle()
-    {
-        currentState = state.idle;
+        currentState = newState;
     }
 
     public Vector2 GetMousePos()
@@ -179,5 +187,31 @@ public class PlayerMovement : Entity
         Vector3 mousePos = new Vector3(screenPos.x, screenPos.y, Camera.main.nearClipPlane);
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
         return new Vector2(worldPos.x, worldPos.y);
+    }
+
+    public void EquipMove(PlayerMove movePickup)
+    {
+        PlayerMove newMove = Instantiate(movePickup);
+
+        switch (newMove.slotType)
+        {
+            case MoveSlotType.Attack:
+                if (moveAttack != null){Destroy(moveAttack.gameObject);}
+                moveAttack = newMove;
+                break;
+            case MoveSlotType.Special:
+                if (moveSpecial != null){Destroy(moveSpecial.gameObject);}
+                moveSpecial = newMove;
+                break;
+            case MoveSlotType.Dash:
+                if (moveDash != null){Destroy(moveDash.gameObject);}
+                moveDash = newMove;
+                break;
+            case MoveSlotType.Util:
+                if (moveUtil != null){Destroy(moveUtil.gameObject);}
+                moveUtil = newMove;
+                break;
+        }
+        if (newMove != null){newMove.transform.SetParent(transform);}
     }
 }

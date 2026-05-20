@@ -3,12 +3,13 @@ using System.Collections;
 
 public class BasicSpecial : PlayerMove
 {
-    public float damage;
+    public float shootForce;
+    public Bullet bullet;
     bool canSpecial = true;
 
     void Awake()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -21,13 +22,18 @@ public class BasicSpecial : PlayerMove
 
     public override IEnumerator Execute()
     {
-        Vector2 shootDirection = CalcShootDir();
-        
+        if (!canSpecial)
+            yield break;
 
-        Debug.Log("Zip");
-        //Bullet newBullet = Instantiate(bullet,transform.position,Quaternion.identity);
-        //newBullet.setTarget(opponentTag,shootDirection,shootForce);
+
         canSpecial = false;
+        player.setState(state.attacking);
+
+        Vector2 shootDirection = CalcShootDir();
+        Bullet newBullet = Instantiate(bullet,player.transform.position,Quaternion.identity);
+        newBullet.setTarget(player.opponentTag,shootDirection,shootForce);
+ 
+        player.setState(state.idle); 
         yield return new WaitForSeconds(cooldown);
         canSpecial = true;
     }
