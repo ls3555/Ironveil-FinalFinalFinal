@@ -47,3 +47,6 @@ MonoBehaviour:
   slotType: 3
   cooldown: 1
   manaCost: 0
+  healParticles: {fileID: 6633725969443144960, guid: 3ab38e214b1f3194999cfd7e71255ffd,
+    type: 3}
+  healAmt: 5

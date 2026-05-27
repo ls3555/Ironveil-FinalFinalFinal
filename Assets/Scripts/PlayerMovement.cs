@@ -99,8 +99,6 @@ public class PlayerMovement : Entity
         } else if (moveDirection.x < 0) {
             animator.SetInteger("Direction", 3);
         }
-         Debug.Log("PURE GET MousePos: " + GetMousePos());
-         Debug.Log("PURE shootDIr: " + CalcShootDir());
     }
 
     //fixed update friction
@@ -143,6 +141,10 @@ public class PlayerMovement : Entity
         health-=damage;
     }
 
+    public void HealDamage(float damage)
+    {
+        health = Mathf.Clamp(health + damage, 0, maxHealth);
+    }
     public void setAttack(PlayerMove attk)
     {
         moveAttack = attk;
