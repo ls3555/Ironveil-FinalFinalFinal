@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 3d8c724b1899b45b6aca66094af1109b
+  productGUID: ba9dad825204744e48bfcc83f7907c62
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -937,7 +937,11 @@ PlayerSettings:
   cloudProjectId: eeb554ff-eece-41ae-9ec6-64ef93afa72e
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
+<<<<<<< HEAD
   projectName: 
+=======
+  projectName: CS345-IronveilFinalFinalFinal
+>>>>>>> 159a3b7c35bec25c175cd8a436363c719047c8d1
   organizationId: lize_s
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
