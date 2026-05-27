@@ -29,7 +29,7 @@ public class BasicSpecial : PlayerMove
         canSpecial = false;
         player.setState(state.attacking);
 
-        Vector2 shootDirection = CalcShootDir();
+        Vector2 shootDirection = player.CalcShootDir();
         Bullet newBullet = Instantiate(bullet,player.transform.position,Quaternion.identity);
         newBullet.setTarget(player.opponentTag,shootDirection,shootForce);
  

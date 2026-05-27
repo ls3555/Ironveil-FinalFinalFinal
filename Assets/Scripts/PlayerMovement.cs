@@ -99,6 +99,8 @@ public class PlayerMovement : Entity
         } else if (moveDirection.x < 0) {
             animator.SetInteger("Direction", 3);
         }
+         Debug.Log("PURE GET MousePos: " + GetMousePos());
+         Debug.Log("PURE shootDIr: " + CalcShootDir());
     }
 
     //fixed update friction
@@ -181,13 +183,23 @@ public class PlayerMovement : Entity
         currentState = newState;
     }
 
+    public Vector2 CalcShootDir()
+    {
+        //Debug.Log("INSIDE CALC MousePos: " + GetMousePos());
+        Vector2 shootDirection = (GetMousePos() - new Vector2(transform.position.x, transform.position.y)).normalized;
+        //Debug.Log("shootDirection: " + GetMousePos());
+        //changes to player rotation based on mouse pos
+        //player.transform.eulerAngles = new Vector3(0, 0, -90 + Mathf.Atan2(shootDirection.y, shootDirection.x) * 180 / Mathf.PI);
+        return shootDirection;
+    }
+
     public Vector2 GetMousePos()
     {
         Vector2 screenPos = lookAction.ReadValue<Vector2>();
-        Vector3 mousePos = new Vector3(screenPos.x, screenPos.y, Camera.main.nearClipPlane);
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
         return new Vector2(worldPos.x, worldPos.y);
     }
+
 
     public void EquipMove(PlayerMove movePickup)
     {
