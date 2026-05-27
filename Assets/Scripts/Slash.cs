@@ -21,10 +21,12 @@ public class Slash : MonoBehaviour
         yield return new WaitForSeconds(LifeTime);
         Destroy(this.gameObject);}
 
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.tag == target){
-        IDamagable target = other.transform.GetComponent<IDamagable>();
-        if(target != null){target.TakeDamage(damage);};
+    void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.tag == target){
+        if (other.transform.TryGetComponent(out IDamagable target))
+        {
+            target.TakeDamage(damage);
+        }
         Destroy(this.gameObject);}
     }
 }
