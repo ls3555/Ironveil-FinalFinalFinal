@@ -20,7 +20,7 @@ public class BasicSlash : PlayerMove
 
     public override IEnumerator Execute()
     {
-        if (!canAttack)
+        if (!canAttack || player.GetMana() < manaCost)
             yield break;
 
         player.setState(state.attacking);
@@ -31,11 +31,9 @@ public class BasicSlash : PlayerMove
         Slash newSlash = Instantiate(slash,spawnPos,Quaternion.identity);
         newSlash.setTarget(player.opponentTag,shootDirection);
  
+        player.UseMana(manaCost);
         player.setState(state.idle); 
         yield return new WaitForSeconds(cooldown);
         canAttack = true;
-        
-
-        yield return new WaitForSeconds(cooldown);
     }
 }

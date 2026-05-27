@@ -11,7 +11,7 @@ public class BasicDodge : PlayerMove
 
     public override IEnumerator Execute()
     {
-        if (!canDash)
+        if (!canDash || player.GetMana() < manaCost)
             yield break;
 
         canDash = false;
@@ -36,6 +36,7 @@ public class BasicDodge : PlayerMove
         }
 
         player.SetVelocity(Vector2.zero);
+        player.UseMana(manaCost);
         player.setState(state.idle);
 
         yield return new WaitForSeconds(cooldown);

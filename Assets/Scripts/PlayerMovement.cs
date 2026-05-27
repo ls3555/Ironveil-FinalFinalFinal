@@ -1,10 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerMovement : Entity
 {
     public static PlayerMovement Instance;
+
+    public float mana;
+    protected float maxMana;
+
+    public float healthRegen;
+    public float manaRegen;
 
     private PlayerInput input;
     private InputAction moveAction; 
@@ -28,6 +35,9 @@ public class PlayerMovement : Entity
     state currentState;
     private Animator animator;
 
+    public Image healthBar;
+    public Image manaBar;
+
     protected override void Awake()
     {
         base.Awake();
@@ -40,6 +50,7 @@ public class PlayerMovement : Entity
         utilAction = input.Player.Utility;
         interactAction = input.Player.Interact;
         Instance = this;
+        maxMana = mana;
         currentState = state.idle;
     }
 
@@ -99,6 +110,20 @@ public class PlayerMovement : Entity
         } else if (moveDirection.x < 0) {
             animator.SetInteger("Direction", 3);
         }
+
+            if (health < maxHealth)
+            {
+                health += healthRegen * Time.deltaTime;
+                health = Mathf.Clamp(health, 0, maxHealth);
+                healthBar.fillAmount = health / maxHealth;
+            }
+
+            if (mana < maxMana)
+            {
+                mana += manaRegen * Time.deltaTime;
+                mana = Mathf.Clamp(mana, 0, maxMana);
+                manaBar.fillAmount = mana / maxMana;
+            }
     }
 
     //fixed update friction
@@ -138,13 +163,27 @@ public class PlayerMovement : Entity
     
     public override void TakeDamage(float damage)
     {
-        health-=damage;
+        health = Mathf.Clamp(health - damage, 0, maxHealth);
+        healthBar.fillAmount = health / maxHealth;
     }
 
     public void HealDamage(float damage)
     {
         health = Mathf.Clamp(health + damage, 0, maxHealth);
+        healthBar.fillAmount = health / maxHealth;
     }
+
+    public float GetMana()
+    {
+        return mana;
+    }
+
+    public void UseMana(float use)
+    {
+        mana = Mathf.Clamp(mana - use, 0, maxMana);
+        manaBar.fillAmount = mana / maxMana;
+    }
+
     public void setAttack(PlayerMove attk)
     {
         moveAttack = attk;

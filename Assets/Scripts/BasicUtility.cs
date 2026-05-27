@@ -10,7 +10,6 @@ public class BasicUtility : PlayerMove
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        cooldown = 1f;
     }
 
     // Update is called once per frame
@@ -21,21 +20,20 @@ public class BasicUtility : PlayerMove
 
     public override IEnumerator Execute()
     {
-        if (!canUtil)
+        if (!canUtil || player.GetMana() < manaCost)
             yield break;
 
 
         canUtil = false;
         player.setState(state.attacking);
 
-        Vector2 shootDirection = player.CalcShootDir();
         ParticleSystem newhealParticles = Instantiate(healParticles,player.transform.position,Quaternion.identity);
         Destroy(newhealParticles.gameObject,2);
         player.HealDamage(healAmt);
 
-
+        player.UseMana(manaCost);
         player.setState(state.idle); 
         yield return new WaitForSeconds(cooldown);
-        canUtil = true;;
+        canUtil = true;
     }
 }

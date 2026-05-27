@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotType: 1
   cooldown: 3
-  manaCost: 0
+  manaCost: 5
   shootForce: 5
   bullet: {fileID: 5565699267098577034, guid: 5dcfbc8e150b36e4db0064724022fe14, type: 3}

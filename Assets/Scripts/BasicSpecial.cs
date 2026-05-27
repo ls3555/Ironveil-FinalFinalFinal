@@ -22,7 +22,7 @@ public class BasicSpecial : PlayerMove
 
     public override IEnumerator Execute()
     {
-        if (!canSpecial)
+        if (!canSpecial || player.GetMana() < manaCost)
             yield break;
 
 
@@ -33,6 +33,7 @@ public class BasicSpecial : PlayerMove
         Bullet newBullet = Instantiate(bullet,player.transform.position,Quaternion.identity);
         newBullet.setTarget(player.opponentTag,shootDirection,shootForce);
  
+        player.UseMana(manaCost);
         player.setState(state.idle); 
         yield return new WaitForSeconds(cooldown);
         canSpecial = true;
