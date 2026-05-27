@@ -1,25 +1,20 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : EnemyUI
 {
     private Animator animator;
     private enum EnemyState { Idle, Roam, Chase, Attack, Die }
     private EnemyState currentState = EnemyState.Idle;
-    private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
-    private Vector2 moveDirection, targetPosition;
+    private Vector2 targetPosition;
     public AnimationClip hitClip, attackClip, dieClip;
 
     [Header("Movement")]
     [SerializeField] private float roamDist = 3f;
     [SerializeField] private float attackDist = 1.5f;
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float friction = 0.1f;
 
     [Header("Stats")]
     public int damage = 5;
-    public int health = 100;
     public float chaseDist = 10f;
 
     bool canAttack = true;
@@ -28,10 +23,11 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        healthContainer.gameObject.SetActive(false);
+        rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        if (rb == null) Debug.LogError("MISSING: Rigidbody2D on " + gameObject.name);
+        if (rigidBody == null) Debug.LogError("MISSING: Rigidbody2D on " + gameObject.name);
         if (animator == null) Debug.LogError("MISSING: Animator on " + gameObject.name);
 
         currentState = EnemyState.Idle;
@@ -40,9 +36,10 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (rb == null || animator == null || PlayerController.Instance == null) return;
+        UpdateHealth();
+        if (rigidBody == null || animator == null || PlayerMovement.Instance == null) return;
 
-        float distToPlayer = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
+        float distToPlayer = Vector2.Distance(transform.position, PlayerMovement.Instance.transform.position);
 
         if (currentState == EnemyState.Idle)
         {
@@ -74,7 +71,7 @@ public class EnemyController : MonoBehaviour
         }
         else if (currentState == EnemyState.Chase)
         {
-            targetPosition = PlayerController.Instance.transform.position;
+            targetPosition = PlayerMovement.Instance.transform.position;
             moveDirection = ((Vector2)targetPosition - (Vector2)transform.position).normalized;
 
             if (distToPlayer < attackDist)
@@ -100,8 +97,6 @@ public class EnemyController : MonoBehaviour
                 StartCoroutine(AttackCoroutine());
             }
         }
-
-        Move();
         UpdateAnimator();
     }
 
@@ -113,29 +108,29 @@ public class EnemyController : MonoBehaviour
         );
     }
 
-    private void Move()
+    protected override void Move()
     {
         if (moveDirection.magnitude > 0)
         {
-            rb.linearVelocity = moveDirection * moveSpeed;
+            rigidBody.linearVelocity = moveDirection * moveSpeed;
         }
         else
         {
-            rb.linearVelocity *= (1f - friction);
+            rigidBody.linearVelocity *= (1f - friction);
         }
     }
 
     private IEnumerator AttackCoroutine()
     {
-        rb.linearVelocity = Vector2.zero;
+        rigidBody.linearVelocity = Vector2.zero;
         animator.SetTrigger("Attack");
 
         float clipLength = attackClip != null ? attackClip.length : 1f;
         yield return new WaitForSeconds(clipLength);
-        float disToPlayer = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
+        float disToPlayer = Vector2.Distance(transform.position, PlayerMovement.Instance.transform.position);
         if (disToPlayer < attackDist + 0.5f)
         {
-            PlayerController.Instance.TakeDamage(damage);
+            PlayerMovement.Instance.TakeDamage(damage);
         }
         else
         {
@@ -152,7 +147,7 @@ public class EnemyController : MonoBehaviour
     public void Die()
     {
         animator.SetTrigger("Die");
-        rb.linearVelocity = Vector2.zero;
+        rigidBody.linearVelocity = Vector2.zero;
         enabled = false;
     }
 
@@ -161,8 +156,24 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Hit");
     }
 
+    public override void TakeDamage(float damage)
+    {
+        TakeHit();
+        health = Mathf.Clamp(health - damage, 0, maxHealth);
+        healthBar.fillAmount = health / maxHealth;
+        if(health<=0) {Die();}
+        lastDamageTime = Time.time;
+
+        ShowDamage(damage);
+
+        if (hideHPRoutine != null)
+            StopCoroutine(hideHPRoutine);
+
+        hideHPRoutine = StartCoroutine(HideHealthBar());
+    }
+
     private void UpdateAnimator()
     {
-        animator.SetBool("IsMoving", moveDirection.magnitude > 0.1f);
+        animator.SetBool("isMoving", moveDirection.magnitude > 0.1f);
     }
 }
