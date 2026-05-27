@@ -1,0 +1,1 @@
+public enum state{idle,attacking,dashing,stun};
