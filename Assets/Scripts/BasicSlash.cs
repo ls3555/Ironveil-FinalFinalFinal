@@ -23,6 +23,7 @@ public class BasicSlash : PlayerMove
         if (!canAttack || player.GetMana() < manaCost)
             yield break;
 
+        canAttack = false;
         player.setState(state.attacking);
 
         Vector2 shootDirection = player.CalcShootDir();
