@@ -1,0 +1,2574 @@
+fileFormatVersion: 2
+guid: e782959e767ba479197466770994df23
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4973440965745357638
+    second: Skill Metrics Ironveil (6)_0
+  - first:
+      213: 7291332910255230291
+    second: Skill Metrics Ironveil (6)_1
+  - first:
+      213: 1355425454818295858
+    second: Skill Metrics Ironveil (6)_2
+  - first:
+      213: -6120193969674069101
+    second: Skill Metrics Ironveil (6)_3
+  - first:
+      213: -5728774909140630934
+    second: Skill Metrics Ironveil (6)_4
+  - first:
+      213: 5451937785397255502
+    second: Skill Metrics Ironveil (6)_5
+  - first:
+      213: -8613608441832285253
+    second: Skill Metrics Ironveil (6)_6
+  - first:
+      213: 4992827226379102491
+    second: Skill Metrics Ironveil (6)_7
+  - first:
+      213: -943677483323416465
+    second: Skill Metrics Ironveil (6)_8
+  - first:
+      213: 7778029650132835552
+    second: Skill Metrics Ironveil (6)_9
+  - first:
+      213: 4033742359122671458
+    second: Skill Metrics Ironveil (6)_10
+  - first:
+      213: 512293619558407566
+    second: Skill Metrics Ironveil (6)_11
+  - first:
+      213: -8241204359651541453
+    second: Skill Metrics Ironveil (6)_12
+  - first:
+      213: 4175229729047756217
+    second: Skill Metrics Ironveil (6)_13
+  - first:
+      213: -8552212833838249027
+    second: Skill Metrics Ironveil (6)_14
+  - first:
+      213: 437879304993385055
+    second: Skill Metrics Ironveil (6)_15
+  - first:
+      213: -5074201815401577519
+    second: Skill Metrics Ironveil (6)_16
+  - first:
+      213: 4180458210197011620
+    second: Skill Metrics Ironveil (6)_17
+  - first:
+      213: 2346009260506098814
+    second: Skill Metrics Ironveil (6)_18
+  - first:
+      213: -5592292032872220828
+    second: Skill Metrics Ironveil (6)_19
+  - first:
+      213: -5788905850223057678
+    second: Skill Metrics Ironveil (6)_20
+  - first:
+      213: -1166872651641626690
+    second: Skill Metrics Ironveil (6)_21
+  - first:
+      213: -1901452336740858314
+    second: Skill Metrics Ironveil (6)_22
+  - first:
+      213: 1926688634716833858
+    second: Skill Metrics Ironveil (6)_23
+  - first:
+      213: -696875605970503170
+    second: Skill Metrics Ironveil (6)_24
+  - first:
+      213: -7716725199027533137
+    second: Skill Metrics Ironveil (6)_25
+  - first:
+      213: -2986402757993213713
+    second: Skill Metrics Ironveil (6)_26
+  - first:
+      213: 6214197367047813026
+    second: Skill Metrics Ironveil (6)_27
+  - first:
+      213: 8093468759648068528
+    second: Skill Metrics Ironveil (6)_28
+  - first:
+      213: -6397731761660039591
+    second: Skill Metrics Ironveil (6)_29
+  - first:
+      213: -3141491762486411818
+    second: Skill Metrics Ironveil (6)_30
+  - first:
+      213: 347690347013597739
+    second: Skill Metrics Ironveil (6)_31
+  - first:
+      213: -3694679023770790122
+    second: Skill Metrics Ironveil (6)_32
+  - first:
+      213: 3962304458299240610
+    second: Skill Metrics Ironveil (6)_33
+  - first:
+      213: -7705094742623156442
+    second: Skill Metrics Ironveil (6)_34
+  - first:
+      213: 4729277660065561956
+    second: Skill Metrics Ironveil (6)_35
+  - first:
+      213: 5355662948998214970
+    second: Skill Metrics Ironveil (6)_36
+  - first:
+      213: 9067022924634684773
+    second: Skill Metrics Ironveil (6)_37
+  - first:
+      213: 2100189718679255735
+    second: Skill Metrics Ironveil (6)_38
+  - first:
+      213: -6991860883365328851
+    second: Skill Metrics Ironveil (6)_39
+  - first:
+      213: 2472095673170718389
+    second: Skill Metrics Ironveil (6)_40
+  - first:
+      213: -6239044750339396595
+    second: Skill Metrics Ironveil (6)_41
+  - first:
+      213: -4828963250802830639
+    second: Skill Metrics Ironveil (6)_42
+  - first:
+      213: 754321064793893606
+    second: Skill Metrics Ironveil (6)_43
+  - first:
+      213: 8603723620294369218
+    second: Skill Metrics Ironveil (6)_44
+  - first:
+      213: -6374914928100871890
+    second: Skill Metrics Ironveil (6)_45
+  - first:
+      213: -4375182067287324832
+    second: Skill Metrics Ironveil (6)_46
+  - first:
+      213: -8877419076555270637
+    second: Skill Metrics Ironveil (6)_47
+  - first:
+      213: 7576966694483247953
+    second: Skill Metrics Ironveil (6)_48
+  - first:
+      213: -5118447883746317356
+    second: Skill Metrics Ironveil (6)_49
+  - first:
+      213: -2422601617155099152
+    second: Skill Metrics Ironveil (6)_50
+  - first:
+      213: 378854981041469421
+    second: Skill Metrics Ironveil (6)_51
+  - first:
+      213: 7866312238005978835
+    second: Skill Metrics Ironveil (6)_52
+  - first:
+      213: -7752408183134811045
+    second: Skill Metrics Ironveil (6)_53
+  - first:
+      213: 1610452032946021265
+    second: Skill Metrics Ironveil (6)_54
+  - first:
+      213: -233808707881323982
+    second: Skill Metrics Ironveil (6)_55
+  - first:
+      213: -4081970233086972729
+    second: Skill Metrics Ironveil (6)_56
+  - first:
+      213: -3635942442963097654
+    second: Skill Metrics Ironveil (6)_57
+  - first:
+      213: 3565007587035010838
+    second: Skill Metrics Ironveil (6)_58
+  - first:
+      213: 2988373254432277765
+    second: Skill Metrics Ironveil (6)_59
+  - first:
+      213: -7744908535392681245
+    second: Skill Metrics Ironveil (6)_60
+  - first:
+      213: 4660427108780911952
+    second: Skill Metrics Ironveil (6)_61
+  - first:
+      213: -4156404974037197335
+    second: Skill Metrics Ironveil (6)_62
+  - first:
+      213: -5888507209555450334
+    second: Skill Metrics Ironveil (6)_63
+  - first:
+      213: 1897105894192659825
+    second: Skill Metrics Ironveil (6)_64
+  - first:
+      213: -6728478892329891833
+    second: Skill Metrics Ironveil (6)_65
+  - first:
+      213: -2452681647055722799
+    second: Skill Metrics Ironveil (6)_66
+  - first:
+      213: -88059859966196568
+    second: Skill Metrics Ironveil (6)_67
+  - first:
+      213: -2485631051755842069
+    second: Skill Metrics Ironveil (6)_68
+  - first:
+      213: 748913944739202104
+    second: Skill Metrics Ironveil (6)_69
+  - first:
+      213: 936443023833760085
+    second: Skill Metrics Ironveil (6)_70
+  - first:
+      213: 5464149123411886591
+    second: Skill Metrics Ironveil (6)_71
+  - first:
+      213: 3123165924732784487
+    second: Skill Metrics Ironveil (6)_72
+  - first:
+      213: 8478066590618764245
+    second: Skill Metrics Ironveil (6)_73
+  - first:
+      213: 5652593387196111081
+    second: Skill Metrics Ironveil (6)_74
+  - first:
+      213: -2614136211206581355
+    second: Skill Metrics Ironveil (6)_75
+  - first:
+      213: -6330680100825108589
+    second: Skill Metrics Ironveil (6)_76
+  - first:
+      213: -6217944681940681150
+    second: Skill Metrics Ironveil (6)_77
+  - first:
+      213: -1220777802843898157
+    second: Skill Metrics Ironveil (6)_78
+  - first:
+      213: -7352779691654990056
+    second: Skill Metrics Ironveil (6)_79
+  - first:
+      213: -7840242270694323378
+    second: Skill Metrics Ironveil (6)_80
+  - first:
+      213: -2160473838032552464
+    second: Skill Metrics Ironveil (6)_81
+  - first:
+      213: 1495056376721697318
+    second: Skill Metrics Ironveil (6)_82
+  - first:
+      213: -3499183601607177836
+    second: Skill Metrics Ironveil (6)_83
+  - first:
+      213: -7838676034260982217
+    second: Skill Metrics Ironveil (6)_84
+  - first:
+      213: 4661979951187133271
+    second: Skill Metrics Ironveil (6)_85
+  - first:
+      213: -5252382492380486239
+    second: Skill Metrics Ironveil (6)_86
+  - first:
+      213: 5840865673268963948
+    second: Skill Metrics Ironveil (6)_87
+  - first:
+      213: -4487537723887513985
+    second: Skill Metrics Ironveil (6)_88
+  - first:
+      213: 507849070537082657
+    second: Skill Metrics Ironveil (6)_89
+  - first:
+      213: 2497406709139221484
+    second: Skill Metrics Ironveil (6)_90
+  - first:
+      213: -7959885447818385261
+    second: Skill Metrics Ironveil (6)_91
+  - first:
+      213: 6461043164545247082
+    second: Skill Metrics Ironveil (6)_92
+  - first:
+      213: -2773372573856075572
+    second: Skill Metrics Ironveil (6)_93
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_0
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 419
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abc4f55cac9cafab0800000000000000
+      internalID: -4973440965745357638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_1
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 407
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35dc0e696a4003560800000000000000
+      internalID: 7291332910255230291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_2
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 403
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23087f115407fc210800000000000000
+      internalID: 1355425454818295858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_3
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 395
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39bd611c204b01ba0800000000000000
+      internalID: -6120193969674069101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_4
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 383
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a62808e829d4f70b0800000000000000
+      internalID: -5728774909140630934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_5
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 387
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4d122cb78c29ab40800000000000000
+      internalID: 5451937785397255502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_6
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 371
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbbd74e42c0567880800000000000000
+      internalID: -8613608441832285253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_7
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 369
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b19a935c8e51a4540800000000000000
+      internalID: 4992827226379102491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_8
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 359
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6029f7245267e2f0800000000000000
+      internalID: -943677483323416465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_9
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 371
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ec9f9cc1cc11fb60800000000000000
+      internalID: 7778029650132835552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_10
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 359
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 267f3fecd4bbaf730800000000000000
+      internalID: 4033742359122671458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_11
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 348
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8d5a7e25580c1700800000000000000
+      internalID: 512293619558407566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_12
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 355
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33eb1957c4c51ad80800000000000000
+      internalID: -8241204359651541453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_13
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 348
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bdba87315561f930800000000000000
+      internalID: 4175229729047756217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_14
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 343
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbbc88b3dbf605980800000000000000
+      internalID: -8552212833838249027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_15
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 336
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5a20ac68e8a31600800000000000000
+      internalID: 437879304993385055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_16
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 336
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d3c85a4550d499b0800000000000000
+      internalID: -5074201815401577519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_17
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 339
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ac7829d798f30a30800000000000000
+      internalID: 4180458210197011620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_18
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 324
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7c2e342ef2be8020800000000000000
+      internalID: 2346009260506098814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_19
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 315
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 467776c76003462b0800000000000000
+      internalID: -5592292032872220828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_20
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 305
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f42647dccca9afa0800000000000000
+      internalID: -5788905850223057678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_21
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 290
+        width: 7
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebf58c4718f6ecfe0800000000000000
+      internalID: -1166872651641626690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_22
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 315
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 636893f8c2fac95e0800000000000000
+      internalID: -1901452336740858314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_23
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 323
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2484411fa19fcba10800000000000000
+      internalID: 1926688634716833858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_24
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 312
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef93e7d14533456f0800000000000000
+      internalID: -696875605970503170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_25
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 307
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faa88a2015fa8e490800000000000000
+      internalID: -7716725199027533137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_26
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 300
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe05195a38a2e86d0800000000000000
+      internalID: -2986402757993213713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_27
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 303
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a77d03c4934d3650800000000000000
+      internalID: 6214197367047813026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_28
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 299
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b36b83b4f6c15070800000000000000
+      internalID: 8093468759648068528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_29
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 288
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95ee4020cd0b637a0800000000000000
+      internalID: -6397731761660039591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_30
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 282
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dd7e28e2ed2764d0800000000000000
+      internalID: -3141491762486411818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_31
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 272
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2ae399478e33d400800000000000000
+      internalID: 347690347013597739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_32
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 291
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6171e0dc00dd9bcc0800000000000000
+      internalID: -3694679023770790122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_33
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 156
+        width: 145
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a07fd069eeecf630800000000000000
+      internalID: 3962304458299240610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_34
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 246
+        width: 7
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6278739a721021590800000000000000
+      internalID: -7705094742623156442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_35
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 271
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46df56c99f4c1a140800000000000000
+      internalID: 4729277660065561956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_36
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 275
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3572cb9313235a40800000000000000
+      internalID: 5355662948998214970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_37
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 255
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56d7c219f4984dd70800000000000000
+      internalID: 9067022924634684773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_38
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 259
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bafdcefb6f552d10800000000000000
+      internalID: 2100189718679255735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_39
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 227
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d288f00329be7fe90800000000000000
+      internalID: -6991860883365328851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_40
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 243
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5beee12cae5ae4220800000000000000
+      internalID: 2472095673170718389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_41
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 202
+        width: 7
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0c214efad57a69a0800000000000000
+      internalID: -6239044750339396595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_42
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 227
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d25b7222831cfcb0800000000000000
+      internalID: -4828963250802830639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_43
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 206
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ea62a90303e77a00800000000000000
+      internalID: 754321064793893606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_44
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 211
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cf98455c01966770800000000000000
+      internalID: 8603723620294369218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_45
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 211
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e21763d06a0c787a0800000000000000
+      internalID: -6374914928100871890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_46
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 194
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0670eab271b3843c0800000000000000
+      internalID: -4375182067287324832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_47
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 183
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31695ab62621dc480800000000000000
+      internalID: -8877419076555270637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_48
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 183
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 153c3ab601bc62960800000000000000
+      internalID: 7576966694483247953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_49
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 195
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4db63f7b4ce97f8b0800000000000000
+      internalID: -5118447883746317356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_50
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 182
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f5fe292aa0316ed0800000000000000
+      internalID: -2422601617155099152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_51
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 156
+        width: 37
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de73d561996f14500800000000000000
+      internalID: 378854981041469421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_52
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 179
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d687ae8d41ca2d60800000000000000
+      internalID: 7866312238005978835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_53
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 170
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5c0b6ad4d9e96490800000000000000
+      internalID: -7752408183134811045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_54
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 171
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 193ad876799795610800000000000000
+      internalID: 1610452032946021265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_55
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 167
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 232375d083851ccf0800000000000000
+      internalID: -233808707881323982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_56
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 158
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cce12143bde957c0800000000000000
+      internalID: -4081970233086972729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_57
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 150
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac72b67bc998a8dc0800000000000000
+      internalID: -3635942442963097654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_58
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 163
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6175bce1383797130800000000000000
+      internalID: 3565007587035010838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_59
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 146
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 505c6be44a5d87920800000000000000
+      internalID: 2988373254432277765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_60
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 139
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e2470aa8be848490800000000000000
+      internalID: -7744908535392681245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_61
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 147
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05dac7073c92da040800000000000000
+      internalID: 4660427108780911952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_62
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 135
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ed98db92bb7156c0800000000000000
+      internalID: -4156404974037197335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_63
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 138
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 226ee1d34e1d74ea0800000000000000
+      internalID: -5888507209555450334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_64
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 137
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17d37ac62cfd35a10800000000000000
+      internalID: 1897105894192659825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_65
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 137
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70886ffa814af92a0800000000000000
+      internalID: -6728478892329891833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_66
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 137
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d6af10790356fdd0800000000000000
+      internalID: -2452681647055722799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_67
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 137
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a48ebf160627cef0800000000000000
+      internalID: -88059859966196568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_68
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 137
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be599655ab3418dd0800000000000000
+      internalID: -2485631051755842069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_69
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 137
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 834448bc34da46a00800000000000000
+      internalID: 748913944739202104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_70
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 137
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 551010cf7f9eefc00800000000000000
+      internalID: 936443023833760085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_71
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 137
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff14abc6dae84db40800000000000000
+      internalID: 5464149123411886591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_72
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 137
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76f4d4e7cd6b75b20800000000000000
+      internalID: 3123165924732784487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_73
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d340fb35a428a570800000000000000
+      internalID: 8478066590618764245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_74
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 123
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e8db87acbb027e40800000000000000
+      internalID: 5652593387196111081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_75
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 113
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 593db8857f8b8bbd0800000000000000
+      internalID: -2614136211206581355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_76
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39f6fab5df7e428a0800000000000000
+      internalID: -6330680100825108589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_77
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24e75ef714c65b9a0800000000000000
+      internalID: -6217944681940681150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_78
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3debec76e0dee0fe0800000000000000
+      internalID: -1220777802843898157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_79
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 817b23fb3dda5f990800000000000000
+      internalID: -7352779691654990056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_80
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4b4346b13dd13390800000000000000
+      internalID: -7840242270694323378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_81
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fd7b81bd747402e0800000000000000
+      internalID: -2160473838032552464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_82
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62aedad7ad18fb410800000000000000
+      internalID: 1495056376721697318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_83
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4990556cd07607fc0800000000000000
+      internalID: -3499183601607177836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_84
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 736a18c8dad673390800000000000000
+      internalID: -7838676034260982217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_85
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 753808cb01ea2b040800000000000000
+      internalID: 4661979951187133271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_86
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a52e2593f9cb17b0800000000000000
+      internalID: -5252382492380486239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_87
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6a28f3326cee0150800000000000000
+      internalID: 5840865673268963948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_88
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7e0583573019b1c0800000000000000
+      internalID: -4487537723887513985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_89
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12700e8f90e3c0700800000000000000
+      internalID: 507849070537082657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_90
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cebabed8b2298a220800000000000000
+      internalID: 2497406709139221484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_91
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 398ebf5cb5ec88190800000000000000
+      internalID: -7959885447818385261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_92
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 113
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a676f2da68c3aa950800000000000000
+      internalID: 6461043164545247082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill Metrics Ironveil (6)_93
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 115
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc07f7986500389d0800000000000000
+      internalID: -2773372573856075572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Skill Metrics Ironveil (6)_0: -4973440965745357638
+      Skill Metrics Ironveil (6)_1: 7291332910255230291
+      Skill Metrics Ironveil (6)_10: 4033742359122671458
+      Skill Metrics Ironveil (6)_11: 512293619558407566
+      Skill Metrics Ironveil (6)_12: -8241204359651541453
+      Skill Metrics Ironveil (6)_13: 4175229729047756217
+      Skill Metrics Ironveil (6)_14: -8552212833838249027
+      Skill Metrics Ironveil (6)_15: 437879304993385055
+      Skill Metrics Ironveil (6)_16: -5074201815401577519
+      Skill Metrics Ironveil (6)_17: 4180458210197011620
+      Skill Metrics Ironveil (6)_18: 2346009260506098814
+      Skill Metrics Ironveil (6)_19: -5592292032872220828
+      Skill Metrics Ironveil (6)_2: 1355425454818295858
+      Skill Metrics Ironveil (6)_20: -5788905850223057678
+      Skill Metrics Ironveil (6)_21: -1166872651641626690
+      Skill Metrics Ironveil (6)_22: -1901452336740858314
+      Skill Metrics Ironveil (6)_23: 1926688634716833858
+      Skill Metrics Ironveil (6)_24: -696875605970503170
+      Skill Metrics Ironveil (6)_25: -7716725199027533137
+      Skill Metrics Ironveil (6)_26: -2986402757993213713
+      Skill Metrics Ironveil (6)_27: 6214197367047813026
+      Skill Metrics Ironveil (6)_28: 8093468759648068528
+      Skill Metrics Ironveil (6)_29: -6397731761660039591
+      Skill Metrics Ironveil (6)_3: -6120193969674069101
+      Skill Metrics Ironveil (6)_30: -3141491762486411818
+      Skill Metrics Ironveil (6)_31: 347690347013597739
+      Skill Metrics Ironveil (6)_32: -3694679023770790122
+      Skill Metrics Ironveil (6)_33: 3962304458299240610
+      Skill Metrics Ironveil (6)_34: -7705094742623156442
+      Skill Metrics Ironveil (6)_35: 4729277660065561956
+      Skill Metrics Ironveil (6)_36: 5355662948998214970
+      Skill Metrics Ironveil (6)_37: 9067022924634684773
+      Skill Metrics Ironveil (6)_38: 2100189718679255735
+      Skill Metrics Ironveil (6)_39: -6991860883365328851
+      Skill Metrics Ironveil (6)_4: -5728774909140630934
+      Skill Metrics Ironveil (6)_40: 2472095673170718389
+      Skill Metrics Ironveil (6)_41: -6239044750339396595
+      Skill Metrics Ironveil (6)_42: -4828963250802830639
+      Skill Metrics Ironveil (6)_43: 754321064793893606
+      Skill Metrics Ironveil (6)_44: 8603723620294369218
+      Skill Metrics Ironveil (6)_45: -6374914928100871890
+      Skill Metrics Ironveil (6)_46: -4375182067287324832
+      Skill Metrics Ironveil (6)_47: -8877419076555270637
+      Skill Metrics Ironveil (6)_48: 7576966694483247953
+      Skill Metrics Ironveil (6)_49: -5118447883746317356
+      Skill Metrics Ironveil (6)_5: 5451937785397255502
+      Skill Metrics Ironveil (6)_50: -2422601617155099152
+      Skill Metrics Ironveil (6)_51: 378854981041469421
+      Skill Metrics Ironveil (6)_52: 7866312238005978835
+      Skill Metrics Ironveil (6)_53: -7752408183134811045
+      Skill Metrics Ironveil (6)_54: 1610452032946021265
+      Skill Metrics Ironveil (6)_55: -233808707881323982
+      Skill Metrics Ironveil (6)_56: -4081970233086972729
+      Skill Metrics Ironveil (6)_57: -3635942442963097654
+      Skill Metrics Ironveil (6)_58: 3565007587035010838
+      Skill Metrics Ironveil (6)_59: 2988373254432277765
+      Skill Metrics Ironveil (6)_6: -8613608441832285253
+      Skill Metrics Ironveil (6)_60: -7744908535392681245
+      Skill Metrics Ironveil (6)_61: 4660427108780911952
+      Skill Metrics Ironveil (6)_62: -4156404974037197335
+      Skill Metrics Ironveil (6)_63: -5888507209555450334
+      Skill Metrics Ironveil (6)_64: 1897105894192659825
+      Skill Metrics Ironveil (6)_65: -6728478892329891833
+      Skill Metrics Ironveil (6)_66: -2452681647055722799
+      Skill Metrics Ironveil (6)_67: -88059859966196568
+      Skill Metrics Ironveil (6)_68: -2485631051755842069
+      Skill Metrics Ironveil (6)_69: 748913944739202104
+      Skill Metrics Ironveil (6)_7: 4992827226379102491
+      Skill Metrics Ironveil (6)_70: 936443023833760085
+      Skill Metrics Ironveil (6)_71: 5464149123411886591
+      Skill Metrics Ironveil (6)_72: 3123165924732784487
+      Skill Metrics Ironveil (6)_73: 8478066590618764245
+      Skill Metrics Ironveil (6)_74: 5652593387196111081
+      Skill Metrics Ironveil (6)_75: -2614136211206581355
+      Skill Metrics Ironveil (6)_76: -6330680100825108589
+      Skill Metrics Ironveil (6)_77: -6217944681940681150
+      Skill Metrics Ironveil (6)_78: -1220777802843898157
+      Skill Metrics Ironveil (6)_79: -7352779691654990056
+      Skill Metrics Ironveil (6)_8: -943677483323416465
+      Skill Metrics Ironveil (6)_80: -7840242270694323378
+      Skill Metrics Ironveil (6)_81: -2160473838032552464
+      Skill Metrics Ironveil (6)_82: 1495056376721697318
+      Skill Metrics Ironveil (6)_83: -3499183601607177836
+      Skill Metrics Ironveil (6)_84: -7838676034260982217
+      Skill Metrics Ironveil (6)_85: 4661979951187133271
+      Skill Metrics Ironveil (6)_86: -5252382492380486239
+      Skill Metrics Ironveil (6)_87: 5840865673268963948
+      Skill Metrics Ironveil (6)_88: -4487537723887513985
+      Skill Metrics Ironveil (6)_89: 507849070537082657
+      Skill Metrics Ironveil (6)_9: 7778029650132835552
+      Skill Metrics Ironveil (6)_90: 2497406709139221484
+      Skill Metrics Ironveil (6)_91: -7959885447818385261
+      Skill Metrics Ironveil (6)_92: 6461043164545247082
+      Skill Metrics Ironveil (6)_93: -2773372573856075572
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
