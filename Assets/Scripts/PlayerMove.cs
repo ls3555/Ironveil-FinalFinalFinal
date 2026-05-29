@@ -6,6 +6,7 @@ public abstract class PlayerMove : MonoBehaviour
     public MoveSlotType slotType;
     public float cooldown;
     public float manaCost;
+    public float spawnDistance = 0.8f; 
     protected PlayerMovement player;
 
     private void Start()
@@ -14,5 +15,4 @@ public abstract class PlayerMove : MonoBehaviour
     }
 
     public abstract IEnumerator Execute();
-
 }

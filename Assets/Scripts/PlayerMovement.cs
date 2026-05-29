@@ -8,6 +8,9 @@ public class PlayerMovement : Entity
     public static PlayerMovement Instance;
 
     public float mana;
+
+    public float attack;
+    public float specAttack;
     protected float maxMana;
 
     public float healthRegen;
@@ -266,5 +269,16 @@ public class PlayerMovement : Entity
                 break;
         }
         if (newMove != null){newMove.transform.SetParent(transform);}
+    }
+
+    public float getAttackStat()
+    {
+        return attack;
+    }
+
+    
+    public float getSpecAttackStat()
+    {
+        return specAttack;
     }
 }

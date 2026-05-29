@@ -7,6 +7,7 @@ public class Slash : MonoBehaviour
     [SerializeField]private float LifeTime;
     private string target;
     protected Rigidbody2D rb;
+    public ParticleSystem swing;
     public float damage;
     protected float speed;
 
@@ -14,6 +15,8 @@ public class Slash : MonoBehaviour
         target = name;
         rb = GetComponent<Rigidbody2D>();
         transform.up=dir;
+        ParticleSystem particle = Instantiate(swing,transform.position, Quaternion.identity);
+        Destroy(particle.gameObject,2);
         StartCoroutine(startCountdown());
     }
 
@@ -28,5 +31,10 @@ public class Slash : MonoBehaviour
             target.TakeDamage(damage);
         }
         Destroy(this.gameObject);}
+    }
+
+    public void setDamage(float stat)
+    {
+        damage = Mathf.Round(stat);
     }
 }

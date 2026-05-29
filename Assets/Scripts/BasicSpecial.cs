@@ -30,7 +30,10 @@ public class BasicSpecial : PlayerMove
         player.setState(state.attacking);
 
         Vector2 shootDirection = player.CalcShootDir();
-        Bullet newBullet = Instantiate(bullet,player.transform.position,Quaternion.identity);
+        Vector2 spawnPos = (Vector2)player.transform.position + shootDirection * spawnDistance;
+
+        Bullet newBullet = Instantiate(bullet,spawnPos,Quaternion.identity);
+        newBullet.setDamage(player.getSpecAttackStat());
         newBullet.setTarget(player.opponentTag,shootDirection,shootForce);
  
         player.UseMana(manaCost);
