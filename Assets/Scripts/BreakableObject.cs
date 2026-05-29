@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class BreakableObject : MonoBehaviour
+public class BreakableObject : MonoBehaviour, IDamagable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    float health = 1;
+    protected float maxHealth;
+
+    void Awake()
     {
-        
+        maxHealth = health;
+    }
+    public void TakeDamage(float damage)
+    {
+        health = Mathf.Clamp(health - 1, 0, maxHealth);
+        if(health<=0) { Destroy(this.gameObject);}
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
