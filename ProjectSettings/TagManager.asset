@@ -28,7 +28,7 @@ TagManager:
   - Layer 1
   - Layer 2
   - Layer 3
-  - 
+  - PassThrough
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Layer 3
     uniqueID: 4189426099
+    locked: 0
+  - name: PassThrough
+    uniqueID: 2621162607
     locked: 0
   m_RenderingLayers:
   - Default
