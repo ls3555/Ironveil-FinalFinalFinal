@@ -4,7 +4,6 @@ using System.Collections;
 public class BasicSlash : PlayerMove
 {
     public Slash slash;
-    public float spawnDistance = 0.8f; 
     bool canAttack = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -30,6 +29,7 @@ public class BasicSlash : PlayerMove
         Vector2 spawnPos = (Vector2)player.transform.position + shootDirection * spawnDistance;
 
         Slash newSlash = Instantiate(slash,spawnPos,Quaternion.identity);
+        newSlash.setDamage(player.getAttackStat());
         newSlash.setTarget(player.opponentTag,shootDirection);
  
         player.UseMana(manaCost);
