@@ -75,7 +75,7 @@ public class NPCToPlayerDialogueManager : MonoBehaviour
         {
             Button endButton = Instantiate(choiceButtonPrefab, choiceContainer);
 
-            endButton.GetComponentInChildren<TextMeshProUGUI>().text = "Goodbye";
+            endButton.GetComponentInChildren<TextMeshProUGUI>().text = "Alright";
 
             endButton.onClick.AddListener(EndDialogue);
 
