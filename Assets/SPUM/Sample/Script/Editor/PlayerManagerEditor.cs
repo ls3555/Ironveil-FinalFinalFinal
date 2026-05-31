@@ -9,7 +9,7 @@ public class PlayerManagerEditor : Editor
 
         PlayerManager manager = (PlayerManager)target;
 
-        if (GUILayout.Button("CREATE UNIT"))
+        /*if (GUILayout.Button("CREATE UNIT"))
         {
             manager.GetPlayerList();
         }
@@ -17,14 +17,9 @@ public class PlayerManagerEditor : Editor
         {
             manager.SetAlignUnits();
         }
-        if (GUILayout.Button("CLEAR UNIT"))
-        {
-            manager.ClearPlayerList();
-        }
         if (GUILayout.Button("CAPTURE UNITS"))
         {
-            manager.SetScreenShot();
             AssetDatabase.Refresh();
-        }
+        }*/
     }
 }

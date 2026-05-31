@@ -3,14 +3,23 @@ using UnityEngine;
 public class NPCDialogueTrigger : MonoBehaviour
 {
     public NPCToPlayerDialogueManager dialogueManager;
-
+    private bool hasVisited = false;
     private bool playerInRange = false;
 
     void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
-           dialogueManager.StartDialogue();
+            if (!hasVisited)
+            {
+                dialogueManager.StartDialogue();
+                hasVisited = true;
+            }
+            else
+            {
+                dialogueManager.StartQuest();
+            }
+            
         }
     }
 
@@ -19,6 +28,7 @@ public class NPCDialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            dialogueManager.ClickDialogueButton("E");
         }
     }
 
@@ -27,6 +37,9 @@ public class NPCDialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            dialogueManager.dialogueButtonPanel.SetActive(false);
+            dialogueManager.dialoguePanel.SetActive(false);
+            dialogueManager.QuestPanel.SetActive(false);
         }
     }
 }

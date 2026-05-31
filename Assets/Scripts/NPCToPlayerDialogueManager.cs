@@ -8,6 +8,13 @@ public class NPCToPlayerDialogueManager : MonoBehaviour
 {
     [Header("UI")]
     public GameObject dialoguePanel;
+    public GameObject dialogueButtonPanel;
+    public GameObject QuestPanel;
+    public TextMeshProUGUI questTextBox;
+
+    [Header("Quest")]
+    public string questDescription;
+    public TextMeshProUGUI clickToContinueText;
 
     public TextMeshProUGUI speakerNameText;
     public TextMeshProUGUI dialogueText;
@@ -22,18 +29,46 @@ public class NPCToPlayerDialogueManager : MonoBehaviour
     [Header("Typing")]
     public float typeSpeed = 0.03f;
 
+    
+
     private int currentNodeIndex = 0;
     private Coroutine typingCoroutine;
+    private bool createChoices = false;
 
     void Start()
     {
         dialoguePanel.SetActive(false);
+        dialogueButtonPanel.SetActive(false);
+        QuestPanel.SetActive(false);
     }
 
     public void StartDialogue()
     {
+        dialogueButtonPanel.SetActive(false);
+        QuestPanel.SetActive(false);
+
         dialoguePanel.SetActive(true);
         ShowNode(0);
+    }
+
+public void ClickDialogueButton(string buttonText)
+    {
+        dialogueButtonPanel.SetActive(true);
+        string dialogueButtonText = "Click " + buttonText + " to continue";
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+        createChoices = false;
+        typingCoroutine = StartCoroutine(TypeLine(clickToContinueText, dialogueButtonText));
+    
+    }
+public void StartQuest()
+    {
+        dialogueButtonPanel.SetActive(false);
+        dialoguePanel.SetActive(false);
+        QuestPanel.SetActive(true);
+        questTextBox.text = "Quest: " + questDescription;
     }
 
     void ShowNode(int nodeIndex)
@@ -50,21 +85,22 @@ public class NPCToPlayerDialogueManager : MonoBehaviour
         {
             StopCoroutine(typingCoroutine);
         }
-
-        typingCoroutine = StartCoroutine(TypeLine(node.dialogueText));
+        createChoices = true;
+        typingCoroutine = StartCoroutine(TypeLine(dialogueText, node.dialogueText));
+        
     }
 
-    IEnumerator TypeLine(string line)
+    IEnumerator TypeLine(TextMeshProUGUI textComponent, string line)
     {
-        dialogueText.text = "";
+        textComponent.text = "";
 
         foreach (char c in line)
         {
-            dialogueText.text += c;
+            textComponent.text += c;
             yield return new WaitForSeconds(typeSpeed);
         }
 
-        CreateChoices();
+        if (createChoices)CreateChoices();
     }
 
     void CreateChoices()
