@@ -12611,7 +12611,7 @@ PrefabInstance:
     - target: {fileID: 2577585254963922476, guid: f6a5710827e32d3489da2c249e3bc400,
         type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2577585254963922478, guid: f6a5710827e32d3489da2c249e3bc400,
         type: 3}
@@ -39546,7 +39546,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 5
 --- !u!1001 &2055511854
