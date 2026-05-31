@@ -44,7 +44,14 @@ public class PlayerMovement : Entity
     protected override void Awake()
     {
         base.Awake();
-        input = GameController.input;
+        Instance = this;
+        maxMana = mana;
+    }
+
+    void Start ()
+    {
+        animator = GetComponent<Animator>();
+        input = GameController.Input;
         moveAction = input.Player.Move;
         lookAction = input.Player.Look;
         attackAction = input.Player.Attack;
@@ -52,24 +59,7 @@ public class PlayerMovement : Entity
         dodgeAction = input.Player.Dodge;
         utilAction = input.Player.Utility;
         interactAction = input.Player.Interact;
-        Instance = this;
-        maxMana = mana;
         currentState = state.idle;
-    }
-
-    void Start ()
-    {
-        animator = GetComponent<Animator>();
-    }
-
-    void OnEnable()
-    {
-        input.Player.Enable();
-    }
-
-    void OnDisable()
-    {
-        input.Player.Disable();
     }
 
     // Update is called once per frame

@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     public AudioClip onClickClip;
     public AudioSource audioSource;
 
-    public static PlayerInput input { get; private set; }
+    public static PlayerInput Input;
     private InputAction menuAction;
     private InputAction pauseAction;
     public FadeImg fader;
@@ -30,9 +30,9 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        input = new PlayerInput();
-        pauseAction = input.UI.Pause;
-        menuAction = input.UI.Menu;
+        Input = new PlayerInput();
+        pauseAction = Input.UI.Pause;
+        menuAction = Input.UI.Menu;
         if (Instance == null)
         {
             Instance = this;
@@ -46,14 +46,14 @@ public class GameController : MonoBehaviour
 
     void OnEnable()
     {
-        menuAction.Enable();
-        pauseAction.Enable();
+        Input.UI.Enable();
+        Input.Player.Enable();
     }
 
     void OnDisable()
     {
-        menuAction.Disable();
-        pauseAction.Disable();
+        Input.UI.Enable();
+        Input.Player.Enable();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -73,13 +73,13 @@ public class GameController : MonoBehaviour
     {
         if (currentState == GameState.Playing)
         {
-            input.Player.Disable();
+            Input.Player.Disable();
             SetState(GameState.Paused);
         }
         else if (currentState == GameState.Paused)
         {
             confirmMenu.SetActive(false);
-            input.Player.Enable();
+            Input.Player.Enable();
             SetState(GameState.Playing);
         }
     }
