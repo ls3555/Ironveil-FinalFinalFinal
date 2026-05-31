@@ -30,9 +30,12 @@ public class Bullet : MonoBehaviour
                 target.TakeDamage(damage);
             }
         }
-        ParticleSystem particle = Instantiate(hit,transform.position, Quaternion.identity);
-        Destroy(particle.gameObject,2);
-        Destroy(this.gameObject);
+
+        if(other.gameObject.tag != "Stairs") {
+            ParticleSystem particle = Instantiate(hit,transform.position, Quaternion.identity);
+            Destroy(particle.gameObject,2);
+            Destroy(this.gameObject);
+        }
     }
 
 

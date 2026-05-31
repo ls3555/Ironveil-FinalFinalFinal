@@ -44,7 +44,7 @@ public class PlayerMovement : Entity
     protected override void Awake()
     {
         base.Awake();
-        input = new PlayerInput();
+        input = GameController.input;
         moveAction = input.Player.Move;
         lookAction = input.Player.Look;
         attackAction = input.Player.Attack;
@@ -275,7 +275,13 @@ public class PlayerMovement : Entity
 
         if (oldMove != null)
         {
-            Instantiate(oldMove.pickupPrefab,transform.position + transform.forward,Quaternion.identity);
+            GameObject pickup = Instantiate(oldMove.pickupPrefab,transform.position + transform.forward,Quaternion.identity);
+            SpriteRenderer sr = pickup.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.sortingLayerName = spriteRenderer.sortingLayerName;
+            }
+
             if(oldMove.gameObject != gameObject)
             {
                 Destroy(oldMove.gameObject);
