@@ -7,6 +7,8 @@ public abstract class PlayerMove : MonoBehaviour
     public float cooldown;
     public float manaCost;
     public float spawnDistance = 0.8f; 
+
+    public GameObject pickupPrefab;
     protected PlayerMovement player;
 
     private void Start()

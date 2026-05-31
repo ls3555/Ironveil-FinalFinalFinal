@@ -245,30 +245,45 @@ public class PlayerMovement : Entity
     }
 
 
-    public void EquipMove(PlayerMove movePickup)
+    public void EquipMove(PlayerMove movePrefab)
     {
-        PlayerMove newMove = Instantiate(movePickup);
+        PlayerMove newMove = Instantiate(movePrefab);
+        PlayerMove oldMove = null;
 
         switch (newMove.slotType)
         {
             case MoveSlotType.Attack:
-                if (moveAttack != null){Destroy(moveAttack.gameObject);}
+                oldMove = moveAttack;
                 moveAttack = newMove;
                 break;
+
             case MoveSlotType.Special:
-                if (moveSpecial != null){Destroy(moveSpecial.gameObject);}
+                oldMove = moveSpecial;
                 moveSpecial = newMove;
                 break;
+
             case MoveSlotType.Dash:
-                if (moveDash != null){Destroy(moveDash.gameObject);}
+                oldMove = moveDash;
                 moveDash = newMove;
                 break;
+
             case MoveSlotType.Util:
-                if (moveUtil != null){Destroy(moveUtil.gameObject);}
+                oldMove = moveUtil;
                 moveUtil = newMove;
                 break;
         }
-        if (newMove != null){newMove.transform.SetParent(transform);}
+
+        if (oldMove != null)
+        {
+            Instantiate(oldMove.pickupPrefab,transform.position + transform.forward,Quaternion.identity);
+            if(oldMove.gameObject != gameObject)
+            {
+                Destroy(oldMove.gameObject);
+            }
+        }
+
+        newMove.transform.SetParent(transform);
+        newMove.transform.localPosition = Vector3.zero;
     }
 
     public float getAttackStat()

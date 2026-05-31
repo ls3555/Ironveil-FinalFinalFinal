@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(LifeTime);
         Destroy(this.gameObject);}
 
-    void OnCollisionEnter2D(Collision2D  other){
+    void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == target){
             if (other.transform.TryGetComponent(out IDamagable target))
             {
@@ -35,9 +35,6 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    /*ParticleSystem particle = Instantiate(gunHit, 
-            hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(particle.gameObject,2);}*/
 
     public void setDamage(float stat)
     {

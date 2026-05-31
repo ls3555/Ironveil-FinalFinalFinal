@@ -28,7 +28,10 @@ public class BasicSlash : PlayerMove
         Vector2 shootDirection = player.CalcShootDir();
         Vector2 spawnPos = (Vector2)player.transform.position + shootDirection * spawnDistance;
 
-        Slash newSlash = Instantiate(slash,spawnPos,Quaternion.identity);
+        float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+
+        Slash newSlash = Instantiate(slash, spawnPos, rotation);
         newSlash.setDamage(player.getAttackStat());
         newSlash.setTarget(player.opponentTag,shootDirection);
  
