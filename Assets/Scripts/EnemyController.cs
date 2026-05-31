@@ -93,7 +93,6 @@ public class EnemyController : EnemyUI
             }
             if (canAttack)
             {
-                canAttack = false;
                 StartCoroutine(AttackCoroutine());
             }
         }
@@ -122,6 +121,10 @@ public class EnemyController : EnemyUI
 
     private IEnumerator AttackCoroutine()
     {
+        if (!canAttack)
+            yield break;
+            
+        canAttack = false;
         rigidBody.linearVelocity = Vector2.zero;
         animator.SetTrigger("Attack");
 
