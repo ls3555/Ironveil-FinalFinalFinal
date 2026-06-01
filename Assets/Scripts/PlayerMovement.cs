@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : Entity
 {
@@ -38,13 +39,27 @@ public class PlayerMovement : Entity
     state currentState;
     private Animator animator;
 
-    public Image healthBar;
-    public Image manaBar;
+    [SerializeField] private Image healthBar;
+    [SerializeField] private TMP_Text healthNum;
+    [SerializeField] private Image manaBar;
+    [SerializeField] private TMP_Text manaNum;
+
+    [SerializeField] private CooldownUI attackUI;
+    [SerializeField] private CooldownUI specUI;
+    [SerializeField] private CooldownUI dashUI;
+    [SerializeField] private CooldownUI utilUI;
 
     protected override void Awake()
     {
         base.Awake();
-        input = new PlayerInput();
+        Instance = this;
+        maxMana = mana;
+    }
+
+    void Start ()
+    {
+        animator = GetComponent<Animator>();
+        input = GameController.Input;
         moveAction = input.Player.Move;
         lookAction = input.Player.Look;
         attackAction = input.Player.Attack;
@@ -52,24 +67,10 @@ public class PlayerMovement : Entity
         dodgeAction = input.Player.Dodge;
         utilAction = input.Player.Utility;
         interactAction = input.Player.Interact;
-        Instance = this;
-        maxMana = mana;
         currentState = state.idle;
-    }
 
-    void Start ()
-    {
-        animator = GetComponent<Animator>();
-    }
-
-    void OnEnable()
-    {
-        input.Player.Enable();
-    }
-
-    void OnDisable()
-    {
-        input.Player.Disable();
+        healthNum.text = Mathf.RoundToInt(health).ToString();
+        manaNum.text = Mathf.RoundToInt(mana).ToString();
     }
 
     // Update is called once per frame
@@ -119,6 +120,7 @@ public class PlayerMovement : Entity
                 health += healthRegen * Time.deltaTime;
                 health = Mathf.Clamp(health, 0, maxHealth);
                 healthBar.fillAmount = health / maxHealth;
+                healthNum.text = Mathf.RoundToInt(health).ToString();
             }
 
             if (mana < maxMana)
@@ -126,6 +128,7 @@ public class PlayerMovement : Entity
                 mana += manaRegen * Time.deltaTime;
                 mana = Mathf.Clamp(mana, 0, maxMana);
                 manaBar.fillAmount = mana / maxMana;
+                manaNum.text = Mathf.RoundToInt(mana).ToString();
             }
     }
 
@@ -168,12 +171,14 @@ public class PlayerMovement : Entity
     {
         health = Mathf.Clamp(health - damage, 0, maxHealth);
         healthBar.fillAmount = health / maxHealth;
+        healthNum.text = Mathf.RoundToInt(health).ToString();
     }
 
     public void HealDamage(float damage)
     {
         health = Mathf.Clamp(health + damage, 0, maxHealth);
         healthBar.fillAmount = health / maxHealth;
+        healthNum.text = Mathf.RoundToInt(health).ToString();
     }
 
     public float GetMana()
@@ -245,30 +250,55 @@ public class PlayerMovement : Entity
     }
 
 
-    public void EquipMove(PlayerMove movePickup)
+    public void EquipMove(PlayerMove movePrefab)
     {
-        PlayerMove newMove = Instantiate(movePickup);
+        PlayerMove newMove = Instantiate(movePrefab);
+        PlayerMove oldMove = null;
 
         switch (newMove.slotType)
         {
             case MoveSlotType.Attack:
-                if (moveAttack != null){Destroy(moveAttack.gameObject);}
+                oldMove = moveAttack;
                 moveAttack = newMove;
+                attackUI.setMove(moveAttack);
                 break;
+
             case MoveSlotType.Special:
-                if (moveSpecial != null){Destroy(moveSpecial.gameObject);}
+                oldMove = moveSpecial;
                 moveSpecial = newMove;
+                specUI.setMove(moveSpecial);
                 break;
+
             case MoveSlotType.Dash:
-                if (moveDash != null){Destroy(moveDash.gameObject);}
+                oldMove = moveDash;
                 moveDash = newMove;
+                dashUI.setMove(moveDash);
                 break;
+
             case MoveSlotType.Util:
-                if (moveUtil != null){Destroy(moveUtil.gameObject);}
+                oldMove = moveUtil;
                 moveUtil = newMove;
+                utilUI.setMove(moveUtil);
                 break;
         }
-        if (newMove != null){newMove.transform.SetParent(transform);}
+
+        if (oldMove != null)
+        {
+            GameObject pickup = Instantiate(oldMove.pickupPrefab,transform.position + transform.forward,Quaternion.identity);
+            SpriteRenderer sr = pickup.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.sortingLayerName = spriteRenderer.sortingLayerName;
+            }
+
+            if(oldMove.gameObject != gameObject)
+            {
+                Destroy(oldMove.gameObject);
+            }
+        }
+
+        newMove.transform.SetParent(transform);
+        newMove.transform.localPosition = Vector3.zero;
     }
 
     public float getAttackStat()

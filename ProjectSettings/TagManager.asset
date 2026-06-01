@@ -4,7 +4,17 @@
 TagManager:
   serializedVersion: 3
   tags:
+<<<<<<< HEAD
   - Enemy
+=======
+<<<<<<< HEAD
+  - Enemy
+  - Stairs
+=======
+  - TeamMember
+  - SkillTriggerObject
+>>>>>>> f09ac0806365585c93b16287e09dd6400c23d70d
+>>>>>>> main
   layers:
   - Default
   - TransparentFX

@@ -101,6 +101,10 @@ GameObject:
   - component: {fileID: 5628018141983903117}
   - component: {fileID: 4616719885696106401}
   - component: {fileID: 5562631684515452930}
+  - component: {fileID: 4999439947238798420}
+  - component: {fileID: 6060715247613641795}
+  - component: {fileID: 6000892065165189090}
+  - component: {fileID: 924042503698790919}
   m_Layer: 20
   m_Name: PF Player
   m_TagString: Player
@@ -122,7 +126,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5628018140324151391}
-  - {fileID: 8401046474216433049}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5628018141983903107
@@ -290,137 +293,108 @@ MonoBehaviour:
   health: 10
   moveSpeed: 5
   friction: 0.5
-  opponentTag: 
-  moveAttack: {fileID: 0}
-  moveSpecial: {fileID: 5062513424649111300}
-  moveDash: {fileID: 1004801532668740058}
-  moveUtil: {fileID: 0}
+  opponentTag: Enemy
+  mana: 20
+  attack: 1
+  specAttack: 2
+  healthRegen: 1
+  manaRegen: 1
+  interactRange: 1
+  moveAttack: {fileID: 4999439947238798420}
+  moveSpecial: {fileID: 6060715247613641795}
+  moveDash: {fileID: 6000892065165189090}
+  moveUtil: {fileID: 924042503698790919}
   isMoving: 0
   canMove: 1
---- !u!1 &6534966439067383919
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8549173121566371132}
-  - component: {fileID: 5062513424649111300}
-  m_Layer: 0
-  m_Name: Special
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8549173121566371132
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6534966439067383919}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8401046474216433049}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5062513424649111300
+  healthBar: {fileID: 0}
+  healthNum: {fileID: 0}
+  manaBar: {fileID: 0}
+  manaNum: {fileID: 0}
+  attackUI: {fileID: 0}
+  specUI: {fileID: 0}
+  dashUI: {fileID: 0}
+  utilUI: {fileID: 0}
+--- !u!114 &4999439947238798420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6534966439067383919}
+  m_GameObject: {fileID: 5628018141983903104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6475e72831e37a44396daa45325cf5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotType: 0
+  cooldown: 0.1
+  manaCost: 0
+  spawnDistance: 0.8
+  pickupPrefab: {fileID: 7024416200842092576, guid: 643150cadc17d9e4e8b1e3bc236a77f2,
+    type: 3}
+  skillIcon: {fileID: 21300000, guid: 9f922002032136c4687b8dced9bc624c, type: 3}
+  slash: {fileID: 9024078018694622132, guid: 134dc30834d0bc64e877f87f1b86a8f9, type: 3}
+--- !u!114 &6060715247613641795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628018141983903104}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d9671759d0640548a1ea3d3c21e2462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotType: 1
   cooldown: 3
-  manaCost: 0
+  manaCost: 5
+  spawnDistance: 0.8
+  pickupPrefab: {fileID: 4663279428723142435, guid: 63de596462476444eb8304c55ac3f0b7,
+    type: 3}
+  skillIcon: {fileID: 21300000, guid: a19cebe0599724c469f757f6e0b2d9a4, type: 3}
   shootForce: 5
   bullet: {fileID: 5565699267098577034, guid: 5dcfbc8e150b36e4db0064724022fe14, type: 3}
---- !u!1 &8631411804854688813
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8401046474216433049}
-  m_Layer: 20
-  m_Name: Moves
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8401046474216433049
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8631411804854688813}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8549173121566371132}
-  - {fileID: 1511791544576336026}
-  m_Father: {fileID: 5628018141983903106}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8841261459690832915
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1511791544576336026}
-  - component: {fileID: 1004801532668740058}
-  m_Layer: 0
-  m_Name: Dash
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1511791544576336026
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8841261459690832915}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8401046474216433049}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1004801532668740058
+--- !u!114 &6000892065165189090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8841261459690832915}
+  m_GameObject: {fileID: 5628018141983903104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2245c059f2ed945b0a2f9b2fa6fe74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotType: 2
+  cooldown: 1
+  manaCost: 0
+  spawnDistance: 0.8
+  pickupPrefab: {fileID: 6152348764895780131, guid: c6bd9a3fc8def49409be52ef0d041c79,
+    type: 3}
+  skillIcon: {fileID: 21300000, guid: 137adc4b5a4bdb84587af37f8855a33b, type: 3}
+  dashSpeed: 32
+  dashTime: 0.2
+--- !u!114 &924042503698790919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628018141983903104}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48025d2338267504da9751c213f2ea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1
-  manaCost: 0
+  slotType: 3
+  cooldown: 15
+  manaCost: 10
+  spawnDistance: 0
+  pickupPrefab: {fileID: 5857731634468011596, guid: 05b57eccb71082846a4b0815a2577fbd,
+    type: 3}
+  skillIcon: {fileID: 21300000, guid: 2a1265ae4655d044e9c1557405696861, type: 3}
+  healParticles: {fileID: 2840773040005587486, guid: e773efacd65bb3448858ef3a205dff5a,
+    type: 3}
+  healAmt: 5

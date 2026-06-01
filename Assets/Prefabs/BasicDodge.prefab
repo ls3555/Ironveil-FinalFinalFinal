@@ -47,5 +47,8 @@ MonoBehaviour:
   slotType: 2
   cooldown: 1
   manaCost: 0
+  spawnDistance: 0.8
+  pickupPrefab: {fileID: 6152348764895780131, guid: c6bd9a3fc8def49409be52ef0d041c79,
+    type: 3}
   dashSpeed: 35
   dashTime: 0.2
