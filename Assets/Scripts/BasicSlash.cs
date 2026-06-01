@@ -5,17 +5,7 @@ public class BasicSlash : PlayerMove
 {
     public Slash slash;
     bool canAttack = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override IEnumerator Execute()
     {
@@ -23,6 +13,7 @@ public class BasicSlash : PlayerMove
             yield break;
 
         canAttack = false;
+        cooldownRemaining = cooldown;
         player.setState(state.attacking);
 
         Vector2 shootDirection = player.CalcShootDir();

@@ -41,6 +41,11 @@ public class PlayerMovement : Entity
     public Image healthBar;
     public Image manaBar;
 
+    [SerializeField] private CooldownUI attackUI;
+    [SerializeField] private CooldownUI specUI;
+    [SerializeField] private CooldownUI dashUI;
+    [SerializeField] private CooldownUI utilUI;
+
     protected override void Awake()
     {
         base.Awake();
@@ -245,21 +250,25 @@ public class PlayerMovement : Entity
             case MoveSlotType.Attack:
                 oldMove = moveAttack;
                 moveAttack = newMove;
+                attackUI.setMove(moveAttack);
                 break;
 
             case MoveSlotType.Special:
                 oldMove = moveSpecial;
                 moveSpecial = newMove;
+                specUI.setMove(moveSpecial);
                 break;
 
             case MoveSlotType.Dash:
                 oldMove = moveDash;
                 moveDash = newMove;
+                dashUI.setMove(moveDash);
                 break;
 
             case MoveSlotType.Util:
                 oldMove = moveUtil;
                 moveUtil = newMove;
+                utilUI.setMove(moveUtil);
                 break;
         }
 

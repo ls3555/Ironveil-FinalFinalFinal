@@ -7,19 +7,6 @@ public class BasicSpecial : PlayerMove
     public Bullet bullet;
     bool canSpecial = true;
 
-    void Awake()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-
     public override IEnumerator Execute()
     {
         if (!canSpecial || player.GetMana() < manaCost)
@@ -27,6 +14,7 @@ public class BasicSpecial : PlayerMove
 
 
         canSpecial = false;
+        cooldownRemaining = cooldown;
         player.setState(state.attacking);
 
         Vector2 shootDirection = player.CalcShootDir();
