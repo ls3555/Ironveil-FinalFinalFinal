@@ -8,11 +8,16 @@ public class CooldownUI : MonoBehaviour
     [SerializeField] private TMP_Text cooldownText;
     [SerializeField] private TMP_Text manaText;
     [SerializeField] private Image cooldownImage;
-    [SerializeField] private Image skillIcon;
+    [SerializeField] private Image iconDisplay;
 
+    void Start()
+    {
+        iconDisplay.sprite  = move.getIcon();
+    }
     public void setMove(PlayerMove newMove)
     {
         move = newMove;
+        iconDisplay.sprite  = move.getIcon();
     }
 
     void Update()

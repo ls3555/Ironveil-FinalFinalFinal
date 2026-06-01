@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public abstract class PlayerMove : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public abstract class PlayerMove : MonoBehaviour
 
     public GameObject pickupPrefab;
     protected PlayerMovement player;
+
+     [SerializeField] public Sprite skillIcon;
 
     private void Start()
     {
@@ -43,5 +46,10 @@ public abstract class PlayerMove : MonoBehaviour
     public float getManaCost()
     {
         return manaCost;
+    }
+
+    public Sprite getIcon()
+    {
+        return skillIcon;
     }
 }
