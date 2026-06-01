@@ -4,8 +4,13 @@
 TagManager:
   serializedVersion: 3
   tags:
+<<<<<<< HEAD
   - Enemy
   - Stairs
+=======
+  - TeamMember
+  - SkillTriggerObject
+>>>>>>> f09ac0806365585c93b16287e09dd6400c23d70d
   layers:
   - Default
   - TransparentFX
@@ -30,7 +35,7 @@ TagManager:
   - Layer 1
   - Layer 2
   - Layer 3
-  - 
+  - PassThrough
   - 
   - 
   - 
@@ -52,8 +57,8 @@ TagManager:
   - name: Layer 3
     uniqueID: 4189426099
     locked: 0
-  - name: Attacks
-    uniqueID: 1324923367
+  - name: PassThrough
+    uniqueID: 2621162607
     locked: 0
   m_RenderingLayers:
   - Default
