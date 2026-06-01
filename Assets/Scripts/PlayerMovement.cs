@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : Entity
 {
@@ -38,8 +39,10 @@ public class PlayerMovement : Entity
     state currentState;
     private Animator animator;
 
-    public Image healthBar;
-    public Image manaBar;
+    [SerializeField] private Image healthBar;
+    [SerializeField] private TMP_Text healthNum;
+    [SerializeField] private Image manaBar;
+    [SerializeField] private TMP_Text manaNum;
 
     [SerializeField] private CooldownUI attackUI;
     [SerializeField] private CooldownUI specUI;
@@ -65,6 +68,9 @@ public class PlayerMovement : Entity
         utilAction = input.Player.Utility;
         interactAction = input.Player.Interact;
         currentState = state.idle;
+
+        healthNum.text = Mathf.RoundToInt(health).ToString();
+        manaNum.text = Mathf.RoundToInt(mana).ToString();
     }
 
     // Update is called once per frame
@@ -114,6 +120,7 @@ public class PlayerMovement : Entity
                 health += healthRegen * Time.deltaTime;
                 health = Mathf.Clamp(health, 0, maxHealth);
                 healthBar.fillAmount = health / maxHealth;
+                healthNum.text = Mathf.RoundToInt(health).ToString();
             }
 
             if (mana < maxMana)
@@ -121,6 +128,7 @@ public class PlayerMovement : Entity
                 mana += manaRegen * Time.deltaTime;
                 mana = Mathf.Clamp(mana, 0, maxMana);
                 manaBar.fillAmount = mana / maxMana;
+                manaNum.text = Mathf.RoundToInt(mana).ToString();
             }
     }
 
@@ -163,12 +171,14 @@ public class PlayerMovement : Entity
     {
         health = Mathf.Clamp(health - damage, 0, maxHealth);
         healthBar.fillAmount = health / maxHealth;
+        healthNum.text = Mathf.RoundToInt(health).ToString();
     }
 
     public void HealDamage(float damage)
     {
         health = Mathf.Clamp(health + damage, 0, maxHealth);
         healthBar.fillAmount = health / maxHealth;
+        healthNum.text = Mathf.RoundToInt(health).ToString();
     }
 
     public float GetMana()
