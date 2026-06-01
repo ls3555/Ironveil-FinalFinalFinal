@@ -5967,7 +5967,9 @@ MonoBehaviour:
   - speakerName: Brianna
     dialogueText: "If you can help me find my magic wand, I\u2019ll help you fight
       these monsters and join your party as the mage!"
-    choices: []
+    choices:
+    - choiceText: alright
+      nextNodeIndex: 0
     endsDialogue: 1
   typeSpeed: 0.03
 --- !u!1001 &257329672
@@ -36357,7 +36359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622312051}
   m_Layer: 0
-  m_Name: SCENE
+  m_Name: Level 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
