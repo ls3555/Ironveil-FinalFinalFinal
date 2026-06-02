@@ -1,22 +1,31 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 public class SkillProgressionManager : MonoBehaviour
 {
     public GameObject skillMetricPanel;
     public SkillManager skillManager;
-    public GameObject skillUIPanel;
+    public GameObject skillUIPanel; //
     public GameObject titlePanel;
     //public int totalSkillPoints = 0; // Total skill points accumulated by the player if 15 -> next level
     public string skillType;
+    [SerializeField] private FadeOutEffect fadeOutEffect;
+    [SerializeField] private CanvasGroup skillMetricCanvasGroup;
+    [SerializeField] private CanvasGroup skillUICanvasGroup;
+    [SerializeField] private CanvasGroup titleCanvasGroup;
+    private List<CanvasGroup> canvasGroups;
 
-    private void OnTriggerEnter2D(Collider2D other)
+private void Start()
+    {
+        canvasGroups = new List<CanvasGroup>() { skillMetricCanvasGroup, skillUICanvasGroup, titleCanvasGroup };
+    }  
+     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("SkillTriggerObject"))
-        {   skillUIPanel.SetActive(true);
-            titlePanel.SetActive(true);
+        {   
             new WaitForSeconds(1.5f); // Wait for 1.5 seconds
-            // Update the skill points display
-            skillMetricPanel.SetActive(true);
+            ResetCanvasGroups(); // Reset alpha values before starting the fade-in effect
             switch (skillType)
             {
                 case "S1":
@@ -34,12 +43,14 @@ public class SkillProgressionManager : MonoBehaviour
         }
     }
     private IEnumerator DismissAfterDelay( )
-    {
-        yield return new WaitForSeconds(3f); // Wait for 3 seconds
+    { 
+        yield return new WaitForSeconds(2f); // Wait for 2 seconds
+        fadeOutEffect.FadeOutBackground(canvasGroups);
+        yield return new WaitForSeconds(2f); // fade duration
         skillMetricPanel.SetActive(false);
-        yield return new WaitForSeconds(3f);
         skillUIPanel.SetActive(false);
         titlePanel.SetActive(false);
+
     }
     public void AddPointsToS1()
     {
@@ -55,5 +66,18 @@ public class SkillProgressionManager : MonoBehaviour
     {
         skillManager.AddSkillPoints(5);
         skillManager.AddPointToSkill("S3");
+ 
+    }
+private void ResetCanvasGroups()
+    {
+        foreach (CanvasGroup canvasGroup in canvasGroups)
+            {  
+                canvasGroup.alpha = 1f;
+                canvasGroup.interactable = true;
+                canvasGroup.blocksRaycasts = true;
+            }
+            skillUIPanel.SetActive(true);
+            titlePanel.SetActive(true);
+            skillMetricPanel.SetActive(true);
     }
 }

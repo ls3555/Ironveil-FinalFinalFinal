@@ -76,8 +76,8 @@ public class SkillManager : MonoBehaviour
         if (!CanAddPoint(skillId)) return;
 
         Skill s = GetSkill(skillId);
-        skillPoints--;
-        s.pointsInLevel++;
+        skillPoints-=5;
+        s.pointsInLevel+=5;
 
         OnSkillPointsChanged?.Invoke(skillPoints);
         OnSkillUpdated?.Invoke(s);
@@ -102,7 +102,6 @@ public class SkillManager : MonoBehaviour
             if (s.currentLevel == level && !s.IsMaxed)
             {
                 s.currentLevel++;
-                s.pointsInLevel = 0;   // reset counter for the new level
                 anyAdvanced = true;
                 OnSkillUpdated?.Invoke(s);
             }
