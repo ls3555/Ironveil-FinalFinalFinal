@@ -10,7 +10,7 @@ public class LevelCanvasController : MonoBehaviour
     void Start()
     {
         // Level 1 stays on, 2 and 3 start hidden
-        if (level1Canvas) level1Canvas.SetActive(true);
+        if (level1Canvas) level1Canvas.SetActive(false);
         if (level2Canvas) level2Canvas.SetActive(false);
         if (level3Canvas) level3Canvas.SetActive(false);
 

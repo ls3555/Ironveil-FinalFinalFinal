@@ -62,6 +62,8 @@ public class LevelDoor : MonoBehaviour, IInteractable
 
         // Apply offset to land below the door
         player.transform.position = destination.position + new Vector3(spawnOffset.x, spawnOffset.y, 0f);
+        PlayerObj playerObj = player.GetComponent<PlayerObj>();
+        playerObj._charMS = 8f;
         Debug.Log("Player teleported to " + destination.name);
     }
 }
