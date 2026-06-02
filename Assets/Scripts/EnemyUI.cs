@@ -26,7 +26,7 @@ public abstract class EnemyUI : Entity
     {
         Vector3 randomOffset = new Vector3(
         Random.Range(-0.5f, 0.5f),
-        Random.Range(0.5f, 1.5f),
+        Random.Range(-1f, 1f),
         0f);
 
         Vector3 spawnPos = transform.position + randomOffset;

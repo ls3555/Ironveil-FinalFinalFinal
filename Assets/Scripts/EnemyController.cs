@@ -28,7 +28,7 @@ public class EnemyController : EnemyUI
         animator = GetComponent<Animator>();
 
         if (rigidBody == null) Debug.LogError("MISSING: Rigidbody2D on " + gameObject.name);
-        if (animator == null) Debug.LogError("MISSING: Animator on " + gameObject.name);
+        if (animator == null) {Debug.LogError("MISSING: Animator on " + gameObject.name);} else {animator.SetBool("isAlive", true);}
 
         currentState = EnemyState.Idle;
         PickNewRoamTarget();
@@ -93,7 +93,6 @@ public class EnemyController : EnemyUI
             }
             if (canAttack)
             {
-                canAttack = false;
                 StartCoroutine(AttackCoroutine());
             }
         }
@@ -122,6 +121,10 @@ public class EnemyController : EnemyUI
 
     private IEnumerator AttackCoroutine()
     {
+        if (!canAttack)
+            yield break;
+            
+        canAttack = false;
         rigidBody.linearVelocity = Vector2.zero;
         animator.SetTrigger("Attack");
 
@@ -147,6 +150,7 @@ public class EnemyController : EnemyUI
     public void Die()
     {
         animator.SetTrigger("Die");
+        animator.SetBool("isAlive", false);
         rigidBody.linearVelocity = Vector2.zero;
         enabled = false;
     }

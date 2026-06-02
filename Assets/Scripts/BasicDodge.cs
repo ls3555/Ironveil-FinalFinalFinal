@@ -15,6 +15,7 @@ public class BasicDodge : PlayerMove
             yield break;
 
         canDash = false;
+        cooldownRemaining = cooldown;
         player.setState(state.dashing);
 
         Vector2 dir = player.getMoveDirection().normalized;

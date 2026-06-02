@@ -47,5 +47,8 @@ MonoBehaviour:
   slotType: 1
   cooldown: 3
   manaCost: 5
+  spawnDistance: 0.8
+  pickupPrefab: {fileID: 4663279428723142435, guid: 63de596462476444eb8304c55ac3f0b7,
+    type: 3}
   shootForce: 5
   bullet: {fileID: 5565699267098577034, guid: 5dcfbc8e150b36e4db0064724022fe14, type: 3}

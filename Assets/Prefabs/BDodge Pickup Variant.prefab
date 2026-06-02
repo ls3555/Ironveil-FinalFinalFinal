@@ -19,6 +19,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BDodge Pickup Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5134005329107884768, guid: a57a85b7d61ad60429b59b293126b820,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5239026865654063942, guid: a57a85b7d61ad60429b59b293126b820,
         type: 3}
       propertyPath: m_LocalPosition.x
