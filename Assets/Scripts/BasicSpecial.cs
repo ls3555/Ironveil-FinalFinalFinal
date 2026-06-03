@@ -20,13 +20,16 @@ public class BasicSpecial : PlayerMove
         Vector2 shootDirection = player.CalcShootDir();
         Vector2 spawnPos = (Vector2)player.transform.position + shootDirection * spawnDistance;
 
-        Bullet newBullet = Instantiate(bullet,spawnPos,Quaternion.identity);
+        Bullet newBullet = Instantiate(bullet, spawnPos, Quaternion.identity);
         newBullet.setDamage(player.getSpecAttackStat());
-        newBullet.setTarget(player.opponentTag,shootDirection,shootForce);
- 
+        newBullet.setTarget(player.opponentTag, shootDirection, shootForce);
+
         player.UseMana(manaCost);
-        player.setState(state.idle); 
+        player.setState(state.idle);
         yield return new WaitForSeconds(cooldown);
         canSpecial = true;
+
+        PlayerAudio audio = PlayerMovement.Instance.GetComponent<PlayerAudio>();
+        if (audio != null) audio.PlaySpecial();
     }
 }
