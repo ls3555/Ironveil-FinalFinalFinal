@@ -9,11 +9,12 @@ public class LevelDoor : MonoBehaviour, IInteractable
 
     [Header("Teleport Destination")]
     public Transform destination;
-    public Vector2 spawnOffset = new Vector2(0f, -1f); // negative Y = below the door
+    public Vector2 spawnOffset = new Vector2(0f, -1f);
+    public int targetLevel = 2;
 
     [Header("Feedback (optional)")]
     public SpriteRenderer doorRenderer;
-    public Color lockedColor   = new Color(0.4f, 0.4f, 0.4f, 1f);
+    public Color lockedColor = new Color(0.4f, 0.4f, 0.4f, 1f);
     public Color unlockedColor = new Color(1f, 0.9f, 0.3f, 1f);
 
     private void Update()
@@ -60,8 +61,19 @@ public class LevelDoor : MonoBehaviour, IInteractable
         var rb = player.GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = Vector2.zero;
 
-        // Apply offset to land below the door
         player.transform.position = destination.position + new Vector3(spawnOffset.x, spawnOffset.y, 0f);
+
+        PlayerObj playerObj = player.GetComponent<PlayerObj>();
+        if (playerObj != null) playerObj._charMS = 8f;
+
+        PlayerAudio audio = player.GetComponent<PlayerAudio>();
+        if (audio != null)
+        {
+            audio.currentLevel = targetLevel;
+            audio.SwitchLevelMusic(targetLevel);
+            Debug.Log("Switched to level " + targetLevel + " sounds");
+        }
+
         Debug.Log("Player teleported to " + destination.name);
     }
 }

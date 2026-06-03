@@ -15,6 +15,7 @@ public class BasicDodge : PlayerMove
             yield break;
 
         canDash = false;
+        cooldownRemaining = cooldown;
         player.setState(state.dashing);
 
         Vector2 dir = player.getMoveDirection().normalized;
@@ -41,5 +42,8 @@ public class BasicDodge : PlayerMove
 
         yield return new WaitForSeconds(cooldown);
         canDash = true;
+
+        PlayerAudio audio = PlayerMovement.Instance.GetComponent<PlayerAudio>();
+        if (audio != null) audio.PlayDash();
     }
 }

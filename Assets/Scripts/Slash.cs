@@ -15,7 +15,11 @@ public class Slash : MonoBehaviour
         target = name;
         rb = GetComponent<Rigidbody2D>();
         transform.up=dir;
-        ParticleSystem particle = Instantiate(swing,transform.position, Quaternion.identity);
+        Quaternion rot = transform.rotation;
+        Vector3 euler = rot.eulerAngles;
+        euler.z += 180f;
+
+        ParticleSystem particle = Instantiate(swing,transform.position,Quaternion.Euler(euler));
         Destroy(particle.gameObject,2);
         StartCoroutine(startCountdown());
     }
@@ -24,7 +28,7 @@ public class Slash : MonoBehaviour
         yield return new WaitForSeconds(LifeTime);
         Destroy(this.gameObject);}
 
-    void OnCollisionEnter2D(Collision2D other){
+    void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == target){
         if (other.transform.TryGetComponent(out IDamagable target))
         {
