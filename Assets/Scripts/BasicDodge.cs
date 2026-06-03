@@ -42,5 +42,8 @@ public class BasicDodge : PlayerMove
 
         yield return new WaitForSeconds(cooldown);
         canDash = true;
+
+        PlayerAudio audio = PlayerMovement.Instance.GetComponent<PlayerAudio>();
+        if (audio != null) audio.PlayDash();
     }
 }
