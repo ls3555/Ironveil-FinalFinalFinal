@@ -1,11 +1,30 @@
 using UnityEngine;
+using System;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering;
 
-public class PlayerMovement : Entity
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerMovement : PlayerObj, IDamagable
 {
+    [Header("Entity Settings")]
+
+    protected SpriteRenderer spriteRenderer;
+    public float health;
+    protected float maxHealth;
+    [SerializeField]protected float moveSpeed;
+    [SerializeField]protected float friction;
+    protected Vector2 moveDirection;
+    public string opponentTag;
+    public System.Action OnDeath;
+
+
+    [Space(10)]
+    [Header("PM Settings")]
+
     public static PlayerMovement Instance;
 
     public float mana;
@@ -36,8 +55,8 @@ public class PlayerMovement : Entity
     private Vector2 lastMoveDir = Vector2.right;
     public bool isMoving;
     public bool canMove = true;
-    state currentState;
-    private Animator animator;
+    state actionState;
+    //private Animator animator;
 
     [SerializeField] private Image healthBar;
     [SerializeField] private TMP_Text healthNum;
@@ -49,16 +68,46 @@ public class PlayerMovement : Entity
     [SerializeField] private CooldownUI dashUI;
     [SerializeField] private CooldownUI utilUI;
 
-    protected override void Awake()
+
+    protected void Awake()
     {
-        base.Awake();
         Instance = this;
+        maxHealth = health;
         maxMana = mana;
     }
 
-    void Start()
+    override protected void Start()
     {
-        animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody2D>();
+
+        // Rigidbody2D setup — prevents tipping/rotation and keeps it 2D-correct
+        _rb.gravityScale = 0f;
+        _rb.freezeRotation = true;
+        _rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+
+        if (_prefabs == null)
+            _prefabs = GetComponentInChildren<SPUM_Prefabs>();
+
+        if (_prefabs == null)
+        {
+            Debug.LogError($"[PlayerObj] No SPUM_Prefabs found on {name} or its children.");
+            return;
+        }
+
+        if (_prefabs._anim == null)
+        {
+            Debug.LogError($"[PlayerObj] SPUM_Prefabs on {name} has no _anim assigned.");
+            return;
+        }
+
+        _prefabs.OverrideControllerInit();
+
+        foreach (PlayerState state in Enum.GetValues(typeof(PlayerState)))
+            IndexPair[state] = 0;
+
+        Debug.Log("[PlayerObj] SPUM StateAnimationPairs keys: " +
+            string.Join(", ", _prefabs.StateAnimationPairs.Keys));
+
         input = GameController.Input;
         moveAction = input.Player.Move;
         lookAction = input.Player.Look;
@@ -67,64 +116,76 @@ public class PlayerMovement : Entity
         dodgeAction = input.Player.Dodge;
         utilAction = input.Player.Utility;
         interactAction = input.Player.Interact;
-        currentState = state.idle;
-
         healthNum.text = Mathf.RoundToInt(health).ToString();
         manaNum.text = Mathf.RoundToInt(mana).ToString();
+
+        _initialized = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        switch (currentState)
-        {
-            case state.idle:
-                if (interactAction.WasPressedThisFrame()) { TryInteract(); }
-                if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute()); }
-                if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute()); }
-                if (dodgeAction.WasPressedThisFrame() && moveDash != null) { StartCoroutine(moveDash.Execute()); }
-                if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
-                break;
-            case state.attacking:
-                if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
-                break;
-            case state.dashing:
-                if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute()); }
-                if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute()); }
-                if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
-                break;
-            case state.stun:
-                break;
+        if (!_initialized) return;
 
-        }
+        // Y-position drives Z so sprites closer to the bottom of screen render on top
+        transform.position = new Vector3(
+            transform.position.x,
+            transform.position.y,
+            transform.position.y * -0.01f
+        );
 
-        if (canMove)
-        {
-            moveDirection = moveAction.ReadValue<Vector2>().normalized;
-        }
-        else
-        {
-            moveDirection = Vector2.zero;
-        }
-        isMoving = moveDirection.magnitude > 0;
-        animator.SetBool("isMoving", isMoving);
+        if (isAction) return;
 
-        if (moveDirection.y > 0)
+        if (isControlled)
         {
-            animator.SetInteger("Direction", 1);
-        }
-        else if (moveDirection.y < 0)
-        {
-            animator.SetInteger("Direction", 0);
-        }
-        else if (moveDirection.x > 0)
-        {
-            animator.SetInteger("Direction", 2);
-        }
-        else if (moveDirection.x < 0)
-        {
-            animator.SetInteger("Direction", 3);
-        }
+
+            if (canMove)
+                {
+                    moveDirection = moveAction.ReadValue<Vector2>().normalized;
+                }
+                else
+                {
+                    moveDirection = Vector2.zero;
+                }
+                isMoving = moveDirection.magnitude > 0;
+
+
+                if (moveDirection.sqrMagnitude > 0.01f)
+                {
+                    _currentState = PlayerState.MOVE;
+                    FlipSprite(moveDirection);
+                }
+                else
+                {
+                    _currentState = PlayerState.IDLE;
+                }
+            }
+            else
+            {
+                _currentState = PlayerState.IDLE;
+            }
+
+            switch (actionState)
+            {
+                case state.idle:
+                    if (interactAction.WasPressedThisFrame()) { TryInteract(); }
+                    if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute());  _currentState = PlayerState.ATTACK; }
+                    if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute());  _currentState = PlayerState.ATTACK;}
+                    if (dodgeAction.WasPressedThisFrame() && moveDash != null) { StartCoroutine(moveDash.Execute()); }
+                    if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
+                    break;
+                case state.attacking:
+                    if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
+                    break;
+                case state.dashing:
+                    if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute()); }
+                    if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute()); }
+                    if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
+                    break;
+                case state.stun:
+                    break;
+            }
+           
+        PlayStateAnimation(_currentState);
 
         if (health < maxHealth)
         {
@@ -143,23 +204,35 @@ public class PlayerMovement : Entity
         }
     }
 
-    //fixed update friction
-    protected override void Move()
+    void FixedUpdate() {Move();}
+
+    protected void Move()
     {
-        if (currentState == state.dashing)
+        if (!_initialized) return;
+
+       if (actionState == state.dashing)
         {
-            rigidBody.linearVelocity -= rigidBody.linearVelocity * friction;
+            _rb.linearVelocity -= _rb.linearVelocity * friction;
             return;
         }
 
         if (moveDirection.magnitude > 0)
         {
-            rigidBody.linearVelocity = moveDirection * moveSpeed;
+            _rb.linearVelocity = moveDirection * moveSpeed;
         }
         else
         {
-            rigidBody.linearVelocity -= rigidBody.linearVelocity * friction;
+            _rb.linearVelocity -= _rb.linearVelocity * friction;
         }
+    }
+
+
+    private void FlipSprite(Vector2 direction)
+    {
+        if (direction.x > 0f)
+            _prefabs.transform.localScale = new Vector3(-1.2f, 1.2f, 1f); // face right
+        else if (direction.x < 0f)
+            _prefabs.transform.localScale = new Vector3(1.2f, 1.2f, 1f);  // face left
     }
 
     private void TryInteract()
@@ -178,7 +251,7 @@ public class PlayerMovement : Entity
         }
     }
 
-    public override void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health = Mathf.Clamp(health - damage, 0, maxHealth);
         healthBar.fillAmount = health / maxHealth;
@@ -187,9 +260,9 @@ public class PlayerMovement : Entity
         GetComponent<PlayerAudio>()?.EnterCombat();
 
         if (health <= 0)
-            animator.SetTrigger("4_Death");
+            _currentState = PlayerState.DEATH;
         else
-            animator.SetTrigger("3_Damage");
+            _currentState = PlayerState.DAMAGED;
     }
 
     public void HealDamage(float damage)
@@ -232,7 +305,7 @@ public class PlayerMovement : Entity
 
     public void SetVelocity(Vector2 velocity)
     {
-        rigidBody.linearVelocity = velocity;
+        _rb.linearVelocity = velocity;
     }
 
     public Vector2 getMoveDirection()
@@ -247,7 +320,7 @@ public class PlayerMovement : Entity
 
     public void setState(state newState)
     {
-        currentState = newState;
+        actionState = newState;
     }
 
     public Vector2 CalcShootDir()
@@ -266,7 +339,6 @@ public class PlayerMovement : Entity
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
         return new Vector2(worldPos.x, worldPos.y);
     }
-
 
     public void EquipMove(PlayerMove movePrefab)
     {
@@ -306,7 +378,7 @@ public class PlayerMovement : Entity
             SpriteRenderer sr = pickup.GetComponent<SpriteRenderer>();
             if (sr != null)
             {
-                sr.sortingLayerName = spriteRenderer.sortingLayerName;
+                sr.sortingLayerName = GetComponent<SortingGroup>().sortingLayerName;
             }
 
             if (oldMove.gameObject != gameObject)
@@ -328,10 +400,5 @@ public class PlayerMovement : Entity
     public float getSpecAttackStat()
     {
         return specAttack;
-    }
-
-    public void TriggerAnimation(string triggerName)
-    {
-        animator.SetTrigger(triggerName);
     }
 }
