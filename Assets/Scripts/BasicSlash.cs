@@ -24,11 +24,14 @@ public class BasicSlash : PlayerMove
 
         Slash newSlash = Instantiate(slash, spawnPos, rotation);
         newSlash.setDamage(player.getAttackStat());
-        newSlash.setTarget(player.opponentTag,shootDirection);
- 
+        newSlash.setTarget(player.opponentTag, shootDirection);
+
         player.UseMana(manaCost);
-        player.setState(state.idle); 
+        player.setState(state.idle);
         yield return new WaitForSeconds(cooldown);
         canAttack = true;
+
+        PlayerAudio audio = PlayerMovement.Instance.GetComponent<PlayerAudio>();
+        if (audio != null) audio.PlayAttack();
     }
 }
