@@ -76478,6 +76478,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5041491907507167831, guid: 4f06082a70270ec46a341c586375f251,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5533130739572877594, guid: 4f06082a70270ec46a341c586375f251,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -260233,6 +260238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Flying Eye
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963308406103805370, guid: 28c7f923b03911a468772c8ffc256306,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5203524072022976156, guid: 28c7f923b03911a468772c8ffc256306,
         type: 3}

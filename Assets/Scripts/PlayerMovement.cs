@@ -103,6 +103,7 @@ public class PlayerMovement : Entity
             moveDirection = Vector2.zero;
         }
 
+        /*
         animator.SetBool("IsMoving", moveDirection.magnitude > 0);
 
         if (moveDirection.y > 0) {
@@ -115,6 +116,7 @@ public class PlayerMovement : Entity
             animator.SetInteger("Direction", 3);
         }
 
+        */
             if (health < maxHealth)
             {
                 health += healthRegen * Time.deltaTime;
