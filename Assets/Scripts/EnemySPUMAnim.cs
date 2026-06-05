@@ -105,15 +105,17 @@ public class EnemySpum : PlayerObj, IDamagable
                 transform.position.y * -0.01f
             );
 
-                UpdateHealth();
+            UpdateHealth();
             if (_rb == null || PlayerMovement.Instance == null) return;
 
             float distToPlayer = Vector2.Distance(transform.position, PlayerMovement.Instance.transform.position);
-
-            if (currentState == EnemyState.Idle)
+            
+            switch (currentState)
             {
+                case EnemyState.Idle:
                 _currentState = PlayerState.IDLE;
                 moveDirection = Vector2.zero;
+                PlayStateAnimation(_currentState);
                 idleTimer += Time.deltaTime;
                 if (idleTimer >= idleWaitTime)
                 {
@@ -125,11 +127,12 @@ public class EnemySpum : PlayerObj, IDamagable
                 {
                     currentState = EnemyState.Chase;
                 }
-            }
-            else if (currentState == EnemyState.Roam)
-            {
+                break;
+
+                case EnemyState.Roam:
                 _currentState = PlayerState.MOVE;
                 moveDirection = ((Vector2)targetPosition - (Vector2)transform.position).normalized;
+                PlayStateAnimation(_currentState);
                 FlipSprite(moveDirection);
 
                 if (Vector2.Distance(transform.position, targetPosition) < 0.5f)
@@ -140,12 +143,13 @@ public class EnemySpum : PlayerObj, IDamagable
                 {
                     currentState = EnemyState.Chase;
                 }
-            }
-            else if (currentState == EnemyState.Chase)
-            {
+                break;
+
+                case EnemyState.Chase:
                 targetPosition = PlayerMovement.Instance.transform.position;
                 _currentState = PlayerState.MOVE;
                 moveDirection = ((Vector2)targetPosition - (Vector2)transform.position).normalized;
+                PlayStateAnimation(_currentState);
                 FlipSprite(moveDirection);
 
                 if (distToPlayer < attackDist)
@@ -157,10 +161,9 @@ public class EnemySpum : PlayerObj, IDamagable
                     PickNewRoamTarget();
                     currentState = EnemyState.Roam;
                 }
-            }
-            else if (currentState == EnemyState.Attack)
-            {
-                _currentState = PlayerState.ATTACK;
+                break;
+
+                case EnemyState.Attack:
                 moveDirection = Vector2.zero;
                 if (distToPlayer > attackDist)
                 {
@@ -170,17 +173,22 @@ public class EnemySpum : PlayerObj, IDamagable
                 {
                     StartCoroutine(AttackCoroutine());
                 }
+                break;
             }
-            PlayStateAnimation(_currentState);
-        
         }
 
         private void FlipSprite(Vector2 direction)
         {
-            if (direction.x > 0f)
-                _prefabs.transform.localScale = new Vector3(-1.2f, 1.2f, 1f); // face right
-            else if (direction.x < 0f)
-                _prefabs.transform.localScale = new Vector3(1.2f, 1.2f, 1f);  // face left
+            float x = transform.localScale.x;
+            float y = transform.localScale.y;
+            float z = transform.localScale.z;
+            if (direction.x > 0f) {
+                if (x > 0) {x *= -1f;}
+                transform.localScale = new Vector3(x, y, z);  // face left
+            } else if (direction.x < 0f) {
+                if (x < 0) {x *= -1f;}
+                transform.localScale = new Vector3(x, y, y); // face right
+            }
         }
 
         protected void Move()
@@ -209,7 +217,7 @@ public class EnemySpum : PlayerObj, IDamagable
         {
             if (!canAttack)
                 yield break;
-                
+            
             canAttack = false;
             _rb.linearVelocity = Vector2.zero;
 
@@ -217,6 +225,8 @@ public class EnemySpum : PlayerObj, IDamagable
             float disToPlayer = Vector2.Distance(transform.position, PlayerMovement.Instance.transform.position);
             if (disToPlayer < attackDist + 0.5f)
             {
+                _currentState = PlayerState.ATTACK;
+                PlayStateAnimation(_currentState);
                 PlayerMovement.Instance.TakeDamage(damage);
             }
             else
