@@ -51651,6 +51651,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4243236466366397507, guid: b32146e8056cc45df9aaa90d0c2b608a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4263843459635565008, guid: b32146e8056cc45df9aaa90d0c2b608a,
         type: 3}
       propertyPath: m_Layer
@@ -51914,6 +51919,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 386457030}
+    - targetCorrespondingSourceObject: {fileID: 4243236466366397507, guid: b32146e8056cc45df9aaa90d0c2b608a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 386457037}
   m_SourcePrefab: {fileID: 100100000, guid: b32146e8056cc45df9aaa90d0c2b608a, type: 3}
 --- !u!1 &386457029 stripped
 GameObject:
@@ -51976,6 +51985,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &386457037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386457029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dea0ca66dce6d4ca0bc8dc498e5b88f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  moveSpeed: 2
+  friction: 0.8
+  opponentTag: Player
+  healthBar: {fileID: 0}
+  healthContainer: {fileID: 4896675400117992795, guid: 3a7425b239912a745b95140dd33b1a93,
+    type: 3}
+  canvas: {fileID: 0}
+  hideDelay: 2
+  damagePopup: {fileID: 0}
+  hitClip: {fileID: 0}
+  attackClip: {fileID: 0}
+  dieClip: {fileID: 0}
+  roamDist: 3
+  attackDist: 1.5
+  damage: 5
+  chaseDist: 10
 --- !u!1 &388191260
 GameObject:
   m_ObjectHideFlags: 0
@@ -94827,8 +94865,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e15e3d80d12421c86966a4cc7c3924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  altars: []
-  requiredLitCount: 0
+  altars:
+  - {fileID: 957218420}
+  - {fileID: 1241772099}
+  requiredLitCount: 2
   destination: {fileID: 1158266634}
   spawnOffset: {x: 1.25, y: -1}
   targetLevel: 2
@@ -114162,6 +114202,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.9375, y: 0.13936377}
   m_EdgeRadius: 0
+--- !u!114 &957218420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2440844624711060802, guid: c5bdca1933fde624698bb8c6d6daa44b,
+    type: 3}
+  m_PrefabInstance: {fileID: 957218415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957218417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7edd0f787bc46de479f0d96bba16e2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &957296088
 GameObject:
   m_ObjectHideFlags: 0
@@ -153613,6 +153665,18 @@ MonoBehaviour:
   skillMetricCanvasGroup: {fileID: 1479989321}
   skillUICanvasGroup: {fileID: 1172214241}
   titleCanvasGroup: {fileID: 1244017974}
+--- !u!114 &1241772099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2440844624711060802, guid: c5bdca1933fde624698bb8c6d6daa44b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1241772090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241772092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7edd0f787bc46de479f0d96bba16e2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1242176120
 GameObject:
   m_ObjectHideFlags: 0
@@ -198402,11 +198466,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabs: {fileID: 0}
-  _charMS: 1
+  _charMS: 0
   isControlled: 0
   isAction: 0
   health: 10
-  moveSpeed: 3
+  moveSpeed: 5
   friction: 0.5
   opponentTag: Enemy
   mana: 20
