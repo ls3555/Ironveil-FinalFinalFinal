@@ -254,6 +254,8 @@ public class PlayerMovement : PlayerObj, IDamagable
     public void TakeDamage(float damage)
     {
         health = Mathf.Clamp(health - damage, 0, maxHealth);
+        _currentState = PlayerState.DAMAGED;
+        PlayStateAnimation(_currentState);
         healthBar.fillAmount = health / maxHealth;
         healthNum.text = Mathf.RoundToInt(health).ToString();
 
