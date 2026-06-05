@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Stairs
+  - SkillTriggerObject
+  - NPCItem
+  - Wall
+  - NPC
   layers:
   - Default
   - TransparentFX
