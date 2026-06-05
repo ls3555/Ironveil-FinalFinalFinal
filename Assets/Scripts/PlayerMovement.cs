@@ -15,8 +15,8 @@ public class PlayerMovement : PlayerObj, IDamagable
     protected SpriteRenderer spriteRenderer;
     public float health;
     protected float maxHealth;
-    [SerializeField]protected float moveSpeed;
-    [SerializeField]protected float friction;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float friction;
     protected Vector2 moveDirection;
     public string opponentTag;
     public System.Action OnDeath;
@@ -139,52 +139,52 @@ public class PlayerMovement : PlayerObj, IDamagable
         {
 
             if (canMove)
-                {
-                    moveDirection = moveAction.ReadValue<Vector2>().normalized;
-                }
-                else
-                {
-                    moveDirection = Vector2.zero;
-                }
-                isMoving = moveDirection.magnitude > 0;
+            {
+                moveDirection = moveAction.ReadValue<Vector2>().normalized;
+            }
+            else
+            {
+                moveDirection = Vector2.zero;
+            }
+            isMoving = moveDirection.magnitude > 0;
 
 
-                if (moveDirection.sqrMagnitude > 0.01f)
-                {
-                    _currentState = PlayerState.MOVE;
-                    FlipSprite(moveDirection);
-                }
-                else
-                {
-                    _currentState = PlayerState.IDLE;
-                }
+            if (moveDirection.sqrMagnitude > 0.01f)
+            {
+                _currentState = PlayerState.MOVE;
+                FlipSprite(moveDirection);
             }
             else
             {
                 _currentState = PlayerState.IDLE;
             }
+        }
+        else
+        {
+            _currentState = PlayerState.IDLE;
+        }
 
-            switch (actionState)
-            {
-                case state.idle:
-                    if (interactAction.WasPressedThisFrame()) { TryInteract(); }
-                    if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute());  _currentState = PlayerState.ATTACK; }
-                    if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute());  _currentState = PlayerState.ATTACK;}
-                    if (dodgeAction.WasPressedThisFrame() && moveDash != null) { StartCoroutine(moveDash.Execute()); }
-                    if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
-                    break;
-                case state.attacking:
-                    if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
-                    break;
-                case state.dashing:
-                    if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute()); }
-                    if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute()); }
-                    if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
-                    break;
-                case state.stun:
-                    break;
-            }
-           
+        switch (actionState)
+        {
+            case state.idle:
+                if (interactAction.WasPressedThisFrame()) { TryInteract(); }
+                if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute()); _currentState = PlayerState.ATTACK; }
+                if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute()); _currentState = PlayerState.ATTACK; }
+                if (dodgeAction.WasPressedThisFrame() && moveDash != null) { StartCoroutine(moveDash.Execute()); }
+                if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
+                break;
+            case state.attacking:
+                if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
+                break;
+            case state.dashing:
+                if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute()); }
+                if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute()); }
+                if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
+                break;
+            case state.stun:
+                break;
+        }
+
         PlayStateAnimation(_currentState);
 
         if (health < maxHealth)
@@ -204,13 +204,13 @@ public class PlayerMovement : PlayerObj, IDamagable
         }
     }
 
-    void FixedUpdate() {Move();}
+    void FixedUpdate() { Move(); }
 
     protected void Move()
     {
         if (!_initialized) return;
 
-       if (actionState == state.dashing)
+        if (actionState == state.dashing)
         {
             _rb.linearVelocity -= _rb.linearVelocity * friction;
             return;
@@ -260,9 +260,20 @@ public class PlayerMovement : PlayerObj, IDamagable
         GetComponent<PlayerAudio>()?.EnterCombat();
 
         if (health <= 0)
+        {
             _currentState = PlayerState.DEATH;
+            canMove = false;
+            SetVelocity(Vector2.zero);
+            StartCoroutine(DeathDelay());
+        }
         else
             _currentState = PlayerState.DAMAGED;
+    }
+
+    private IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        GameController.Instance.PlayerDied();
     }
 
     public void HealDamage(float damage)
