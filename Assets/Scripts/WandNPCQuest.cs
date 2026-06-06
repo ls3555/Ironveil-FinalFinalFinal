@@ -26,14 +26,15 @@ void Awake()
 {
     sleepingRb = sleepingObject.GetComponent<Rigidbody2D>();
     sleepingSr = sleepingObject.GetComponent<SpriteRenderer>();
+    skillTriggerObject.Sleep();
 }
 
 private IEnumerator WakeStatueAfterDelay()
 {
-    yield return new WaitForSeconds(10f);
+    yield return new WaitForSeconds(4f);
     wandPanel.SetActive(false);
-
     skillTriggerObject.WakeUp();
+    //Destroy(sleepingObject);
 }
 
 private void Start()
@@ -75,13 +76,13 @@ private void Start()
             //Wand and NPC interacted
             sleepingSr.enabled = false;
             weaponSprite.enabled = true; // Show weapon
-            npcMovement.StartMoving();
+            //npcMovement.StartMoving();
 
 
             wandPanel.SetActive(true); // Tell Player what she's doing
             StartCoroutine(WakeStatueAfterDelay());
 
-            Destroy(sleepingObject);
+            
         }
     }
    
