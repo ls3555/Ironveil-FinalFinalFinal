@@ -19,4 +19,6 @@ public class DialogueNode
     public List<DialogueChoice> choices;
 
     public bool endsDialogue;
+    public bool createChoices;
+   // public int nextNodeIndex;
 }

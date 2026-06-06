@@ -7,67 +7,73 @@ using UnityEngine.UI;
 public class NPCToPlayerDialogueManager : MonoBehaviour
 {
     [Header("UI")]
-    public GameObject dialoguePanel;
-    public GameObject dialogueButtonPanel;
-    public GameObject QuestPanel;
-    public TextMeshProUGUI questTextBox;
+    [SerializeField] private GameObject dialoguePanel;
+
+    [SerializeField] private GameObject dialogueButtonPanel;
+    [SerializeField] private GameObject QuestPanel;
+    [SerializeField] private TextMeshProUGUI questTextBox;
 
     [Header("Quest")]
-    public string questDescription;
-    public TextMeshProUGUI clickToContinueText;
+    [SerializeField] private string questDescription;
+    [SerializeField] private TextMeshProUGUI clickToContinueText;
 
-    public TextMeshProUGUI speakerNameText;
-    public TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI speakerNameText;
+    [SerializeField] private TextMeshProUGUI dialogueText;
 
     [Header("Choices")]
-    public Transform choiceContainer;
-    public Button choiceButtonPrefab;
+    [SerializeField] private Transform choiceContainer;
+    [SerializeField] private Button choiceButtonPrefab;
 
     [Header("Dialogue")]
-    public List<DialogueNode> dialogueNodes;
+    [SerializeField] private List<DialogueNode> dialogueNodes;
 
     [Header("Typing")]
-    public float typeSpeed = 0.03f;
-
-    
+    [SerializeField] private float typeSpeed = 0.03f;
 
     private int currentNodeIndex = 0;
     private Coroutine typingCoroutine;
-    private bool createChoices = false;
-
+    ///private bool createChoices = false;
+    
     void Start()
     {
-        dialoguePanel.SetActive(false);
-        dialogueButtonPanel.SetActive(false);
-        QuestPanel.SetActive(false);
+        SetPanels(false, dialoguePanel, dialogueButtonPanel, QuestPanel);
     }
+
+    private void SetPanels(bool active, params GameObject[] panels)
+    { 
+        foreach(GameObject panel in panels)
+        {
+            if (panel != null) panel.SetActive(active);
+        }
+    }
+    public void CloseAllPanels()
+    {
+        SetPanels(false, dialoguePanel, dialogueButtonPanel, QuestPanel);
+    }   
 
     public void StartDialogue()
     {
-        dialogueButtonPanel.SetActive(false);
-        QuestPanel.SetActive(false);
-
+        Debug.Log("Dialogue triggered by ");
+        SetPanels(false, dialogueButtonPanel, QuestPanel);
         dialoguePanel.SetActive(true);
         ShowNode(0);
     }
 
 public void ClickDialogueButton(string buttonText)
     {
-        dialogueButtonPanel.SetActive(true);
+        SetPanels(true, dialogueButtonPanel);
         string dialogueButtonText = "Click " + buttonText + " to continue";
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
         }
-        createChoices = false;
         typingCoroutine = StartCoroutine(TypeLine(clickToContinueText, dialogueButtonText));
     
     }
 public void StartQuest()
     {
-        dialogueButtonPanel.SetActive(false);
-        dialoguePanel.SetActive(false);
-        QuestPanel.SetActive(true);
+        SetPanels(false, dialogueButtonPanel, dialoguePanel);
+        SetPanels(true, QuestPanel);
         questTextBox.text = "Quest: " + questDescription;
     }
 
@@ -85,7 +91,7 @@ public void StartQuest()
         {
             StopCoroutine(typingCoroutine);
         }
-        createChoices = true;
+
         typingCoroutine = StartCoroutine(TypeLine(dialogueText, node.dialogueText));
         
     }
@@ -99,8 +105,9 @@ public void StartQuest()
             textComponent.text += c;
             yield return new WaitForSeconds(typeSpeed);
         }
-
-        if (createChoices)CreateChoices();
+        yield return new WaitForSeconds(typeSpeed+2f);
+        
+        CreateChoices();
     }
 
     void CreateChoices()
@@ -109,24 +116,32 @@ public void StartQuest()
 
         if (node.endsDialogue)
         {
+            if(node.createChoices)
+            {
             Button endButton = Instantiate(choiceButtonPrefab, choiceContainer);
-
             endButton.GetComponentInChildren<TextMeshProUGUI>().text = "Alright";
-
             endButton.onClick.AddListener(EndDialogue);
+            }
+            else
+            {
+                EndDialogue();
+            }
 
             return;
         }
-
-        foreach (DialogueChoice choice in node.choices)
+        if(node.choices.Count == 0)
         {
-            Button button = Instantiate(choiceButtonPrefab, choiceContainer);
+                ShowNode(currentNodeIndex + 1);
+        }
+        else{
 
-            button.GetComponentInChildren<TextMeshProUGUI>().text = choice.choiceText;
-
-            int nextIndex = choice.nextNodeIndex;
-
-            button.onClick.AddListener(() => ShowNode(nextIndex));
+            foreach (DialogueChoice choice in node.choices)
+            {
+                Button button = Instantiate(choiceButtonPrefab, choiceContainer);
+                button.GetComponentInChildren<TextMeshProUGUI>().text = choice.choiceText;
+                int nextIndex = choice.nextNodeIndex;
+                button.onClick.AddListener(() => ShowNode(nextIndex));
+            }
         }
     }
 
