@@ -8,7 +8,7 @@ public class NPCDialogueTrigger : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && Input.GetKeyDown(KeyCode.F))
         {
             if (!hasVisited)
             {
@@ -28,7 +28,7 @@ public class NPCDialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            dialogueManager.ClickDialogueButton("E");
+            dialogueManager.ClickDialogueButton("F");
         }
     }
 
@@ -37,9 +37,7 @@ public class NPCDialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            dialogueManager.dialogueButtonPanel.SetActive(false);
-            dialogueManager.dialoguePanel.SetActive(false);
-            dialogueManager.QuestPanel.SetActive(false);
+            dialogueManager.CloseAllPanels();
         }
     }
 }

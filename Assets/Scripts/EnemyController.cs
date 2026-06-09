@@ -20,6 +20,7 @@ public class EnemyController : EnemyUI
     bool canAttack = true;
     float idleTimer = 0f;
     float idleWaitTime = 2f;
+    public event System.Action OnEnemyDied;
 
     void Start()
     {
@@ -59,6 +60,7 @@ public class EnemyController : EnemyUI
         else if (currentState == EnemyState.Roam)
         {
             moveDirection = ((Vector2)targetPosition - (Vector2)transform.position).normalized;
+            FlipSprite(moveDirection);
 
             if (Vector2.Distance(transform.position, targetPosition) < 0.5f)
             {
@@ -73,6 +75,7 @@ public class EnemyController : EnemyUI
         {
             targetPosition = PlayerMovement.Instance.transform.position;
             moveDirection = ((Vector2)targetPosition - (Vector2)transform.position).normalized;
+            FlipSprite(moveDirection);
 
             if (distToPlayer < attackDist)
             {
@@ -149,11 +152,16 @@ public class EnemyController : EnemyUI
 
     public void Die()
     {
+
         animator.SetTrigger("Die");
         animator.SetBool("isAlive", false);
         rigidBody.linearVelocity = Vector2.zero;
+
+        OnEnemyDied?.Invoke();   // <-- NEW
+
         enabled = false;
     }
+
 
     public void TakeHit()
     {
@@ -179,5 +187,20 @@ public class EnemyController : EnemyUI
     private void UpdateAnimator()
     {
         animator.SetBool("isMoving", moveDirection.magnitude > 0.1f);
+    }
+
+
+    private void FlipSprite(Vector2 direction)
+    {
+        float x = transform.localScale.x;
+        float y = transform.localScale.y;
+        float z = transform.localScale.z;
+        if (direction.x > 0f) {
+            if (x < 0) {x *= -1f;}
+            transform.localScale = new Vector3(x, y, z);  // face left
+        } else if (direction.x < 0f) {
+            if (x > 0) {x *= -1f;}
+            transform.localScale = new Vector3(x, y, y); // face right
+        }
     }
 }

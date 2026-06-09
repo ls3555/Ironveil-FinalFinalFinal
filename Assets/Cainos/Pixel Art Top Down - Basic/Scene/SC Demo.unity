@@ -51984,8 +51984,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 386457037}
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Cainos/Pixel Art Top Down - Basic/Scene/Game.unity
 =======
+=======
+>>>>>>> test-merging
     - targetCorrespondingSourceObject: {fileID: 4243236466366397507, guid: b32146e8056cc45df9aaa90d0c2b608a,
         type: 3}
       insertIndex: -1
@@ -51994,7 +51997,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 386457046}
+<<<<<<< HEAD
 >>>>>>> test-merging:Assets/Cainos/Pixel Art Top Down - Basic/Scene/SC Demo.unity
+=======
+>>>>>>> test-merging
   m_SourcePrefab: {fileID: 100100000, guid: b32146e8056cc45df9aaa90d0c2b608a, type: 3}
 --- !u!1 &386457029 stripped
 GameObject:
@@ -52066,11 +52072,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 386457029}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Cainos/Pixel Art Top Down - Basic/Scene/Game.unity
   m_Script: {fileID: 11500000, guid: ae359dbcb6bad469ca5743c008a2921c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 =======
+=======
+>>>>>>> test-merging
   m_Script: {fileID: 11500000, guid: dea0ca66dce6d4ca0bc8dc498e5b88f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -52137,7 +52146,10 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+<<<<<<< HEAD
 >>>>>>> test-merging:Assets/Cainos/Pixel Art Top Down - Basic/Scene/SC Demo.unity
+=======
+>>>>>>> test-merging
 --- !u!1 &388191260
 GameObject:
   m_ObjectHideFlags: 0
@@ -198963,11 +198975,15 @@ MonoBehaviour:
   specUI: {fileID: 2038617561}
   dashUI: {fileID: 2038617560}
   utilUI: {fileID: 2038617561}
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Cainos/Pixel Art Top Down - Basic/Scene/Game.unity
 --- !u!114 &1622224656
 =======
 --- !u!114 &1622224660
 >>>>>>> test-merging:Assets/Cainos/Pixel Art Top Down - Basic/Scene/SC Demo.unity
+=======
+--- !u!114 &1622224660
+>>>>>>> test-merging
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198976,11 +198992,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1595857304}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Cainos/Pixel Art Top Down - Basic/Scene/Game.unity
   m_Script: {fileID: 11500000, guid: 5af4890c07c0c4dce83a5ce3d5a3790c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 =======
+=======
+>>>>>>> test-merging
   m_Script: {fileID: 11500000, guid: a6ba1227b45894e71b2bccaabc54001c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -198988,7 +199007,10 @@ MonoBehaviour:
   _charMS: 10
   isControlled: 0
   isAction: 0
+<<<<<<< HEAD
 >>>>>>> test-merging:Assets/Cainos/Pixel Art Top Down - Basic/Scene/SC Demo.unity
+=======
+>>>>>>> test-merging
 --- !u!1 &1622312049
 GameObject:
   m_ObjectHideFlags: 0
@@ -259417,11 +259439,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5628018141983903104, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
       insertIndex: -1
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Cainos/Pixel Art Top Down - Basic/Scene/Game.unity
       addedObject: {fileID: 1622224656}
 =======
       addedObject: {fileID: 1622224660}
 >>>>>>> test-merging:Assets/Cainos/Pixel Art Top Down - Basic/Scene/SC Demo.unity
+=======
+      addedObject: {fileID: 1622224660}
+>>>>>>> test-merging
   m_SourcePrefab: {fileID: 100100000, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
 --- !u!1001 &5724624599686979093
 PrefabInstance:
