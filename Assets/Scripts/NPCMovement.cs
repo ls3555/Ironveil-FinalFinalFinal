@@ -1,11 +1,242 @@
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.Rendering;
-using UnityEngine.Tilemaps;
-
 
 public class NPCMovement : Movement
 {
+    [Header("NPC AI Settings")]
+    public Transform player;
+    public Transform enemy;
+    public float followDistance = 4f;
+    public float stopDistance = 0.8f;   // NEW: Stop before touching player
+    public float attackRange = 1.2f;
+    public float wanderRadius = 2f;
+    public float wanderInterval = 3f;
+
+    private float wanderTimer = 0f;
+    private Vector3 wanderTarget;
+
+    [Header("Rendering")]
+
+    // COLLISION LOCKOUT (for interaction only)
+    private bool collidedWithPlayer = false;
+    private float collisionCooldown = 0.35f;
+    private float collisionTimer = 0f;
+
+    // Only allow layer switching when NPC is "active"
+    private bool allowLayerChange = false;
+    [SerializeField] private Collider2D dialogueTrigger;
+
+    
+        protected override void Awake()
+    {
+        base.Awake();
+        dialogueTrigger = GetComponent<Collider2D>();
+    }
+
+    // ---------------------------------------------------------
+    // PUBLIC CONTROL
+    // ---------------------------------------------------------
+
+    public void WakeUp()
+    {
+        enabled = true;
+        allowLayerChange = true;
+
+        TransportToPlayer();
+        rb.mass = 1f;
+        currentState = PlayerState.MOVE;
+
+        SetToLayerPlayerOn();
+    }
+
+    public void Sleep()
+    {
+        enabled = false;
+        allowLayerChange = false;
+
+        rb.linearVelocity = Vector2.zero;
+        currentState = PlayerState.IDLE;
+    }
+
+    // ---------------------------------------------------------
+    // SET NPC TO LAYER 1 (PHYSICS + SORTING)
+    // ---------------------------------------------------------
+
+private void SetToLayerPlayerOn()
+{
+    if (!allowLayerChange || player == null)
+        return;
+
+    gameObject.layer = player.gameObject.layer;
+}
+public void DisableDialogueTrigger()
+{
+    if (dialogueTrigger != null)
+        dialogueTrigger.enabled = false;
+}
+    // ---------------------------------------------------------
+    // COLLISION HANDLING (Interaction Only)
+    // ---------------------------------------------------------
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+            HandlePlayerHit();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+            HandlePlayerHit();
+    }
+
+    private void HandlePlayerHit()
+    {
+        if (!allowLayerChange)
+            return; // Only interact when active
+
+        collidedWithPlayer = true;
+        collisionTimer = collisionCooldown;
+
+        movementLocked = true;
+
+        rb.linearVelocity = Vector2.zero;
+        currentState = PlayerState.IDLE;
+        moveDirection = Vector2.zero;
+
+        SetToLayerPlayerOn();
+    }
+
+    // ---------------------------------------------------------
+    // AI STATE MACHINE
+    // ---------------------------------------------------------
+
+    protected override void HandleState()
+    {
+        // COLLISION LOCKOUT (interaction only)
+        if (collidedWithPlayer)
+        {
+            collisionTimer -= Time.deltaTime;
+
+            if (collisionTimer > 0f)
+            {
+                currentState = PlayerState.IDLE;
+                moveDirection = Vector2.zero;
+                return;
+            }
+
+            collidedWithPlayer = false;
+            movementLocked = false;
+        }
+
+        float dist = Vector2.Distance(transform.position, player.position);
+
+        // FAIL‑SAFE: NPC TOO FAR → TELEPORT
+        if (dist > followDistance * 3f)
+        {
+            TransportToPlayer();
+            currentState = PlayerState.MOVE;
+            return;
+        }
+
+        // ATTACK ENEMY
+        if (Vector2.Distance(transform.position, enemy.position) <= attackRange)
+        {
+            currentState = PlayerState.ATTACK;
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        // FOLLOW PLAYER
+        if (dist <= followDistance)
+        {
+            // NEW: Stop before touching the player
+            if (dist <= stopDistance)
+            {
+                currentState = PlayerState.IDLE;
+                moveDirection = Vector2.zero;
+                return;
+            }
+
+            currentState = PlayerState.MOVE;
+
+            Vector2 dir = (player.position - transform.position).normalized;
+            moveDirection = dir;
+            FlipSprite(dir);
+            return;
+        }
+
+        // IDLE / WANDER
+        wanderTimer -= Time.deltaTime;
+
+        if (wanderTimer <= 0f)
+        {
+            wanderTimer = wanderInterval;
+
+            Vector2 randomOffset = Random.insideUnitCircle * wanderRadius;
+            wanderTarget = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0f);
+        }
+
+        Vector2 wanderDir = (wanderTarget - transform.position);
+
+        if (wanderDir.magnitude > 0.2f)
+        {
+            currentState = PlayerState.MOVE;
+            moveDirection = wanderDir.normalized;
+            FlipSprite(moveDirection);
+        }
+        else
+        {
+            currentState = PlayerState.IDLE;
+            moveDirection = Vector2.zero;
+        }
+    }
+
+    // ---------------------------------------------------------
+    // MOVEMENT
+    // ---------------------------------------------------------
+
+    protected override void Move()
+    {
+        if (movementLocked)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        if (currentState == PlayerState.MOVE)
+        {
+            rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+
+    // ---------------------------------------------------------
+    // TELEPORT NEAR PLAYER (DEMO TRICK)
+    // ---------------------------------------------------------
+
+    private void TransportToPlayer()
+    {
+        var playerRenderer = player.GetComponentInChildren<SpriteRenderer>();
+        Vector3 playerSize = playerRenderer.bounds.size;
+
+        float facing = Mathf.Sign(player.localScale.x);
+
+        Vector3 offset = new Vector3(
+            playerSize.x * 1.5f * facing,
+            playerSize.y * 0.5f,
+            0f
+        );
+
+        transform.position = player.position + offset;
+    }
+}
+
+
+/*
     [Header("NPC Settings")]
     [SerializeField] private Transform player;
     [SerializeField] private float waypointTolerance = 0.25f;
@@ -17,10 +248,10 @@ public class NPCMovement : Movement
     [SerializeField] private float attackCooldown = 1f;
 
     [Header("Fallback Settings")]
-    [SerializeField] private Transform fallbackSpot;   // 🔵 ADDED
-    [SerializeField] private float lostPlayerThreshold = 5f; // 🔵 ADDED
+    [SerializeField] private Transform fallbackSpot;   
+    [SerializeField] private float lostPlayerThreshold = 5f; 
 
-    private float lostPlayerTimer = 0f; // 🔵 ADDED
+    private float lostPlayerTimer = 0f; 
 
     private List<Vector3> currentPath;
     private int waypointIndex = 0;
@@ -31,7 +262,6 @@ public class NPCMovement : Movement
     private readonly List<Transform> enemiesInRange = new();
 
     private SortingGroup sg;
-    private int npcGridLayer;
 
     private PlayerState npcState = PlayerState.IDLE;
 
@@ -39,10 +269,7 @@ public class NPCMovement : Movement
     // LIFECYCLE
     // ---------------------------------------------------------
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
+
 
     protected override void Start()
     {
@@ -88,18 +315,16 @@ public class NPCMovement : Movement
         pathRefreshTimer -= Time.deltaTime;
         attackTimer -= Time.deltaTime;
 
-        // 🔵 FLOOR MISMATCH CHECK
-        npcGridLayer = GetGridLayerAtPosition(transform.position);
+        int npcLayer = GetGridLayerAtPosition(transform.position);
         int playerLayer = GetGridLayerAtPosition(player.position);
-        
 
-        if (npcGridLayer != playerLayer)
+        if (npcLayer != playerLayer)
         {
             lostPlayerTimer += Time.deltaTime;
 
             if (lostPlayerTimer >= lostPlayerThreshold)
             {
-                GoToFallbackSpot(); // 🔵 ADDED
+                GoToFallbackSpot(); 
                 return;
             }
         }
@@ -150,11 +375,12 @@ public class NPCMovement : Movement
 
     private void RequestPath()
     {
-        npcGridLayer = GetGridLayerAtPosition(transform.position);
+        int npcLayer = GetGridLayerAtPosition(transform.position);
+        gameObject.layer = GridToUnityLayer(npcLayer);
         SyncSortingLayer();
 
         int playerLayer = GetGridLayerAtPosition(player.position);
-        GridTile npcNode = PathFindingGrid.Instance.GetNodeFromWorld(npcGridLayer, transform.position);
+        GridTile npcNode = PathFindingGrid.Instance.GetNodeFromWorld(npcLayer, transform.position);
         GridTile playerNode = PathFindingGrid.Instance.GetNodeFromWorld(playerLayer, player.position);
         
         if (npcNode == null || playerNode == null)
@@ -190,6 +416,7 @@ public class NPCMovement : Movement
         currentPath = worldPath;
         waypointIndex = 0;
     }
+
     private void FollowPath()
     {
         if (currentPath == null || waypointIndex >= currentPath.Count)
@@ -301,7 +528,7 @@ public class NPCMovement : Movement
     {
         if (sg == null) return;
 
-        int gridLayer = npcGridLayer;
+        int gridLayer = CurrentGridLayer;
         sg.sortingLayerName = "Layer " + gridLayer;
     }
 
@@ -309,7 +536,6 @@ public class NPCMovement : Movement
 
 private void TransportToPlayer()
 {
-    int npcGridLayer = 1;
     // Get player size
     var playerRenderer = player.GetComponentInChildren<SpriteRenderer>();
     Vector3 playerSize = playerRenderer.bounds.size;

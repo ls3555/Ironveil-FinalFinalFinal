@@ -29,6 +29,7 @@ void Awake()
     sleepingSr = sleepingObject.GetComponent<SpriteRenderer>();
     skillTriggerObject.Sleep();
     npcMovement.Sleep();
+    
 }
 
 private IEnumerator WakeStatueAfterDelay()
@@ -38,6 +39,7 @@ private IEnumerator WakeStatueAfterDelay()
     dialogueManager.StartDialogue();
     yield return new WaitForSeconds(4f);
     skillTriggerObject.WakeUp();
+    npcMovement.DisableDialogueTrigger();
     Destroy(sleepingObject);
 }
 

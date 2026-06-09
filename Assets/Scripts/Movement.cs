@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
-
 
 public abstract class Movement : PlayerObj, IDamagable
 {
@@ -14,6 +12,9 @@ public abstract class Movement : PlayerObj, IDamagable
 
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float friction;
+
+    // GLOBAL MOVEMENT LOCK
+    protected bool movementLocked = false;
 
     protected virtual void Awake()
     {
@@ -40,25 +41,24 @@ public abstract class Movement : PlayerObj, IDamagable
 
         HandleState();
         PlayStateAnimation(currentState);
-        
     }
 
     protected virtual void FixedUpdate()
     {
+        if (movementLocked)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         Move();
     }
 
-    // ---------------------------
     // ABSTRACT METHODS
-    // ---------------------------
+    protected abstract void HandleState();
+    protected abstract void Move();
 
-    protected abstract void HandleState();   // Player = input, NPC = AI
-    protected abstract void Move();          // Player = direct velocity, NPC = path
-
-    // ---------------------------
-    // SHARED METHODS
-    // ---------------------------
-
+    // DAMAGE
     public virtual void TakeDamage(float dmg)
     {
         health = Mathf.Clamp(health - dmg, 0, maxHealth);
@@ -72,14 +72,15 @@ public abstract class Movement : PlayerObj, IDamagable
         else if (dir.x < 0)
             _prefabs.transform.localScale  = new Vector3(Mathf.Abs(_prefabs.transform.localScale.x), _prefabs.transform.localScale.y, 1f);
     }
-    
 
     public void SetVelocity(Vector2 vel)
     {
         rb.linearVelocity = vel;
     }
+}
 
-    public int CurrentGridLayer
+
+   /* public int CurrentGridLayer
     {
         get
         {
@@ -97,7 +98,7 @@ public abstract class Movement : PlayerObj, IDamagable
     {
         return gridLayer + 19;
     }
-    protected int GetGridLayerAtPosition(Vector3 worldPos)
+/*     protected int GetGridLayerAtPosition(Vector3 worldPos)
 {
     int highestLayer = -1;
 
@@ -112,6 +113,4 @@ public abstract class Movement : PlayerObj, IDamagable
 
     return highestLayer;
 }
-
-
-}
+ */
