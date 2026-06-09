@@ -214,7 +214,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0019779205, y: 0.2133249}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0.03125, z: 0, w: 0.9375}
     pivot: {x: 0.5, y: 0}
@@ -224,7 +224,7 @@ BoxCollider2D:
     drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5865278, y: 0.36506104}
+  m_Size: {x: 0.5865278, y: 0.34468648}
   m_EdgeRadius: 0
 --- !u!50 &5628018141983903117
 Rigidbody2D:
@@ -287,16 +287,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19af4f4002f1d384b9f2347b212498b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _prefabs: {fileID: 0}
+  _charMS: 0
+  isControlled: 0
+  isAction: 0
   health: 10
   moveSpeed: 5
   friction: 0.5
   opponentTag: 
+  mana: 0
+  attack: 0
+  specAttack: 0
+  healthRegen: 0
+  manaRegen: 0
+  interactRange: 3
   moveAttack: {fileID: 0}
   moveSpecial: {fileID: 5062513424649111300}
   moveDash: {fileID: 1004801532668740058}
   moveUtil: {fileID: 0}
   isMoving: 0
   canMove: 1
+  healthBar: {fileID: 0}
+  healthNum: {fileID: 0}
+  manaBar: {fileID: 0}
+  manaNum: {fileID: 0}
+  attackUI: {fileID: 0}
+  specUI: {fileID: 0}
+  dashUI: {fileID: 0}
+  utilUI: {fileID: 0}
 --- !u!1 &6534966439067383919
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,8 +359,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9671759d0640548a1ea3d3c21e2462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotType: 0
   cooldown: 3
   manaCost: 0
+  spawnDistance: 0.8
+  pickupPrefab: {fileID: 0}
+  skillIcon: {fileID: 0}
   shootForce: 5
   bullet: {fileID: 5565699267098577034, guid: 5dcfbc8e150b36e4db0064724022fe14, type: 3}
 --- !u!1 &8631411804854688813
@@ -422,5 +444,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48025d2338267504da9751c213f2ea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotType: 0
   cooldown: 1
   manaCost: 0
+  spawnDistance: 0.8
+  pickupPrefab: {fileID: 0}
+  skillIcon: {fileID: 0}
+  healParticles: {fileID: 0}
+  healAmt: 0

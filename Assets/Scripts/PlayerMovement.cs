@@ -229,10 +229,16 @@ public class PlayerMovement : PlayerObj, IDamagable
 
     private void FlipSprite(Vector2 direction)
     {
-        if (direction.x > 0f)
-            _prefabs.transform.localScale = new Vector3(-1.2f, 1.2f, 1f); // face right
-        else if (direction.x < 0f)
-            _prefabs.transform.localScale = new Vector3(1.2f, 1.2f, 1f);  // face left
+        float x = transform.localScale.x;
+        float y = transform.localScale.y;
+        float z = transform.localScale.z;
+        if (direction.x > 0f) {
+            if (x > 0) {x *= -1f;}
+            transform.localScale = new Vector3(x, y, z);  // face left
+        } else if (direction.x < 0f) {
+            if (x < 0) {x *= -1f;}
+            transform.localScale = new Vector3(x, y, y); // face right
+        }
     }
 
     private void TryInteract()
@@ -254,6 +260,8 @@ public class PlayerMovement : PlayerObj, IDamagable
     public void TakeDamage(float damage)
     {
         health = Mathf.Clamp(health - damage, 0, maxHealth);
+        _currentState = PlayerState.DAMAGED;
+        PlayStateAnimation(_currentState);
         healthBar.fillAmount = health / maxHealth;
         healthNum.text = Mathf.RoundToInt(health).ToString();
 
