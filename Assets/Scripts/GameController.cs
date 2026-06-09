@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     public GameObject winScreen;
     public GameObject loseScreen;
     public GameObject confirmMenu;
+    private GameObject menuScreen;
+    public GameObject controlsScreen;
+    private GameObject previousMenu;
     public AudioClip onClickClip;
     public AudioSource audioSource;
 
@@ -25,7 +28,7 @@ public class GameController : MonoBehaviour
         Playing,
         Paused,
         Win,
-        Lose
+        Lose,
     }
 
     private void Awake()
@@ -61,6 +64,7 @@ public class GameController : MonoBehaviour
     {
         StartCoroutine(fader.FadeIn());
         confirmMenu.SetActive(false);
+        controlsScreen.SetActive(false);
         SetState(GameState.Playing);
     }
 
@@ -148,7 +152,8 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void ClickAndLoadMainMenu(){
+    public void ClickAndLoadMainMenu()
+    {
         audioSource.PlayOneShot(onClickClip);
         Time.timeScale = 1;
         Invoke("LoadMainMenu", 0.3f);
@@ -165,7 +170,38 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void BackToPauseMenu(){
+    public void GotoControlsScreen()
+    {
+        // remember where we came from
+        if (pauseScreen.activeSelf) previousMenu = pauseScreen;
+        else if (winScreen.activeSelf) previousMenu = winScreen;
+        else if (loseScreen.activeSelf) previousMenu = loseScreen;
+        else previousMenu = pauseScreen; // fallback
+
+        pauseScreen.SetActive(false);
+        winScreen.SetActive(false);
+        loseScreen.SetActive(false);
+        confirmMenu.SetActive(false);
+
+        controlsScreen.SetActive(true);
+    }
+
+    public void BackFromControls()
+    {
+        controlsScreen.SetActive(false);
+
+        if (previousMenu != null)
+        {
+            previousMenu.SetActive(true);
+        }
+        else
+        {
+            pauseScreen.SetActive(true);
+        }
+    }
+
+    public void BackToPauseMenu()
+    {
         switch (currentState)
         {
             case GameState.Paused:
@@ -182,7 +218,8 @@ public class GameController : MonoBehaviour
                 break;
         }
     }
-    public void GoToConfirmMenu(){
+    public void GoToConfirmMenu()
+    {
         switch (currentState)
         {
             case GameState.Paused:
@@ -200,7 +237,8 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void playClickSound(){
+    public void playClickSound()
+    {
         audioSource.PlayOneShot(onClickClip);
     }
 
