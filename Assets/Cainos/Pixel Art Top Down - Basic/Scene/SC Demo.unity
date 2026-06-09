@@ -51955,7 +51955,7 @@ PrefabInstance:
     - target: {fileID: 8400180742580931544, guid: b32146e8056cc45df9aaa90d0c2b608a,
         type: 3}
       propertyPath: health
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8406503891324236073, guid: b32146e8056cc45df9aaa90d0c2b608a,
         type: 3}
@@ -52066,7 +52066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea0ca66dce6d4ca0bc8dc498e5b88f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 100
   moveSpeed: 2
   friction: 0.8
   opponentTag: Player
@@ -52106,7 +52106,6 @@ MonoBehaviour:
   titleCanvasGroup: {fileID: 1244017974}
   enemy: {fileID: 386457037}
   player: {fileID: 1622224631}
-  uiAnchorLevel2: {fileID: 1045639703}
   uiOffset: {x: 0, y: 2, z: 0}
 --- !u!95 &386457046
 Animator:
@@ -114285,7 +114284,6 @@ MonoBehaviour:
   titleCanvasGroup: {fileID: 1244017974}
   enemy: {fileID: 0}
   player: {fileID: 1622224631}
-  uiAnchorLevel2: {fileID: 0}
   uiOffset: {x: 0, y: 2, z: 0}
 --- !u!61 &957218419
 BoxCollider2D:
@@ -124866,12 +124864,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1045639703 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7144470620010066349, guid: f1900ab525c8c024681d552e13586c6f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3250854015981016554}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1046677998
 GameObject:
   m_ObjectHideFlags: 0
@@ -153698,7 +153690,6 @@ MonoBehaviour:
   titleCanvasGroup: {fileID: 1244017974}
   enemy: {fileID: 0}
   player: {fileID: 1622224631}
-  uiAnchorLevel2: {fileID: 0}
   uiOffset: {x: 0, y: 2, z: 0}
 --- !u!114 &1241772099 stripped
 MonoBehaviour:
