@@ -20,6 +20,7 @@ public class EnemyController : EnemyUI
     bool canAttack = true;
     float idleTimer = 0f;
     float idleWaitTime = 2f;
+    public event System.Action OnEnemyDied;
 
     void Start()
     {
@@ -149,13 +150,18 @@ public class EnemyController : EnemyUI
         animator.SetTrigger("Attack");
     }
 
-    public void Die()
-    {
-        animator.SetTrigger("Die");
-        animator.SetBool("isAlive", false);
-        rigidBody.linearVelocity = Vector2.zero;
-        enabled = false;
-    }
+public void Die()
+{
+
+    animator.SetTrigger("Die");
+    animator.SetBool("isAlive", false);
+    rigidBody.linearVelocity = Vector2.zero;
+
+    OnEnemyDied?.Invoke();   // <-- NEW
+
+    enabled = false;
+}
+
 
     public void TakeHit()
     {

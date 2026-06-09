@@ -51952,6 +51952,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8400180742580931544, guid: b32146e8056cc45df9aaa90d0c2b608a,
+        type: 3}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8406503891324236073, guid: b32146e8056cc45df9aaa90d0c2b608a,
         type: 3}
       propertyPath: m_Layer
@@ -51979,6 +51984,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 386457037}
+    - targetCorrespondingSourceObject: {fileID: 4243236466366397507, guid: b32146e8056cc45df9aaa90d0c2b608a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 386457045}
+    - targetCorrespondingSourceObject: {fileID: 4243236466366397507, guid: b32146e8056cc45df9aaa90d0c2b608a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 386457046}
   m_SourcePrefab: {fileID: 100100000, guid: b32146e8056cc45df9aaa90d0c2b608a, type: 3}
 --- !u!1 &386457029 stripped
 GameObject:
@@ -52053,7 +52066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea0ca66dce6d4ca0bc8dc498e5b88f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1
   moveSpeed: 2
   friction: 0.8
   opponentTag: Player
@@ -52070,6 +52083,53 @@ MonoBehaviour:
   attackDist: 1.5
   damage: 5
   chaseDist: 10
+--- !u!114 &386457045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386457029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e144c01a76642d7a6213f39f786d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillMetricPanel: {fileID: 1479989316}
+  skillManager: {fileID: 677609947}
+  skillUIPanel: {fileID: 203899711}
+  titlePanel: {fileID: 151404123}
+  skillType: S1
+  fadeOutEffect: {fileID: 972762668}
+  skillMetricCanvasGroup: {fileID: 1479989321}
+  skillUICanvasGroup: {fileID: 1172214241}
+  titleCanvasGroup: {fileID: 1244017974}
+  enemy: {fileID: 386457037}
+  player: {fileID: 1622224631}
+  uiAnchorLevel2: {fileID: 1045639703}
+  uiOffset: {x: 0, y: 2, z: 0}
+--- !u!95 &386457046
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386457029}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9358c226bb09e24da9c5f7064768810, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &388191260
 GameObject:
   m_ObjectHideFlags: 0
@@ -114223,6 +114283,10 @@ MonoBehaviour:
   skillMetricCanvasGroup: {fileID: 1479989321}
   skillUICanvasGroup: {fileID: 1172214241}
   titleCanvasGroup: {fileID: 1244017974}
+  enemy: {fileID: 0}
+  player: {fileID: 1622224631}
+  uiAnchorLevel2: {fileID: 0}
+  uiOffset: {x: 0, y: 2, z: 0}
 --- !u!61 &957218419
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124802,6 +124866,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1045639703 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7144470620010066349, guid: f1900ab525c8c024681d552e13586c6f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3250854015981016554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1046677998
 GameObject:
   m_ObjectHideFlags: 0
@@ -153626,6 +153696,10 @@ MonoBehaviour:
   skillMetricCanvasGroup: {fileID: 1479989321}
   skillUICanvasGroup: {fileID: 1172214241}
   titleCanvasGroup: {fileID: 1244017974}
+  enemy: {fileID: 0}
+  player: {fileID: 1622224631}
+  uiAnchorLevel2: {fileID: 0}
+  uiOffset: {x: 0, y: 2, z: 0}
 --- !u!114 &1241772099 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2440844624711060802, guid: c5bdca1933fde624698bb8c6d6daa44b,
@@ -153950,7 +154024,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -153966,8 +154040,8 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_Camera: {fileID: 519420031}
+  m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -153976,8 +154050,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1277284449
+  m_SortingOrder: 500
   m_TargetDisplay: 0
 --- !u!224 &1244017973
 RectTransform:
