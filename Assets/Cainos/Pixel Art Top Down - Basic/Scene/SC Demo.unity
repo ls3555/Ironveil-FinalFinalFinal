@@ -42055,11 +42055,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9046649981217760085, guid: 076e70130deb941259c717e22f40be8d,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1380542768}
+      addedObject: {fileID: 1380542769}
     - targetCorrespondingSourceObject: {fileID: 9046649981217760085, guid: 076e70130deb941259c717e22f40be8d,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1380542769}
+      addedObject: {fileID: 1380542772}
+    - targetCorrespondingSourceObject: {fileID: 9046649981217760085, guid: 076e70130deb941259c717e22f40be8d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1380542773}
   m_SourcePrefab: {fileID: 100100000, guid: 076e70130deb941259c717e22f40be8d, type: 3}
 --- !u!1 &355961107
 GameObject:
@@ -170356,25 +170360,7 @@ MonoBehaviour:
   requiredTag: NPCItem
   wandFloat: {fileID: 1337304862}
   dialogueManager: {fileID: 2056599598}
-  npcMovement: {fileID: 0}
---- !u!114 &1380542768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380542751}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3191900482a5f47d0b8712eea8babaaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1622224631}
-  moveSpeed: 2
-  movingMass: 3
-  originalMass: 9999
-  stopDistance: 1.5
-  _prefabs: {fileID: 0}
+  npcMovement: {fileID: 1380542772}
 --- !u!58 &1380542769
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170411,6 +170397,48 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.1}
   m_Radius: 0.18
+--- !u!114 &1380542772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380542751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a143c22e15dca4e2495c85564e04263a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabs: {fileID: 0}
+  _charMS: 3
+  isControlled: 0
+  isAction: 0
+  health: 10
+  moveSpeed: 4
+  friction: 0.1
+  player: {fileID: 1622224631}
+  waypointTolerance: 0.25
+  pathRefreshRate: 0.4
+  attackRange: 1.5
+  attackDamage: 10
+  attackCooldown: 1
+  fallbackSpot: {fileID: 1622224631}
+  lostPlayerThreshold: 1.5
+--- !u!114 &1380542773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380542751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8a3f2ec258d4ec098c8128c2c1b24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer1SortingLayer: Layer 1
+  layer2SortingLayer: Layer 2
+  layer3SortingLayer: Layer 3
 --- !u!1 &1381242547
 GameObject:
   m_ObjectHideFlags: 0
@@ -198395,9 +198423,11 @@ MonoBehaviour:
   cooldown: 15
   manaCost: 10
   spawnDistance: 0
+  cooldownRemaining: 0
+  cooldownDuration: 1
+  abilityIcon: {fileID: 0}
   pickupPrefab: {fileID: 5857731634468011596, guid: 05b57eccb71082846a4b0815a2577fbd,
     type: 3}
-  skillIcon: {fileID: 21300000, guid: 4cff4ef634be5d64e9dda2bee5118ed1, type: 3}
   healParticles: {fileID: 2840773040005587486, guid: e773efacd65bb3448858ef3a205dff5a,
     type: 3}
   healAmt: 5
@@ -198417,9 +198447,11 @@ MonoBehaviour:
   cooldown: 3
   manaCost: 5
   spawnDistance: 0.8
+  cooldownRemaining: 0
+  cooldownDuration: 1
+  abilityIcon: {fileID: 0}
   pickupPrefab: {fileID: 4663279428723142435, guid: 63de596462476444eb8304c55ac3f0b7,
     type: 3}
-  skillIcon: {fileID: 21300000, guid: caccc09442e90904d94b08c1ae00b653, type: 3}
   shootForce: 5
   bullet: {fileID: 5565699267098577034, guid: 5dcfbc8e150b36e4db0064724022fe14, type: 3}
 --- !u!114 &1622224641
@@ -198438,9 +198470,11 @@ MonoBehaviour:
   cooldown: 0.1
   manaCost: 0
   spawnDistance: 0.8
+  cooldownRemaining: 0
+  cooldownDuration: 1
+  abilityIcon: {fileID: 0}
   pickupPrefab: {fileID: 7024416200842092576, guid: 643150cadc17d9e4e8b1e3bc236a77f2,
     type: 3}
-  skillIcon: {fileID: 21300000, guid: 8cc7ca0e29ced7b4f84e8c4ef7deb28b, type: 3}
   slash: {fileID: 9024078018694622132, guid: 134dc30834d0bc64e877f87f1b86a8f9, type: 3}
 --- !u!114 &1622224642
 MonoBehaviour:
@@ -198458,9 +198492,11 @@ MonoBehaviour:
   cooldown: 1
   manaCost: 0
   spawnDistance: 0.8
+  cooldownRemaining: 0
+  cooldownDuration: 1
+  abilityIcon: {fileID: 0}
   pickupPrefab: {fileID: 6152348764895780131, guid: c6bd9a3fc8def49409be52ef0d041c79,
     type: 3}
-  skillIcon: {fileID: 21300000, guid: db24189abde247144b83fb23e63c9464, type: 3}
   dashSpeed: 32
   dashTime: 0.2
 --- !u!114 &1622224648

@@ -18,7 +18,7 @@ public class WandNPCQuest : MonoBehaviour
     [SerializeField] private string requiredTag = "NPCItem";
     [SerializeField] private WandFloat wandFloat;
     [SerializeField] private NPCToPlayerDialogueManager dialogueManager;
-    [SerializeField] private NPCMoveToPlayer npcMovement;
+    [SerializeField] private NPCMovement npcMovement;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -28,14 +28,17 @@ void Awake()
     sleepingRb = sleepingObject.GetComponent<Rigidbody2D>();
     sleepingSr = sleepingObject.GetComponent<SpriteRenderer>();
     skillTriggerObject.Sleep();
+    npcMovement.Sleep();
 }
 
 private IEnumerator WakeStatueAfterDelay()
 {
     yield return new WaitForSeconds(4f);
-    //wandPanel.SetActive(false); 
+
+    dialogueManager.StartDialogue();
+    yield return new WaitForSeconds(4f);
     skillTriggerObject.WakeUp();
-    //Destroy(sleepingObject);
+    Destroy(sleepingObject);
 }
 
 private void Start()
@@ -77,11 +80,7 @@ private void Start()
             //Wand and NPC interacted
             sleepingSr.enabled = false;
             weaponSprite.enabled = true; // Show weapon
-            //npcMovement.StartMoving();
-            dialogueManager.StartDialogue();
-
-
-            //wandPanel.SetActive(true); // Tell Player what she's doing
+            npcMovement.WakeUp();
             StartCoroutine(WakeStatueAfterDelay());
 
             

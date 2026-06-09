@@ -8,16 +8,10 @@ using TMPro;
 using UnityEngine.Rendering;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement : PlayerObj, IDamagable
-{
-    [Header("Entity Settings")]
+public class PlayerMovement : Movement
+{ [Header("Entity Settings")]
 
     protected SpriteRenderer spriteRenderer;
-    public float health;
-    protected float maxHealth;
-    [SerializeField]protected float moveSpeed;
-    [SerializeField]protected float friction;
-    protected Vector2 moveDirection;
     public string opponentTag;
     public System.Action OnDeath;
 
@@ -55,9 +49,6 @@ public class PlayerMovement : PlayerObj, IDamagable
     private Vector2 lastMoveDir = Vector2.right;
     public bool isMoving;
     public bool canMove = true;
-    state actionState;
-    //private Animator animator;
-
     [SerializeField] private Image healthBar;
     [SerializeField] private TMP_Text healthNum;
     [SerializeField] private Image manaBar;
@@ -68,45 +59,20 @@ public class PlayerMovement : PlayerObj, IDamagable
     [SerializeField] private CooldownUI dashUI;
     [SerializeField] private CooldownUI utilUI;
 
+    state actionState;
 
-    protected void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Instance = this;
+
         maxHealth = health;
         maxMana = mana;
     }
 
-    override protected void Start()
+    protected override void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
-
-        // Rigidbody2D setup — prevents tipping/rotation and keeps it 2D-correct
-        _rb.gravityScale = 0f;
-        _rb.freezeRotation = true;
-        _rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-
-        if (_prefabs == null)
-            _prefabs = GetComponentInChildren<SPUM_Prefabs>();
-
-        if (_prefabs == null)
-        {
-            Debug.LogError($"[PlayerObj] No SPUM_Prefabs found on {name} or its children.");
-            return;
-        }
-
-        if (_prefabs._anim == null)
-        {
-            Debug.LogError($"[PlayerObj] SPUM_Prefabs on {name} has no _anim assigned.");
-            return;
-        }
-
-        _prefabs.OverrideControllerInit();
-
-        foreach (PlayerState state in Enum.GetValues(typeof(PlayerState)))
-            IndexPair[state] = 0;
-
-        Debug.Log("[PlayerObj] SPUM StateAnimationPairs keys: " +
-            string.Join(", ", _prefabs.StateAnimationPairs.Keys));
+        base.Start();
 
         input = GameController.Input;
         moveAction = input.Player.Move;
@@ -118,75 +84,83 @@ public class PlayerMovement : PlayerObj, IDamagable
         interactAction = input.Player.Interact;
         healthNum.text = Mathf.RoundToInt(health).ToString();
         manaNum.text = Mathf.RoundToInt(mana).ToString();
-
-        _initialized = true;
     }
 
-    void Update()
+    // ---------------------------------------------------------
+    // OVERRIDES FROM Movement.cs
+    // ---------------------------------------------------------
+
+    protected override void HandleState()
     {
-        if (!_initialized) return;
-
-        // Y-position drives Z so sprites closer to the bottom of screen render on top
-        transform.position = new Vector3(
-            transform.position.x,
-            transform.position.y,
-            transform.position.y * -0.01f
-        );
-
         if (isAction) return;
 
         if (isControlled)
         {
+            moveDirection = canMove ? moveAction.ReadValue<Vector2>().normalized : Vector2.zero;
+            isMoving = moveDirection.sqrMagnitude > 0.01f;
 
-            if (canMove)
-                {
-                    moveDirection = moveAction.ReadValue<Vector2>().normalized;
-                }
-                else
-                {
-                    moveDirection = Vector2.zero;
-                }
-                isMoving = moveDirection.magnitude > 0;
-
-
-                if (moveDirection.sqrMagnitude > 0.01f)
-                {
-                    _currentState = PlayerState.MOVE;
-                    FlipSprite(moveDirection);
-                }
-                else
-                {
-                    _currentState = PlayerState.IDLE;
-                }
+            if (isMoving)
+            {
+                currentState = PlayerState.MOVE;
+                FlipSprite(moveDirection);
             }
             else
             {
-                _currentState = PlayerState.IDLE;
+                currentState = PlayerState.IDLE;
             }
+        }
+        else
+        {
+            currentState = PlayerState.IDLE;
+        }
 
-            switch (actionState)
-            {
-                case state.idle:
-                    if (interactAction.WasPressedThisFrame()) { TryInteract(); }
-                    if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute());  _currentState = PlayerState.ATTACK; }
-                    if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute());  _currentState = PlayerState.ATTACK;}
-                    if (dodgeAction.WasPressedThisFrame() && moveDash != null) { StartCoroutine(moveDash.Execute()); }
-                    if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
-                    break;
-                case state.attacking:
-                    if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
-                    break;
-                case state.dashing:
-                    if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute()); }
-                    if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute()); }
-                    if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
-                    break;
-                case state.stun:
-                    break;
-            }
-           
-        PlayStateAnimation(_currentState);
+        // Ability state machine
+        switch (actionState)
+        {
+            case state.idle:
+                if (interactAction.WasPressedThisFrame()) TryInteract();
+                if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute()); currentState = PlayerState.ATTACK; }
+                if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute()); currentState = PlayerState.ATTACK; }
+                if (dodgeAction.WasPressedThisFrame() && moveDash != null) StartCoroutine(moveDash.Execute());
+                if (utilAction.WasPressedThisFrame() && moveUtil != null) StartCoroutine(moveUtil.Execute());
+                break;
+            case state.attacking:
+                if (utilAction.WasPressedThisFrame() && moveUtil != null) StartCoroutine(moveUtil.Execute());
+                break;
+            case state.dashing:
+                if (attackAction.WasPressedThisFrame() && moveAttack != null) StartCoroutine(moveAttack.Execute());
+                if (specialAction.WasPressedThisFrame() && moveSpecial != null) StartCoroutine(moveSpecial.Execute());
+                if (utilAction.WasPressedThisFrame() && moveUtil != null) StartCoroutine(moveUtil.Execute());
+                break;
 
+            case state.stun:
+                break;
+        }
+
+        RegenStats();
+    }
+
+    protected override void Move()
+    {
+        if (!_initialized) return;
+        if (actionState == state.dashing)
+        {
+            rb.linearVelocity -= rb.linearVelocity * friction;
+            return;
+        }
+
+        if (moveDirection.magnitude > 0)
+            rb.linearVelocity = moveDirection * moveSpeed;
+        else
+            rb.linearVelocity -= rb.linearVelocity * friction;
+    }
+
+    // ---------------------------------------------------------
+    // PLAYER-SPECIFIC METHODS
+    // ---------------------------------------------------------
+
+    private void RegenStats()
+    {
         if (health < maxHealth)
         {
             health += healthRegen * Time.deltaTime;
@@ -204,43 +178,6 @@ public class PlayerMovement : PlayerObj, IDamagable
         }
     }
 
-    void FixedUpdate() {Move();}
-
-    protected void Move()
-    {
-        if (!_initialized) return;
-
-       if (actionState == state.dashing)
-        {
-            _rb.linearVelocity -= _rb.linearVelocity * friction;
-            return;
-        }
-
-        if (moveDirection.magnitude > 0)
-        {
-            _rb.linearVelocity = moveDirection * moveSpeed;
-        }
-        else
-        {
-            _rb.linearVelocity -= _rb.linearVelocity * friction;
-        }
-    }
-
-
-    private void FlipSprite(Vector2 direction)
-    {
-        float x = transform.localScale.x;
-        float y = transform.localScale.y;
-        float z = transform.localScale.z;
-        if (direction.x > 0f) {
-            if (x > 0) {x *= -1f;}
-            transform.localScale = new Vector3(x, y, z);  // face left
-        } else if (direction.x < 0f) {
-            if (x < 0) {x *= -1f;}
-            transform.localScale = new Vector3(x, y, y); // face right
-        }
-    }
-
     private void TryInteract()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, interactRange);
@@ -248,7 +185,6 @@ public class PlayerMovement : PlayerObj, IDamagable
         foreach (Collider2D hit in hits)
         {
             IInteractable interactable = hit.transform.GetComponent<IInteractable>();
-
             if (interactable != null)
             {
                 interactable.Interact(this);
@@ -257,20 +193,14 @@ public class PlayerMovement : PlayerObj, IDamagable
         }
     }
 
-    public void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
-        health = Mathf.Clamp(health - damage, 0, maxHealth);
-        _currentState = PlayerState.DAMAGED;
-        PlayStateAnimation(_currentState);
+        base.TakeDamage(damage);
+
         healthBar.fillAmount = health / maxHealth;
         healthNum.text = Mathf.RoundToInt(health).ToString();
 
         GetComponent<PlayerAudio>()?.EnterCombat();
-
-        if (health <= 0)
-            _currentState = PlayerState.DEATH;
-        else
-            _currentState = PlayerState.DAMAGED;
     }
 
     public void HealDamage(float damage)
@@ -280,7 +210,66 @@ public class PlayerMovement : PlayerObj, IDamagable
         healthNum.text = Mathf.RoundToInt(health).ToString();
     }
 
-    public float GetMana()
+    public Vector2 CalcShootDir()
+    {
+        Vector2 screenPos = lookAction.ReadValue<Vector2>();
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+        return ((Vector2)worldPos - (Vector2)transform.position).normalized;
+    }
+
+    public void EquipMove(PlayerMove movePrefab)
+    {
+        // unchanged — this is purely player-specific
+        PlayerMove newMove = Instantiate(movePrefab);
+        PlayerMove oldMove = null;
+
+        switch (newMove.slotType)
+        {
+            case MoveSlotType.Attack:
+                oldMove = moveAttack;
+                moveAttack = newMove;
+                attackUI.setMove(moveAttack);
+                break;
+
+            case MoveSlotType.Special:
+                oldMove = moveSpecial;
+                moveSpecial = newMove;
+                specUI.setMove(moveSpecial);
+                break;
+
+            case MoveSlotType.Dash:
+                oldMove = moveDash;
+                moveDash = newMove;
+                dashUI.setMove(moveDash);
+                break;
+
+            case MoveSlotType.Util:
+                oldMove = moveUtil;
+                moveUtil = newMove;
+                utilUI.setMove(moveUtil);
+                break;
+        }
+
+        if (oldMove != null)
+        {
+            GameObject pickup = Instantiate(oldMove.pickupPrefab, transform.position + transform.forward, Quaternion.identity);
+            SpriteRenderer sr = pickup.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.sortingLayerName = GetComponent<SortingGroup>().sortingLayerName;
+            }
+
+            if (oldMove.gameObject != gameObject)
+            {
+                Destroy(oldMove.gameObject);
+            }
+        }
+
+        newMove.transform.SetParent(transform);
+        newMove.transform.localPosition = Vector3.zero;
+    }
+    
+public float GetMana()
     {
         return mana;
     }
@@ -331,73 +320,6 @@ public class PlayerMovement : PlayerObj, IDamagable
         actionState = newState;
     }
 
-    public Vector2 CalcShootDir()
-    {
-        //Debug.Log("INSIDE CALC MousePos: " + GetMousePos());
-        Vector2 shootDirection = (GetMousePos() - new Vector2(transform.position.x, transform.position.y)).normalized;
-        //Debug.Log("shootDirection: " + GetMousePos());
-        //changes to player rotation based on mouse pos
-        //player.transform.eulerAngles = new Vector3(0, 0, -90 + Mathf.Atan2(shootDirection.y, shootDirection.x) * 180 / Mathf.PI);
-        return shootDirection;
-    }
-
-    public Vector2 GetMousePos()
-    {
-        Vector2 screenPos = lookAction.ReadValue<Vector2>();
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-        return new Vector2(worldPos.x, worldPos.y);
-    }
-
-    public void EquipMove(PlayerMove movePrefab)
-    {
-        PlayerMove newMove = Instantiate(movePrefab);
-        PlayerMove oldMove = null;
-
-        switch (newMove.slotType)
-        {
-            case MoveSlotType.Attack:
-                oldMove = moveAttack;
-                moveAttack = newMove;
-                attackUI.setMove(moveAttack);
-                break;
-
-            case MoveSlotType.Special:
-                oldMove = moveSpecial;
-                moveSpecial = newMove;
-                specUI.setMove(moveSpecial);
-                break;
-
-            case MoveSlotType.Dash:
-                oldMove = moveDash;
-                moveDash = newMove;
-                dashUI.setMove(moveDash);
-                break;
-
-            case MoveSlotType.Util:
-                oldMove = moveUtil;
-                moveUtil = newMove;
-                utilUI.setMove(moveUtil);
-                break;
-        }
-
-        if (oldMove != null)
-        {
-            GameObject pickup = Instantiate(oldMove.pickupPrefab, transform.position + transform.forward, Quaternion.identity);
-            SpriteRenderer sr = pickup.GetComponent<SpriteRenderer>();
-            if (sr != null)
-            {
-                sr.sortingLayerName = GetComponent<SortingGroup>().sortingLayerName;
-            }
-
-            if (oldMove.gameObject != gameObject)
-            {
-                Destroy(oldMove.gameObject);
-            }
-        }
-
-        newMove.transform.SetParent(transform);
-        newMove.transform.localPosition = Vector3.zero;
-    }
 
     public float getAttackStat()
     {
@@ -409,4 +331,5 @@ public class PlayerMovement : PlayerObj, IDamagable
     {
         return specAttack;
     }
+
 }
