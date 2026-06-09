@@ -12,6 +12,14 @@ public class PlayerMovement : Movement
 { [Header("Entity Settings")]
 
     protected SpriteRenderer spriteRenderer;
+<<<<<<< HEAD
+    public float health;
+    protected float maxHealth;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float friction;
+    protected Vector2 moveDirection;
+=======
+>>>>>>> test-merging
     public string opponentTag;
     public System.Action OnDeath;
 
@@ -99,9 +107,26 @@ public class PlayerMovement : Movement
             moveDirection = canMove ? moveAction.ReadValue<Vector2>().normalized : Vector2.zero;
             isMoving = moveDirection.sqrMagnitude > 0.01f;
 
+<<<<<<< HEAD
+            if (canMove)
+            {
+                moveDirection = moveAction.ReadValue<Vector2>().normalized;
+            }
+            else
+            {
+                moveDirection = Vector2.zero;
+            }
+            isMoving = moveDirection.magnitude > 0;
+
+
+            if (moveDirection.sqrMagnitude > 0.01f)
+            {
+                _currentState = PlayerState.MOVE;
+=======
             if (isMoving)
             {
                 currentState = PlayerState.MOVE;
+>>>>>>> test-merging
                 FlipSprite(moveDirection);
             }
             else
@@ -111,6 +136,33 @@ public class PlayerMovement : Movement
         }
         else
         {
+<<<<<<< HEAD
+            _currentState = PlayerState.IDLE;
+        }
+
+        switch (actionState)
+        {
+            case state.idle:
+                if (interactAction.WasPressedThisFrame()) { TryInteract(); }
+                if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute()); _currentState = PlayerState.ATTACK; }
+                if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute()); _currentState = PlayerState.ATTACK; }
+                if (dodgeAction.WasPressedThisFrame() && moveDash != null) { StartCoroutine(moveDash.Execute()); }
+                if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
+                break;
+            case state.attacking:
+                if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
+                break;
+            case state.dashing:
+                if (attackAction.WasPressedThisFrame() && moveAttack != null) { StartCoroutine(moveAttack.Execute()); }
+                if (specialAction.WasPressedThisFrame() && moveSpecial != null) { StartCoroutine(moveSpecial.Execute()); }
+                if (utilAction.WasPressedThisFrame() && moveUtil != null) { StartCoroutine(moveUtil.Execute()); }
+                break;
+            case state.stun:
+                break;
+        }
+
+        PlayStateAnimation(_currentState);
+=======
             currentState = PlayerState.IDLE;
         }
 
@@ -132,6 +184,7 @@ public class PlayerMovement : Movement
                 if (specialAction.WasPressedThisFrame() && moveSpecial != null) StartCoroutine(moveSpecial.Execute());
                 if (utilAction.WasPressedThisFrame() && moveUtil != null) StartCoroutine(moveUtil.Execute());
                 break;
+>>>>>>> test-merging
 
             case state.stun:
                 break;
@@ -178,6 +231,40 @@ public class PlayerMovement : Movement
         }
     }
 
+<<<<<<< HEAD
+    void FixedUpdate() { Move(); }
+
+    protected void Move()
+    {
+        if (!_initialized) return;
+
+        if (actionState == state.dashing)
+        {
+            _rb.linearVelocity -= _rb.linearVelocity * friction;
+            return;
+        }
+
+        if (moveDirection.magnitude > 0)
+        {
+            _rb.linearVelocity = moveDirection * moveSpeed;
+        }
+        else
+        {
+            _rb.linearVelocity -= _rb.linearVelocity * friction;
+        }
+    }
+
+
+    private void FlipSprite(Vector2 direction)
+    {
+        if (direction.x > 0f)
+            _prefabs.transform.localScale = new Vector3(-1.2f, 1.2f, 1f); // face right
+        else if (direction.x < 0f)
+            _prefabs.transform.localScale = new Vector3(1.2f, 1.2f, 1f);  // face left
+    }
+
+=======
+>>>>>>> test-merging
     private void TryInteract()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, interactRange);
@@ -201,6 +288,25 @@ public class PlayerMovement : Movement
         healthNum.text = Mathf.RoundToInt(health).ToString();
 
         GetComponent<PlayerAudio>()?.EnterCombat();
+<<<<<<< HEAD
+
+        if (health <= 0)
+        {
+            _currentState = PlayerState.DEATH;
+            canMove = false;
+            SetVelocity(Vector2.zero);
+            StartCoroutine(DeathDelay());
+        }
+        else
+            _currentState = PlayerState.DAMAGED;
+=======
+>>>>>>> test-merging
+    }
+
+    private IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        GameController.Instance.PlayerDied();
     }
 
     public void HealDamage(float damage)
