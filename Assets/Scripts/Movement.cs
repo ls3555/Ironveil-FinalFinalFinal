@@ -16,6 +16,8 @@ public abstract class Movement : PlayerObj, IDamagable
     // GLOBAL MOVEMENT LOCK
     protected bool movementLocked = false;
 
+    protected bool isAsleep = false;
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,6 +33,7 @@ public abstract class Movement : PlayerObj, IDamagable
     protected virtual void Update()
     {
         if (!_initialized) return;
+        if (isAsleep) return;
 
         // Z‑sorting
         transform.position = new Vector3(

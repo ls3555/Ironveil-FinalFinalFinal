@@ -150,17 +150,17 @@ public class EnemyController : EnemyUI
         animator.SetTrigger("Attack");
     }
 
-public void Die()
-{
+    public void Die()
+    {
 
-    animator.SetTrigger("Die");
-    animator.SetBool("isAlive", false);
-    rigidBody.linearVelocity = Vector2.zero;
+        animator.SetTrigger("Die");
+        animator.SetBool("isAlive", false);
+        rigidBody.linearVelocity = Vector2.zero;
 
-    OnEnemyDied?.Invoke();   // <-- NEW
+        OnEnemyDied?.Invoke();   // <-- NEW
 
-    enabled = false;
-}
+        enabled = false;
+    }
 
 
     public void TakeHit()

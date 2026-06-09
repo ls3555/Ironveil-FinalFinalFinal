@@ -42055,11 +42055,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9046649981217760085, guid: 076e70130deb941259c717e22f40be8d,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1380542767}
+      addedObject: {fileID: 1380542772}
     - targetCorrespondingSourceObject: {fileID: 9046649981217760085, guid: 076e70130deb941259c717e22f40be8d,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1380542772}
+      addedObject: {fileID: 1380542767}
     - targetCorrespondingSourceObject: {fileID: 9046649981217760085, guid: 076e70130deb941259c717e22f40be8d,
         type: 3}
       insertIndex: -1
@@ -165150,7 +165150,7 @@ GameObject:
   - component: {fileID: 1337304862}
   - component: {fileID: 1337304864}
   - component: {fileID: 1337304863}
-  m_Layer: 21
+  m_Layer: 20
   m_Name: R_Weapon (1)
   m_TagString: NPCItem
   m_Icon: {fileID: 0}
@@ -165294,7 +165294,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337304859}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -165310,9 +165310,9 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 2
+  m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!4 &1337886184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3308568197131118597, guid: f7f68efd2a437764a9f411ef9aaad2ab,
@@ -170321,7 +170321,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 99999
+  m_Mass: 9999
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -170332,9 +170332,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &1380542758
 BoxCollider2D:
@@ -170436,6 +170436,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sleepingObject: {fileID: 1337304859}
+  sleepingRb: {fileID: 1337304864}
+  sleepingSr: {fileID: 1337304861}
   npc: {fileID: 1380542751}
   weaponSprite: {fileID: 1185914580}
   breakableObject: {fileID: 988138148}
@@ -170470,7 +170472,7 @@ MonoBehaviour:
   attackRange: 1.5
   wanderRadius: 2
   wanderInterval: 3
-  dialogueTrigger: {fileID: 0}
+  dialogueTrigger: {fileID: 1380542758}
 --- !u!114 &1380542773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198854,6 +198856,22 @@ MonoBehaviour:
   specUI: {fileID: 2038617561}
   dashUI: {fileID: 2038617560}
   utilUI: {fileID: 2038617561}
+--- !u!114 &1622224660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595857304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ba1227b45894e71b2bccaabc54001c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabs: {fileID: 0}
+  _charMS: 10
+  isControlled: 0
+  isAction: 0
 --- !u!1 &1622312049
 GameObject:
   m_ObjectHideFlags: 0
@@ -259214,6 +259232,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1622224648}
+    - targetCorrespondingSourceObject: {fileID: 5628018141983903104, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1622224660}
   m_SourcePrefab: {fileID: 100100000, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
 --- !u!1001 &5724624599686979093
 PrefabInstance:

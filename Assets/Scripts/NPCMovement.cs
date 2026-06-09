@@ -27,7 +27,7 @@ public class NPCMovement : Movement
     [SerializeField] private Collider2D dialogueTrigger;
 
     
-        protected override void Awake()
+    protected override void Awake()
     {
         base.Awake();
         dialogueTrigger = GetComponent<Collider2D>();
@@ -37,9 +37,9 @@ public class NPCMovement : Movement
     // PUBLIC CONTROL
     // ---------------------------------------------------------
 
-    public void WakeUp()
+    public void TurnOn()
     {
-        enabled = true;
+        isAsleep = false;
         allowLayerChange = true;
 
         TransportToPlayer();
@@ -49,11 +49,15 @@ public class NPCMovement : Movement
         SetToLayerPlayerOn();
     }
 
-    public void Sleep()
+    public void TurnOff()
     {
-        enabled = false;
+        isAsleep = true;
         allowLayerChange = false;
-
+        if (rb == null)
+    {
+        Debug.LogError("Rigidbody2D is null on " + gameObject.name + ". Assign it before calling Sleep().");
+        return;
+    }
         rb.linearVelocity = Vector2.zero;
         currentState = PlayerState.IDLE;
     }
