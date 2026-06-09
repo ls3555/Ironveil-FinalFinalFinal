@@ -27413,8 +27413,8 @@ MonoBehaviour:
   dialogueButtonPanel: {fileID: 1461873645}
   QuestPanel: {fileID: 26781335}
   questTextBox: {fileID: 1355683668}
-  questDescription: "If you can help me find my magic wand, I\u2019ll help you fight
-    these monsters and join your party as the mage!"
+  questDescription: "If you can help me find my magic wand, I\u2019ll help you drop
+    that statue on the altar and join your party as the mage!"
   clickToContinueText: {fileID: 955222327}
   speakerNameText: {fileID: 468503039}
   dialogueText: {fileID: 506287302}
@@ -27431,34 +27431,33 @@ MonoBehaviour:
     dialogueText: Wait, nevermind, it's not the time for that! I can't find it!
     choices:
     - choiceText: What?
-      nextNodeIndex: 2
-    - choiceText: I'll help you!
       nextNodeIndex: 3
-    endsDialogue: 0
-    createChoices: 1
-  - speakerName: Brianna
-    dialogueText: Huh? What am I looking for? My magic wand, I lost it near those
-      barrels down there!
-    choices:
-    - choiceText: Got it!
-      nextNodeIndex: 4
+    - choiceText: I'll help!
+      nextNodeIndex: 2
     endsDialogue: 0
     createChoices: 1
   - speakerName: Brianna
     dialogueText: "You don\u2019t even know what I\u2019m looking for. How would
       you be able to help me\u2026?"
     choices:
-    - choiceText: Just trust me!
+    - choiceText: Trust me!
       nextNodeIndex: 4
     endsDialogue: 0
     createChoices: 1
   - speakerName: Brianna
-    dialogueText: "If you can help me find my magic wand, I\u2019ll help you fight
-      these monsters and join your party as the mage!"
+    dialogueText: What am I looking for? My magic wand, I lost it down there! It
+      may be in one of those barrels or crates... Try to break the one that can't
+      move!
+    choices: []
+    endsDialogue: 0
+    createChoices: 0
+  - speakerName: Brianna
+    dialogueText: "If you can help me find my magic wand, I\u2019ll help you drop
+      that statue on the altar and join your party as the mage!"
     choices: []
     endsDialogue: 1
     createChoices: 0
-  typeSpeed: 0.05
+  typeSpeed: 0.03
 --- !u!1001 &238900577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -170406,6 +170405,7 @@ MonoBehaviour:
   attackRange: 1.5
   wanderRadius: 2
   wanderInterval: 3
+  dialogueTrigger: {fileID: 0}
 --- !u!114 &1380542773
 MonoBehaviour:
   m_ObjectHideFlags: 0
