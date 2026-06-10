@@ -48,9 +48,7 @@ public class PlayerObj : MonoBehaviour
 
         foreach (PlayerState state in Enum.GetValues(typeof(PlayerState)))
             IndexPair[state] = 0;
-
-        Debug.Log("[PlayerObj] SPUM StateAnimationPairs keys: " +
-            string.Join(", ", _prefabs.StateAnimationPairs.Keys));
+            
 
         _initialized = true;
     }

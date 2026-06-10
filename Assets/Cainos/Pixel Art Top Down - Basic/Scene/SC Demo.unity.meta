@@ -1,7 +1,21 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 0e782452ddac5c7428651b5de871fa1e
+=======
+guid: 8c13838df8e680749ae1bb30cfe63339
+>>>>>>> test-merging
 DefaultImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+<<<<<<< HEAD
+=======
+AssetOrigin:
+  serializedVersion: 1
+  productId: 187605
+  packageName: Pixel Art Top Down - Basic
+  packageVersion: 1.2.3
+  assetPath: Assets/Cainos/Pixel Art Top Down - Basic/Scene/SC Demo.unity
+  uploadId: 849082
+>>>>>>> test-merging
