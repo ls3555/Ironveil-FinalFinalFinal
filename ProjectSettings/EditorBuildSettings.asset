@@ -8,11 +8,14 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Cainos/Pixel Art Top Down - Basic/Scene/Game.unity
     guid: 8c13838df8e680749ae1bb30cfe63339
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cainos/Pixel Art Top Down - Basic/Scene/MainMenu.unity
     guid: 4af0515ea93ac3d4b934d49389e98d9f
   - enabled: 1
     path: Assets/Cainos/Pixel Art Top Down - Basic/Scene/SC Demo.unity
     guid: 0e782452ddac5c7428651b5de871fa1e
+  - enabled: 1
+    path: Assets/MainMenu.unity
+    guid: 4121518c3497a7f40b1ad8aa318ab692
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
