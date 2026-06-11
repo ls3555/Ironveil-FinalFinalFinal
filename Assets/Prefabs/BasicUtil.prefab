@@ -50,6 +50,7 @@ MonoBehaviour:
   spawnDistance: 0
   pickupPrefab: {fileID: 5857731634468011596, guid: 05b57eccb71082846a4b0815a2577fbd,
     type: 3}
+  skillIcon: {fileID: 21300000, guid: 4cff4ef634be5d64e9dda2bee5118ed1, type: 3}
   healParticles: {fileID: 2840773040005587486, guid: e773efacd65bb3448858ef3a205dff5a,
     type: 3}
   healAmt: 5

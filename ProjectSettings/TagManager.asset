@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Stairs
+  - SkillTriggerObject
+  - NPCItem
+  - Wall
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -54,6 +58,9 @@ TagManager:
     locked: 0
   - name: Attacks
     uniqueID: 1324923367
+    locked: 0
+  - name: UI
+    uniqueID: 3017682847
     locked: 0
   m_RenderingLayers:
   - Default

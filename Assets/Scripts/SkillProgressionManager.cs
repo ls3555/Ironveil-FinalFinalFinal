@@ -15,16 +15,24 @@ public class SkillProgressionManager : MonoBehaviour
     [SerializeField] private CanvasGroup skillUICanvasGroup;
     [SerializeField] private CanvasGroup titleCanvasGroup;
     private List<CanvasGroup> canvasGroups;
+    [SerializeField] public EnemyController enemy; // assign in Inspector
+
+    [SerializeField] private Transform player;
+    [SerializeField] private Vector3 uiOffset = new Vector3(0, 2f, 0);
+
 
 private void Start()
     {
         canvasGroups = new List<CanvasGroup>() { skillMetricCanvasGroup, skillUICanvasGroup, titleCanvasGroup };
+        
+        if (enemy != null){
+        enemy.OnEnemyDied += HandleEnemyDeath;
+        }
     }  
      private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("SkillTriggerObject"))
-        {   
-            new WaitForSeconds(1.5f); // Wait for 1.5 seconds
+        {
             ResetCanvasGroups(); // Reset alpha values before starting the fade-in effect
             switch (skillType)
             {
@@ -79,5 +87,17 @@ private void ResetCanvasGroups()
             skillUIPanel.SetActive(true);
             titlePanel.SetActive(true);
             skillMetricPanel.SetActive(true);
+    }
+
+    private void HandleEnemyDeath()
+    {
+        if (skillType != "S1")
+            return;
+
+        ResetCanvasGroups();
+        
+        AddPointsToS1();
+        
+        StartCoroutine(DismissAfterDelay());
     }
 }

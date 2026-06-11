@@ -14,13 +14,13 @@ public class PlayerObj : MonoBehaviour
     [HideInInspector] public bool isControlled = false;
     [HideInInspector] public bool isAction = false;
 
-    private PlayerState _currentState;
-    private bool _initialized = false;
-    private Rigidbody2D _rb;
+    protected PlayerState _currentState;
+    protected bool _initialized = false;
+    protected Rigidbody2D _rb;
 
     public Dictionary<PlayerState, int> IndexPair = new();
 
-    void Start()
+    protected virtual void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
 
@@ -48,9 +48,7 @@ public class PlayerObj : MonoBehaviour
 
         foreach (PlayerState state in Enum.GetValues(typeof(PlayerState)))
             IndexPair[state] = 0;
-
-        Debug.Log("[PlayerObj] SPUM StateAnimationPairs keys: " +
-            string.Join(", ", _prefabs.StateAnimationPairs.Keys));
+            
 
         _initialized = true;
     }
