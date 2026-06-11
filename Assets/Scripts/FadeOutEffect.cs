@@ -10,8 +10,8 @@ public class FadeOutEffect : MonoBehaviour
     }
 
     private IEnumerator FadeBackgroundRoutine(List<CanvasGroup> canvasGroups)
-    {        
-        
+    {
+
         float time = 0f;
         float duration = 2f;
 
@@ -25,13 +25,13 @@ public class FadeOutEffect : MonoBehaviour
             yield return null; // Wait until the next frame
         }
         foreach (CanvasGroup canvasGroup in canvasGroups)
-            {
-            canvasGroup.alpha = 0; 
+        {
+            canvasGroup.alpha = 0;
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false; // Disable interaction with the faded-out panel
-    
-            }
-        
-        
+
+        }
+
+
     }
 }
