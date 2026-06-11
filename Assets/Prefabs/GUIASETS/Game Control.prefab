@@ -51,7 +51,8 @@ MonoBehaviour:
   winScreen: {fileID: 0}
   loseScreen: {fileID: 0}
   confirmMenu: {fileID: 0}
-  onClickClip: {fileID: 0}
+  controlsScreen: {fileID: 0}
+  onClickClip: {fileID: 8300000, guid: c458b6714dab015479d507b21fd2cead, type: 3}
   audioSource: {fileID: 4131202436905927535}
   fader: {fileID: 0}
 --- !u!82 &4131202436905927535

@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5203524072022976156
 Transform:
   m_ObjectHideFlags: 0
@@ -325,10 +325,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1349416209193285957, guid: 3a7425b239912a745b95140dd33b1a93,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4896675400117992795, guid: 3a7425b239912a745b95140dd33b1a93,
         type: 3}
       propertyPath: m_Name
       value: ENYCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896675400117992795, guid: 3a7425b239912a745b95140dd33b1a93,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
