@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9151214781111407207}
   - component: {fileID: 2403819947679701498}
   - component: {fileID: 2748573950625655803}
-  - component: {fileID: 5539084335045732914}
+  - component: {fileID: 3613220750536858105}
   m_Layer: 20
   m_Name: Enemy
   m_TagString: Enemy
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4184, y: 1.4184, z: 1.4184}
+  m_LocalScale: {x: 1.652436, y: 1.652436, z: 1.652436}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3766193474989022402}
@@ -147,7 +147,7 @@ MonoBehaviour:
   dieClip: {fileID: 7400000, guid: e69f2e71bae9845dd81e677551783acd, type: 2}
   roamDist: 3
   attackDist: 1.5
-  damage: 5
+  damage: 3
   chaseDist: 10
 --- !u!95 &2748573950625655803
 Animator:
@@ -171,8 +171,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &5539084335045732914
-BoxCollider2D:
+--- !u!70 &3613220750536858105
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -205,18 +205,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.18557349, y: -0.038660884}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.8269958, y: 2.3428824}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 1
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.0257905, y: 1.3031127}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.057268154, y: -0.0021156622}
+  m_Size: {x: 0.33721015, y: 1.0186446}
+  m_Direction: 0
 --- !u!1001 &4156526733118664263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -325,10 +316,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1349416209193285957, guid: 3a7425b239912a745b95140dd33b1a93,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4896675400117992795, guid: 3a7425b239912a745b95140dd33b1a93,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896675400117992795, guid: 3a7425b239912a745b95140dd33b1a93,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Cainos.PixelArtTopDown_Basic;
+using System.Collections;
 
 public class LevelDoor : MonoBehaviour, IInteractable
 {
@@ -16,6 +17,10 @@ public class LevelDoor : MonoBehaviour, IInteractable
     public SpriteRenderer doorRenderer;
     public Color lockedColor = new Color(0.4f, 0.4f, 0.4f, 1f);
     public Color unlockedColor = new Color(1f, 0.9f, 0.3f, 1f);
+
+    private bool isTeleporting = false;
+
+    public FadeImg fader;
 
     private void Update()
     {
@@ -39,7 +44,8 @@ public class LevelDoor : MonoBehaviour, IInteractable
         if (!IsUnlocked()) return;
 
         PlayerMovement player = other.GetComponent<PlayerMovement>();
-        if (player != null) Teleport(player);
+        if (!isTeleporting)
+        if (player != null) StartCoroutine(Teleport(player));;
     }
 
     private bool IsUnlocked()
@@ -50,30 +56,26 @@ public class LevelDoor : MonoBehaviour, IInteractable
         return lit >= requiredLitCount;
     }
 
-    private void Teleport(PlayerMovement player)
+    private IEnumerator Teleport(PlayerMovement player)
     {
-        if (destination == null)
-        {
-            Debug.LogWarning("LevelDoor: No destination assigned!");
-            return;
-        }
+        isTeleporting = true;
+        yield return StartCoroutine(fader.FadeOut());
 
         var rb = player.GetComponent<Rigidbody2D>();
-        if (rb != null) rb.linearVelocity = Vector2.zero;
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
 
-        player.transform.position = destination.position + new Vector3(spawnOffset.x, spawnOffset.y, 0f);
-
-        PlayerObj playerObj = player.GetComponent<PlayerObj>();
-        if (playerObj != null) playerObj._charMS = 8f;
+        player.transform.position =
+            destination.position + new Vector3(spawnOffset.x, spawnOffset.y, 0f);
 
         PlayerAudio audio = player.GetComponent<PlayerAudio>();
         if (audio != null)
         {
             audio.currentLevel = targetLevel;
             audio.SwitchLevelMusic(targetLevel);
-            Debug.Log("Switched to level " + targetLevel + " sounds");
         }
 
-        Debug.Log("Player teleported to " + destination.name);
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(fader.FadeIn());
     }
 }

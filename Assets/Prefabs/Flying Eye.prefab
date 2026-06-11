@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5880679151005804910}
   - component: {fileID: 8253836919220468900}
   - component: {fileID: 3997193990392535321}
-  - component: {fileID: 2811935472989218140}
+  - component: {fileID: 2887162282349952529}
   m_Layer: 0
   m_Name: Flying Eye
   m_TagString: Enemy
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea0ca66dce6d4ca0bc8dc498e5b88f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
   moveSpeed: 3
   friction: 2
   opponentTag: Player
@@ -169,10 +169,10 @@ MonoBehaviour:
   dieClip: {fileID: 7400000, guid: ecd115aadd7f64d6da9b5b81fa3d69f1, type: 2}
   roamDist: 3
   attackDist: 1.5
-  damage: 5
+  damage: 2
   chaseDist: 10
---- !u!61 &2811935472989218140
-BoxCollider2D:
+--- !u!58 &2887162282349952529
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -205,18 +205,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.036752403, y: -0.013021678}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.5, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.42412406, y: 0.2975282}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.045664024, y: 0}
+  m_Radius: 0.2549992
 --- !u!1001 &5975571034466456039
 PrefabInstance:
   m_ObjectHideFlags: 0

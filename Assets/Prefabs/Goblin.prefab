@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8502545496713713440}
   - component: {fileID: 8850936518370940234}
   - component: {fileID: 1016378118431616695}
-  - component: {fileID: 6786628997046165399}
+  - component: {fileID: 4116141012606643041}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Enemy
@@ -171,8 +171,8 @@ MonoBehaviour:
   attackDist: 1.5
   damage: 5
   chaseDist: 10
---- !u!61 &6786628997046165399
-BoxCollider2D:
+--- !u!70 &4116141012606643041
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -205,18 +205,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0071858466, y: -0.0762107}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.5, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.3321215, y: 0.36611742}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.08936971}
+  m_Size: {x: 0.44765854, y: 0.52297413}
+  m_Direction: 0
 --- !u!1001 &5223756076148660320
 PrefabInstance:
   m_ObjectHideFlags: 0
