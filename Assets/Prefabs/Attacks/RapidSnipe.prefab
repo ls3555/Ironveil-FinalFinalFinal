@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 0
-  cooldown: 1.5
+  cooldown: 1
   manaCost: 1
   spawnDistance: 0.8
   abilityIcon: {fileID: 21300000, guid: f9fa59c48bcaf314988f2c2caece74b6, type: 3}
