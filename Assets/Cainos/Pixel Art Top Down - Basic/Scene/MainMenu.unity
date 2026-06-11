@@ -149,6 +149,19 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6289255741039493191}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1123581377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123581370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c1dd4705def914d84c9d60e97fcf5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fader: {fileID: 816518708}
 --- !u!1001 &1186608784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -462,6 +475,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 805736304238909071, guid: bf1a6629b2ed01042b9d39cf555395bc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5921090988472597463, guid: 1f45f8f21f568dc4582ab4080ab3e654,
+        type: 3}
     - target: {fileID: 1331243992327406645, guid: bf1a6629b2ed01042b9d39cf555395bc,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -629,6 +648,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5854972836419297900, guid: bf1a6629b2ed01042b9d39cf555395bc,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1123581377}
+    - target: {fileID: 5854972836419297900, guid: bf1a6629b2ed01042b9d39cf555395bc,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1123581370}
@@ -636,6 +660,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854972836419297900, guid: bf1a6629b2ed01042b9d39cf555395bc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickAndLoad
       objectReference: {fileID: 0}
     - target: {fileID: 5854972836419297900, guid: bf1a6629b2ed01042b9d39cf555395bc,
         type: 3}
@@ -655,7 +684,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 816518711}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3912592807297112087, guid: bf1a6629b2ed01042b9d39cf555395bc,
+        type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1123581377}
   m_SourcePrefab: {fileID: 100100000, guid: bf1a6629b2ed01042b9d39cf555395bc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
