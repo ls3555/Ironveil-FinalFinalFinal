@@ -96,7 +96,7 @@ public class GameController : MonoBehaviour
         LoseGame();
     }
 
-    void WinGame()
+    public void WinGame()
     {
         SetState(GameState.Win);
     }

@@ -15,8 +15,8 @@ public class EnemySpum : PlayerObj, IDamagable
     protected SpriteRenderer spriteRenderer;
     public float health;
     protected float maxHealth;
-    [SerializeField]protected float moveSpeed;
-    [SerializeField]protected float friction;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float friction;
     protected Vector2 moveDirection;
     public string opponentTag;
     public System.Action OnDeath;
@@ -55,64 +55,64 @@ public class EnemySpum : PlayerObj, IDamagable
     }
 
     override protected void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        healthContainer.gameObject.SetActive(false);
+
+        // _rb2D setup — prevents tipping/rotation and keeps it 2D-correct
+        _rb.gravityScale = 0f;
+        _rb.freezeRotation = true;
+        _rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+
+        if (_prefabs == null)
+            _prefabs = GetComponentInChildren<SPUM_Prefabs>();
+
+        if (_prefabs == null)
         {
-            _rb = GetComponent<Rigidbody2D>();
-            healthContainer.gameObject.SetActive(false);
-
-            // _rb2D setup — prevents tipping/rotation and keeps it 2D-correct
-            _rb.gravityScale = 0f;
-            _rb.freezeRotation = true;
-            _rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-
-            if (_prefabs == null)
-                _prefabs = GetComponentInChildren<SPUM_Prefabs>();
-
-            if (_prefabs == null)
-            {
-                Debug.LogError($"[PlayerObj] No SPUM_Prefabs found on {name} or its children.");
-                return;
-            }
-
-            if (_prefabs._anim == null)
-            {
-                Debug.LogError($"[PlayerObj] SPUM_Prefabs on {name} has no _anim assigned.");
-                return;
-            }
-
-            _prefabs.OverrideControllerInit();
-
-            foreach (PlayerState state in Enum.GetValues(typeof(PlayerState)))
-                IndexPair[state] = 0;
-
-            Debug.Log("[PlayerObj] SPUM StateAnimationPairs keys: " +
-                string.Join(", ", _prefabs.StateAnimationPairs.Keys));
-
-
-            currentState = EnemyState.Idle;
-            PickNewRoamTarget();
-
-            _initialized = true;
+            Debug.LogError($"[PlayerObj] No SPUM_Prefabs found on {name} or its children.");
+            return;
         }
 
-    void Update()
+        if (_prefabs._anim == null)
         {
-            if (!_initialized) return;
+            Debug.LogError($"[PlayerObj] SPUM_Prefabs on {name} has no _anim assigned.");
+            return;
+        }
 
-            // Y-position drives Z so sprites closer to the bottom of screen render on top
-            transform.position = new Vector3(
-                transform.position.x,
-                transform.position.y,
-                transform.position.y * -0.01f
-            );
+        _prefabs.OverrideControllerInit();
 
-            UpdateHealth();
-            if (_rb == null || PlayerMovement.Instance == null) return;
+        foreach (PlayerState state in Enum.GetValues(typeof(PlayerState)))
+            IndexPair[state] = 0;
 
-            float distToPlayer = Vector2.Distance(transform.position, PlayerMovement.Instance.transform.position);
-            
-            switch (currentState)
-            {
-                case EnemyState.Idle:
+        Debug.Log("[PlayerObj] SPUM StateAnimationPairs keys: " +
+            string.Join(", ", _prefabs.StateAnimationPairs.Keys));
+
+
+        currentState = EnemyState.Idle;
+        PickNewRoamTarget();
+
+        _initialized = true;
+    }
+
+    void Update()
+    {
+        if (!_initialized) return;
+
+        // Y-position drives Z so sprites closer to the bottom of screen render on top
+        transform.position = new Vector3(
+            transform.position.x,
+            transform.position.y,
+            transform.position.y * -0.01f
+        );
+
+        UpdateHealth();
+        if (_rb == null || PlayerMovement.Instance == null) return;
+
+        float distToPlayer = Vector2.Distance(transform.position, PlayerMovement.Instance.transform.position);
+
+        switch (currentState)
+        {
+            case EnemyState.Idle:
                 _currentState = PlayerState.IDLE;
                 moveDirection = Vector2.zero;
                 PlayStateAnimation(_currentState);
@@ -129,7 +129,7 @@ public class EnemySpum : PlayerObj, IDamagable
                 }
                 break;
 
-                case EnemyState.Roam:
+            case EnemyState.Roam:
                 _currentState = PlayerState.MOVE;
                 moveDirection = ((Vector2)targetPosition - (Vector2)transform.position).normalized;
                 PlayStateAnimation(_currentState);
@@ -145,7 +145,7 @@ public class EnemySpum : PlayerObj, IDamagable
                 }
                 break;
 
-                case EnemyState.Chase:
+            case EnemyState.Chase:
                 targetPosition = PlayerMovement.Instance.transform.position;
                 _currentState = PlayerState.MOVE;
                 moveDirection = ((Vector2)targetPosition - (Vector2)transform.position).normalized;
@@ -163,7 +163,7 @@ public class EnemySpum : PlayerObj, IDamagable
                 }
                 break;
 
-                case EnemyState.Attack:
+            case EnemyState.Attack:
                 moveDirection = Vector2.zero;
                 if (distToPlayer > attackDist)
                 {
@@ -174,96 +174,103 @@ public class EnemySpum : PlayerObj, IDamagable
                     StartCoroutine(AttackCoroutine());
                 }
                 break;
-            }
         }
+    }
 
-        private void FlipSprite(Vector2 direction)
+    private void FlipSprite(Vector2 direction)
+    {
+        float x = transform.localScale.x;
+        float y = transform.localScale.y;
+        float z = transform.localScale.z;
+        if (direction.x > 0f)
         {
-            float x = transform.localScale.x;
-            float y = transform.localScale.y;
-            float z = transform.localScale.z;
-            if (direction.x > 0f) {
-                if (x > 0) {x *= -1f;}
-                transform.localScale = new Vector3(x, y, z);  // face left
-            } else if (direction.x < 0f) {
-                if (x < 0) {x *= -1f;}
-                transform.localScale = new Vector3(x, y, y); // face right
-            }
+            if (x > 0) { x *= -1f; }
+            transform.localScale = new Vector3(x, y, z);  // face left
         }
-
-        protected void Move()
+        else if (direction.x < 0f)
         {
-            if (moveDirection.magnitude > 0)
-            {
-                _rb.linearVelocity = moveDirection * moveSpeed;
-            }
-            else
-            {
-                _rb.linearVelocity *= (1f - friction);
-            }
+            if (x < 0) { x *= -1f; }
+            transform.localScale = new Vector3(x, y, y); // face right
         }
+    }
 
-        void FixedUpdate() {Move();}
-
-        private void PickNewRoamTarget()
+    protected void Move()
+    {
+        if (moveDirection.magnitude > 0)
         {
-            targetPosition = (Vector2)transform.position + new Vector2(
-                UnityEngine.Random.Range(-roamDist, roamDist),
-                UnityEngine.Random.Range(-roamDist, roamDist)
-            );
+            _rb.linearVelocity = moveDirection * moveSpeed;
         }
-
-        private IEnumerator AttackCoroutine()
+        else
         {
-            if (!canAttack)
-                yield break;
-            
-            canAttack = false;
-            _rb.linearVelocity = Vector2.zero;
-
-            yield return new WaitForSeconds(3);
-            float disToPlayer = Vector2.Distance(transform.position, PlayerMovement.Instance.transform.position);
-            if (disToPlayer < attackDist + 0.5f)
-            {
-                _currentState = PlayerState.ATTACK;
-                PlayStateAnimation(_currentState);
-                PlayerMovement.Instance.TakeDamage(damage);
-            }
-            else
-            {
-                currentState = EnemyState.Chase;
-            }
-            canAttack = true;
+            _rb.linearVelocity *= (1f - friction);
         }
+    }
 
-        public void Die()
+    void FixedUpdate() { Move(); }
+
+    private void PickNewRoamTarget()
+    {
+        targetPosition = (Vector2)transform.position + new Vector2(
+            UnityEngine.Random.Range(-roamDist, roamDist),
+            UnityEngine.Random.Range(-roamDist, roamDist)
+        );
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        if (!canAttack)
+            yield break;
+
+        canAttack = false;
+        _rb.linearVelocity = Vector2.zero;
+
+        yield return new WaitForSeconds(3);
+        float disToPlayer = Vector2.Distance(transform.position, PlayerMovement.Instance.transform.position);
+        if (disToPlayer < attackDist + 0.5f)
         {
-            _currentState = PlayerState.DEATH;
+            _currentState = PlayerState.ATTACK;
             PlayStateAnimation(_currentState);
-            _rb.linearVelocity = Vector2.zero;
-            _rb.angularVelocity = 0f;
-            GetComponent<Collider2D>().enabled = false;
-            enabled = false;
+            PlayerMovement.Instance.TakeDamage(damage);
         }
-
-        public void TakeDamage(float damage)
+        else
         {
-             _currentState = PlayerState.DAMAGED;
-            PlayStateAnimation(_currentState);
-            health = Mathf.Clamp(health - damage, 0, maxHealth);
-            healthBar.fillAmount = health / maxHealth;
-            if(health<=0) {Die();}
-            lastDamageTime = Time.time;
-
-            ShowDamage(damage);
-
-            if (hideHPRoutine != null)
-                StopCoroutine(hideHPRoutine);
-
-            hideHPRoutine = StartCoroutine(HideHealthBar());
+            currentState = EnemyState.Chase;
         }
+        canAttack = true;
+    }
 
-        protected void UpdateHealth()
+    public void Die()
+    {
+        _currentState = PlayerState.DEATH;
+        PlayStateAnimation(_currentState);
+        _rb.linearVelocity = Vector2.zero;
+        _rb.angularVelocity = 0f;
+        GetComponent<Collider2D>().enabled = false;
+        enabled = false;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _currentState = PlayerState.DAMAGED;
+        PlayStateAnimation(_currentState);
+        health = Mathf.Clamp(health - damage, 0, maxHealth);
+        healthBar.fillAmount = health / maxHealth;
+        if (health <= 0)
+        {
+            Die();
+            GameController.Instance.WinGame();
+        }
+        lastDamageTime = Time.time;
+
+        ShowDamage(damage);
+
+        if (hideHPRoutine != null)
+            StopCoroutine(hideHPRoutine);
+
+        hideHPRoutine = StartCoroutine(HideHealthBar());
+    }
+
+    protected void UpdateHealth()
     {
         if (health < maxHealth)
         {
@@ -281,7 +288,7 @@ public class EnemySpum : PlayerObj, IDamagable
 
         Vector3 spawnPos = transform.position + randomOffset;
 
-        TextMeshProUGUI popup = Instantiate(damagePopup,transform.position,Quaternion.identity);
+        TextMeshProUGUI popup = Instantiate(damagePopup, transform.position, Quaternion.identity);
         popup.transform.SetParent(canvas.transform, false);
         popup.transform.position = spawnPos;
         popup.text = damage.ToString("0.0");
