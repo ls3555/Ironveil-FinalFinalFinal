@@ -77716,7 +77716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.654088, g: 0.654088, b: 0.654088, a: 0.6431373}
+  m_Color: {r: 0.654088, g: 0.654088, b: 0.654088, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -255848,6 +255848,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1837309977147637163, guid: 6beabe94d001d8940ba8c06f9c4c4912,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2313444283294691247, guid: 6beabe94d001d8940ba8c06f9c4c4912,
         type: 3}
       propertyPath: m_IsActive
@@ -256042,7 +256047,7 @@ PrefabInstance:
     - target: {fileID: 7066959062516200388, guid: 6beabe94d001d8940ba8c06f9c4c4912,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7197406692059557201, guid: 6beabe94d001d8940ba8c06f9c4c4912,
         type: 3}
