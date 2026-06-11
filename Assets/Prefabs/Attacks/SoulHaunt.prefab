@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4802620131415387598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6897054393323687516}
+  - component: {fileID: 5071554326086786005}
+  m_Layer: 0
+  m_Name: SoulHaunt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6897054393323687516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802620131415387598}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.71054757, y: -1.4902338, z: -1.7381108}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5071554326086786005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802620131415387598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3194697b177e449b4f7e72b713db48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotType: 1
+  cooldown: 15
+  manaCost: 15
+  spawnDistance: 0.8
+  abilityIcon: {fileID: 21300000, guid: 9f922002032136c4687b8dced9bc624c, type: 3}
+  pickupPrefab: {fileID: 5857731634468011596, guid: f9587859a1b918647bbb37b7dea9be1e,
+    type: 3}
+  dotZone: {fileID: 1180799197256148929, guid: ee6c958a8a9e8e047817fe272523a9f8, type: 3}

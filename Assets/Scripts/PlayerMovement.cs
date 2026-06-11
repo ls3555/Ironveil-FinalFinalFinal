@@ -201,6 +201,21 @@ public class PlayerMovement : Movement
         healthNum.text = Mathf.RoundToInt(health).ToString();
 
         GetComponent<PlayerAudio>()?.EnterCombat();
+
+        if (health <= 0) {
+            _currentState = PlayerState.DEATH;
+            canMove = false;
+            SetVelocity(Vector2.zero);
+            StartCoroutine(DeathDelay());
+        } else if (damage > 0) {
+            _currentState = PlayerState.DAMAGED;
+        }
+    }
+
+    private IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GameController.Instance.PlayerDied();
     }
 
     public void HealDamage(float damage)
@@ -315,6 +330,11 @@ public float GetMana()
         return lastMoveDir;
     }
 
+    public Vector3 getDir()
+    {
+        return moveDirection;
+    }
+
     public void setState(state newState)
     {
         actionState = newState;
@@ -332,4 +352,22 @@ public float GetMana()
         return specAttack;
     }
 
+    public IEnumerator StatBuffRoutine(
+        float damageBonus,
+        float healthRegenBonus,
+        float manaRegenBonus,
+        float duration)
+    {
+        attack += damageBonus;
+        specAttack += damageBonus;
+        healthRegen += healthRegenBonus;
+        manaRegen += manaRegenBonus;
+
+        yield return new WaitForSeconds(duration);
+
+        attack -= damageBonus;
+        specAttack -= damageBonus;
+        healthRegen -= healthRegenBonus;
+        manaRegen -= manaRegenBonus;
+    }
 }

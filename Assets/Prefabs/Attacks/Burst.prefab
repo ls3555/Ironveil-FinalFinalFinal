@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4322566069791994906
+--- !u!1 &8053814359418235116
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7698877137338304314}
-  - component: {fileID: 1259621486803144256}
+  - component: {fileID: 8238722670925595307}
+  - component: {fileID: 1395460250154690107}
   m_Layer: 0
-  m_Name: BasicUtil
+  m_Name: Burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7698877137338304314
+--- !u!4 &8238722670925595307
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4322566069791994906}
+  m_GameObject: {fileID: 8053814359418235116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.1612253, y: 3.2339075, z: 0.031963352}
+  m_LocalPosition: {x: 0.71054757, y: -1.4902338, z: -1.7381108}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1259621486803144256
+--- !u!114 &1395460250154690107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4322566069791994906}
+  m_GameObject: {fileID: 8053814359418235116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48025d2338267504da9751c213f2ea8d, type: 3}
+  m_Script: {fileID: 11500000, guid: d1839a30de27c25428794dc294e23655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotType: 3
-  cooldown: 15
-  manaCost: 10
+  slotType: 1
+  cooldown: 5
+  manaCost: 7
   spawnDistance: 0
-  pickupPrefab: {fileID: 5857731634468011596, guid: 05b57eccb71082846a4b0815a2577fbd,
+  abilityIcon: {fileID: 21300000, guid: df5153fca31c9bf47b2d36359b5dd373, type: 3}
+  pickupPrefab: {fileID: 5857731634468011596, guid: 3016879312cb5fd42b00f56f72e441ca,
     type: 3}
-  skillIcon: {fileID: 21300000, guid: 4cff4ef634be5d64e9dda2bee5118ed1, type: 3}
-  healParticles: {fileID: 2840773040005587486, guid: e773efacd65bb3448858ef3a205dff5a,
-    type: 3}
-  healAmt: 5
+  splash: {fileID: 3036353316176882481, guid: 3af4a2ea634eda54ebad08304dd9fd1c, type: 3}

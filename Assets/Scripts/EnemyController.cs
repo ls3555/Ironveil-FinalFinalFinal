@@ -156,6 +156,8 @@ public class EnemyController : EnemyUI
         animator.SetTrigger("Die");
         animator.SetBool("isAlive", false);
         rigidBody.linearVelocity = Vector2.zero;
+        rigidBody.angularVelocity = 0f;
+        GetComponent<Collider2D>().enabled = false;
 
         OnEnemyDied?.Invoke();   // <-- NEW
 

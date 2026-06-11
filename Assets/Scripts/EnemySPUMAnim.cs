@@ -241,6 +241,8 @@ public class EnemySpum : PlayerObj, IDamagable
             _currentState = PlayerState.DEATH;
             PlayStateAnimation(_currentState);
             _rb.linearVelocity = Vector2.zero;
+            _rb.angularVelocity = 0f;
+            GetComponent<Collider2D>().enabled = false;
             enabled = false;
         }
 
@@ -282,7 +284,7 @@ public class EnemySpum : PlayerObj, IDamagable
         TextMeshProUGUI popup = Instantiate(damagePopup,transform.position,Quaternion.identity);
         popup.transform.SetParent(canvas.transform, false);
         popup.transform.position = spawnPos;
-        popup.text = "" +damage;
+        popup.text = damage.ToString("0.0");
     }
 
     protected IEnumerator HideHealthBar()

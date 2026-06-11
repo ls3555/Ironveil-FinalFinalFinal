@@ -1,21 +1,24 @@
 using System.Collections;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class AoeSplash : MonoBehaviour
 {
-
     [SerializeField]private float LifeTime;
     private string target;
     protected Rigidbody2D rb;
-    public ParticleSystem hit;
+    public ParticleSystem splash;
     public float damage;
-    protected float speed;
 
-    public void setTarget(string name,Vector3 dir,float force){
+    public void setTarget(string name,Vector3 dir){
         target = name;
         rb = GetComponent<Rigidbody2D>();
-        speed=force;
         transform.up=dir;
+        Quaternion rot = transform.rotation;
+        Vector3 euler = rot.eulerAngles;
+        euler.z += 180f;
+
+        ParticleSystem particle = Instantiate(splash,transform.position,Quaternion.Euler(euler));
+        Destroy(particle.gameObject,3);
         StartCoroutine(startCountdown());
     }
 
@@ -30,22 +33,13 @@ public class Bullet : MonoBehaviour
                 target.TakeDamage(damage);
             }
         }
-
-        if(other.gameObject.tag != "Stairs") {
-            ParticleSystem particle = Instantiate(hit,transform.position, Quaternion.identity);
-            Destroy(particle.gameObject,2);
-            Destroy(this.gameObject);
-        }
     }
 
 
     public void setDamage(float stat)
     {
-        damage = Mathf.Round(stat);
+        damage = stat * 1.5f;
     }
 
-    void FixedUpdate(){
-        rb.linearVelocity = transform.up*speed;
-    }
-    
+
 }

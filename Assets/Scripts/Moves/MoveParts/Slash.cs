@@ -39,6 +39,6 @@ public class Slash : MonoBehaviour
 
     public void setDamage(float stat)
     {
-        damage = Mathf.Round(stat);
+        damage = stat;
     }
 }

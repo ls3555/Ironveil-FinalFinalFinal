@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8545942056411373131
+--- !u!1 &677709572895424441
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1311192166086322843}
-  - component: {fileID: 1335066052131875523}
+  - component: {fileID: 8156222108666869068}
+  - component: {fileID: 7836235408508891468}
   m_Layer: 0
-  m_Name: BasicSpecial
+  m_Name: BasicAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1311192166086322843
+--- !u!4 &8156222108666869068
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8545942056411373131}
+  m_GameObject: {fileID: 677709572895424441}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.1612253, y: 3.2339075, z: 0.031963352}
@@ -32,24 +32,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1335066052131875523
+--- !u!114 &7836235408508891468
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8545942056411373131}
+  m_GameObject: {fileID: 677709572895424441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d9671759d0640548a1ea3d3c21e2462, type: 3}
+  m_Script: {fileID: 11500000, guid: 6475e72831e37a44396daa45325cf5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotType: 1
-  cooldown: 3
-  manaCost: 5
-  spawnDistance: 1
-  pickupPrefab: {fileID: 4663279428723142435, guid: 63de596462476444eb8304c55ac3f0b7,
+  slotType: 0
+  cooldown: 0.8
+  manaCost: 0
+  spawnDistance: 0.8
+  cooldownRemaining: 0
+  cooldownDuration: 1
+  abilityIcon: {fileID: 21300000, guid: 8cc7ca0e29ced7b4f84e8c4ef7deb28b, type: 3}
+  pickupPrefab: {fileID: 7024416200842092576, guid: 643150cadc17d9e4e8b1e3bc236a77f2,
     type: 3}
-  skillIcon: {fileID: 21300000, guid: caccc09442e90904d94b08c1ae00b653, type: 3}
-  shootForce: 5
-  bullet: {fileID: 5565699267098577034, guid: 5dcfbc8e150b36e4db0064724022fe14, type: 3}
+  slash: {fileID: 9024078018694622132, guid: 134dc30834d0bc64e877f87f1b86a8f9, type: 3}

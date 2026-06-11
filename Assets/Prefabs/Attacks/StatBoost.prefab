@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5957934112452009265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4279869418285736485}
+  - component: {fileID: 5574445191185215250}
+  m_Layer: 0
+  m_Name: StatBoost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4279869418285736485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957934112452009265}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.71054757, y: -1.4902338, z: -1.7381108}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5574445191185215250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957934112452009265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a946a2705bacf4abcc2eaddb7ec6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotType: 3
+  cooldown: 30
+  manaCost: 25
+  spawnDistance: 0
+  abilityIcon: {fileID: 21300000, guid: eeff49e051316944dad15296f8e68e1b, type: 3}
+  pickupPrefab: {fileID: 5857731634468011596, guid: a2299fd9c8e9bb24dade3fabc01fddfb,
+    type: 3}
+  statRaise: {fileID: 2708598583397607910, guid: 6398d43fe79ea0140913dc5530c646af,
+    type: 3}
+  boosting: {fileID: 8120836062701167563, guid: 7990ce05a6277c541bff044f57b01771,
+    type: 3}
+  buffTime: 15
+  buffStr: 0.5
+  buffRegen: 2.5
+  buffMana: 2

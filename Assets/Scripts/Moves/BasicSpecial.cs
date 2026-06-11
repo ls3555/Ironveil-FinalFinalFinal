@@ -17,6 +17,9 @@ public class BasicSpecial : PlayerMove
         cooldownRemaining = cooldown;
         player.setState(state.attacking);
 
+        PlayerAudio audio = PlayerMovement.Instance.GetComponent<PlayerAudio>();
+        if (audio != null) audio.PlaySpecial();
+
         Vector2 shootDirection = player.CalcShootDir();
         Vector2 spawnPos = (Vector2)player.transform.position + shootDirection * spawnDistance;
 
@@ -28,8 +31,5 @@ public class BasicSpecial : PlayerMove
         player.setState(state.idle);
         yield return new WaitForSeconds(cooldown);
         canSpecial = true;
-
-        PlayerAudio audio = PlayerMovement.Instance.GetComponent<PlayerAudio>();
-        if (audio != null) audio.PlaySpecial();
     }
 }

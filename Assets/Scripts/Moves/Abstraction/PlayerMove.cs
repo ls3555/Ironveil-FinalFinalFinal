@@ -8,21 +8,21 @@ public abstract class PlayerMove : MonoBehaviour
     public float manaCost;
     public float spawnDistance = 0.8f; 
     protected PlayerMovement player;
-    public float cooldownRemaining;
-public float cooldownDuration = 1f;
-public Sprite abilityIcon;
-[SerializeField] public GameObject pickupPrefab;
+    protected float cooldownRemaining;
+    protected float cooldownDuration = 1f;
+    public Sprite abilityIcon;
+    [SerializeField] public GameObject pickupPrefab;
 
 
 
 private void Update()
     {
         if (cooldownRemaining > 0)
-    cooldownRemaining -= Time.deltaTime;
+            cooldownRemaining -= Time.deltaTime;
 
     }
 
-    private void Start()
+private void Start()
     {
         player = PlayerMovement.Instance;
     }

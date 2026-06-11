@@ -57,7 +57,7 @@ public class DummyEnemy : Entity
         TextMeshProUGUI popup = Instantiate(damagePopup,transform.position,Quaternion.identity);
         popup.transform.SetParent(canvas.transform, false);
         popup.transform.position = spawnPos;
-        popup.text = "" +damage;
+        popup.text = damage.ToString("0.0");
     }
 
     IEnumerator HideHealthBar()

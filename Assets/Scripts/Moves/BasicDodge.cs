@@ -20,6 +20,9 @@ public class BasicDodge : PlayerMove
 
         Vector2 dir = player.getMoveDirection().normalized;
 
+        PlayerAudio audio = PlayerMovement.Instance.GetComponent<PlayerAudio>();
+        if (audio != null) audio.PlayDash();
+
         if (dir == Vector2.zero)
             dir = Vector2.right;
 
@@ -42,8 +45,5 @@ public class BasicDodge : PlayerMove
 
         yield return new WaitForSeconds(cooldown);
         canDash = true;
-
-        PlayerAudio audio = PlayerMovement.Instance.GetComponent<PlayerAudio>();
-        if (audio != null) audio.PlayDash();
     }
 }
